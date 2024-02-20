@@ -21,7 +21,7 @@
 }
 .section {
   min-height: 320px;
-  background: #F0ECE3;
+  background: #f0ece3;
   z-index: 2;
   position: relative;
   padding: 16px;
@@ -39,9 +39,7 @@
   }
 }
 .poster {
-  background: #0F2E2F;
+  background: #0f2e2f;
   min-height: 520px;
 }
-
-
 </style>
