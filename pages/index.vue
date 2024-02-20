@@ -24,6 +24,19 @@
   background: #F0ECE3;
   z-index: 2;
   position: relative;
+  padding: 16px;
+
+  @media (min-width: 900px) {
+    padding: 32px 40px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 32px 64px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 32px 80px;
+  }
 }
 .poster {
   background: #0F2E2F;
