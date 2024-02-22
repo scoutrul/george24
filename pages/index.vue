@@ -1,6 +1,12 @@
 <template>
   <div class="page">
-    <section class="poster section"></section>
+    <section class="poster section">
+      <NuxtMarquee auto-fill class="marquee">
+        <div>plan,&nbsp;</div>
+        <div>design,&nbsp;</div>
+        <div>grow,&nbsp;</div>
+      </NuxtMarquee>
+    </section>
 
     <section class="intro section">
       <logo is-black class="logo-black" />
@@ -21,6 +27,19 @@ export default {
 };
 </script>
 <style lang="scss">
+.marquee {
+  font-size: 300px;
+  font-weight: 700;
+  line-height: 300px;
+  letter-spacing: -0.03em;
+  color: #f0ece3;
+  user-select: none;
+  position: absolute;
+  min-width: 100vw;
+  left: 0;
+  height: 100%;
+  top: 0;
+}
 @mixin page-padding {
   padding: 16px;
 
@@ -67,7 +86,7 @@ export default {
   background-color: #0f2e2f;
   min-height: 520px;
   z-index: 4;
-
+  overflow: hidden;
   background-image: url(@/assets/logo-white.svg);
   background-size: 64px;
   background-repeat: no-repeat;
