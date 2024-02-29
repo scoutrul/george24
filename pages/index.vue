@@ -1,6 +1,12 @@
 <template>
   <div class="page">
     <section class="poster section">
+      <div class="logo-white"></div>
+      <ul class="nav">
+        <li>works</li>
+        <li>get cv</li>
+      </ul>
+      <img src="@/assets/george.png" class="george-pic" />
       <NuxtMarquee auto-fill class="marquee">
         <div>plan,&nbsp;</div>
         <div>design,&nbsp;</div>
@@ -39,6 +45,7 @@ export default {
   left: 0;
   height: 100%;
   top: 0;
+  z-index: 0;
 }
 @mixin page-padding {
   padding: 16px;
@@ -60,19 +67,57 @@ export default {
   position: relative;
 }
 
+.nav {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  height: 64px;
+  margin: 0 0 0 auto;
+  align-items: center;
+  width: fit-content;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #f0ece3;
+
+  li {
+    margin-left: 24px;
+  }
+}
+
 .logo-black {
   position: fixed;
   z-index: 5;
   top: 0;
   left: 10px;
-  @include page-padding;
 }
 
 .logo-white {
-  position: fixed;
-  z-index: 5;
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  left: 0;
   top: 0;
-  @include page-padding;
+  background-image: url(@/assets/logo-white.svg);
+  background-size: 64px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 16px 16px;
+
+  @media (min-width: 900px) {
+    background-position: 32px 32px;
+  }
+
+  @media (min-width: 1440px) {
+    background-position: 75px 32px;
+  }
+
+  @media (min-width: 1920px) {
+    background-position: 90px 32px;
+  }
 }
 
 .section {
@@ -87,25 +132,16 @@ export default {
   min-height: 520px;
   z-index: 4;
   overflow: hidden;
-  background-image: url(@/assets/logo-white.svg);
-  background-size: 64px;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 27px 16px;
-
-  @media (min-width: 900px) {
-    background-position: 52px 32px;
-  }
-
-  @media (min-width: 1440px) {
-    background-position: 75px 32px;
-  }
-
-  @media (min-width: 1920px) {
-    background-position: 90px 32px;
-  }
 }
 
+.george-pic {
+  width: 872px;
+  left: 50%;
+  top: 82px;
+  transform: translateX(-50%);
+  z-index: 1;
+  position: relative;
+}
 .intro {
   z-index: 3;
 }
