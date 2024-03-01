@@ -32,9 +32,9 @@
       </picture>
 
       <NuxtMarquee auto-fill class="marquee">
-        <div>plan,&nbsp;</div>
-        <div>design,&nbsp;</div>
-        <div>grow,&nbsp;</div>
+        <div class="glitch" data-text="plan, ">plan,&nbsp;</div>
+        <div class="glitch" data-text="design, ">design,&nbsp;</div>
+        <div class="glitch" data-text="grow, ">grow,&nbsp;</div>
       </NuxtMarquee>
     </section>
 
@@ -58,6 +58,7 @@ export default {
 </script>
 <style lang="scss">
 .marquee {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   font-size: 300px;
   font-weight: 700;
   line-height: 300px;
@@ -112,6 +113,7 @@ export default {
 }
 
 .nav {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   padding: 0;
   display: flex;
   list-style: none;
@@ -201,5 +203,37 @@ export default {
 
 .intro {
   z-index: 3;
+}
+
+.glitch {
+  position: relative;
+  animation: glitch 5s 5s infinite;
+}
+
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  top: 0;
+  animation: glitch 5s 5.05s infinite;
+}
+
+@keyframes glitch {
+  1% {
+    transform: rotateX(10deg) skewX(90deg);
+  }
+  2% {
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+
+@keyframes glitch-2 {
+  1% {
+    transform: rotateX(10deg) skewX(70deg);
+  }
+  2% {
+    transform: rotateX(0deg) skewX(0deg);
+  }
 }
 </style>
