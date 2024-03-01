@@ -10,7 +10,8 @@
     "postinstall": "nuxt prepare",
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
+    "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@nuxt/eslint-config": "^0.2.0",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "eslint": "^8.56.0",
+    "gh-pages": "^6.1.1",
     "nuxt-marquee": "^1.0.3",
     "typescript": "^5.3.3",
     "typescript-eslint": "^7.0.2"
