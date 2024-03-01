@@ -6,7 +6,31 @@
         <li>works</li>
         <li>get cv</li>
       </ul>
-      <img src="@/assets/george.png" class="george-pic" />
+
+      <picture>
+        <source
+          media="(max-width: 360px)"
+          srcset="@/assets/bg_art_mobile.png, @/assets/bg_art_mobile@2x.png"
+        />
+        <source
+          media="(min-width: 361px) and (max-width: 900px)"
+          srcset="@/assets/bg_art_tablet.png, @/assets/bg_art_tablet@2x.png"
+        />
+        <source
+          media="(min-width: 900px) and (max-width: 1299px)"
+          srcset="@/assets/bg_art_desktop.png, @/assets/bg_art_desktop@2x.png"
+        />
+        <source
+          media="(min-width: 1300px)"
+          srcset="@/assets/bg_art_desktop2x.png"
+        />
+        <img
+          src="@/assets/bg_art_desktop2x.png"
+          alt="Georgy"
+          class="george-pic"
+        />
+      </picture>
+
       <NuxtMarquee auto-fill class="marquee">
         <div>plan,&nbsp;</div>
         <div>design,&nbsp;</div>
@@ -47,6 +71,26 @@ export default {
   top: 0;
   z-index: 0;
 }
+@mixin main-padding {
+  left: 16px;
+  top: 16px;
+
+  @media (min-width: 900px) {
+    left: 32px;
+    top: 32px;
+  }
+
+  @media (min-width: 1440px) {
+    top: 32px;
+    left: 75px;
+  }
+
+  @media (min-width: 1920px) {
+    top: 32px;
+    left: 90px;
+  }
+}
+
 @mixin page-padding {
   padding: 16px;
 
@@ -90,8 +134,7 @@ export default {
 .logo-black {
   position: fixed;
   z-index: 5;
-  top: 0;
-  left: 10px;
+  @include main-padding;
 }
 
 .logo-white {
@@ -101,7 +144,7 @@ export default {
   z-index: 10;
   left: 0;
   top: 0;
-  background-image: url(@/assets/logo-white.svg);
+  background-image: url("@/assets/logo-white.svg");
   background-size: 64px;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -127,21 +170,35 @@ export default {
   position: relative;
   @include page-padding;
 }
+
 .poster {
   background-color: #0f2e2f;
-  min-height: 520px;
+  min-height: 820px;
   z-index: 4;
   overflow: hidden;
+
+  @media (min-width: 900px) {
+    min-height: 1094px;
+  }
+
+  @media (min-width: 1440px) {
+    min-height: 980px;
+  }
+
+  @media (min-width: 1920px) {
+    min-height: 1091px;
+  }
 }
 
 .george-pic {
-  width: 872px;
+  height: 100%;
   left: 50%;
-  top: 82px;
+  top: 0;
   transform: translateX(-50%);
   z-index: 1;
-  position: relative;
+  position: absolute;
 }
+
 .intro {
   z-index: 3;
 }
