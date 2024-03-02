@@ -5,20 +5,10 @@
 </template>
 
 <style lang="scss">
-@font-face {
-  font-family: "ABC Diatype";
-  src: url("@/assets/font.woff2") format("woff2");
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "ABC Diatype", sans-serif;
-}
+@import "@/assets/scss/layout.scss";
 
 .layout {
-  background: #f0ece3;
+  background: $brown;
   position: relative;
 }
 </style>

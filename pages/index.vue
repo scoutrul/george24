@@ -1,43 +1,6 @@
 <template>
-  <div class="page">
-    <section class="poster section">
-      <div class="logo-white"></div>
-      <ul class="nav">
-        <li>works</li>
-        <li>get cv</li>
-      </ul>
-
-      <picture>
-        <source
-          media="(max-width: 360px)"
-          srcset="@/assets/bg_art_mobile.png, @/assets/bg_art_mobile@2x.png"
-        />
-        <source
-          media="(min-width: 361px) and (max-width: 900px)"
-          srcset="@/assets/bg_art_tablet.png, @/assets/bg_art_tablet@2x.png"
-        />
-        <source
-          media="(min-width: 900px) and (max-width: 1299px)"
-          srcset="@/assets/bg_art_desktop.png, @/assets/bg_art_desktop@2x.png"
-        />
-        <source
-          media="(min-width: 1300px)"
-          srcset="@/assets/bg_art_desktop2x.png"
-        />
-        <img
-          src="@/assets/bg_art_desktop2x.png"
-          alt="Georgy"
-          class="george-pic"
-        />
-      </picture>
-
-      <NuxtMarquee auto-fill class="marquee">
-        <div class="glitch" data-text="plan, ">plan,&nbsp;</div>
-        <div class="glitch" data-text="design, ">design,&nbsp;</div>
-        <div class="glitch" data-text="grow, ">grow,&nbsp;</div>
-      </NuxtMarquee>
-    </section>
-
+  <div class="page-home">
+    <poster class="section" />
     <section class="intro section">
       <logo is-black class="logo-black" />
     </section>
@@ -51,86 +14,15 @@
 </template>
 
 <script>
-import Logo from "../components/atoms/logo.vue";
+import Logo from "@/components/atoms/logo.vue";
+import Poster from "@/components/sections/poster.vue";
 export default {
-  components: { Logo },
+  components: { Poster, Logo },
 };
 </script>
 <style lang="scss">
-.marquee {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-  font-size: 300px;
-  font-weight: 700;
-  line-height: 300px;
-  letter-spacing: -0.03em;
-  color: #f0ece3;
-  user-select: none;
-  position: absolute;
-  min-width: 100vw;
-  left: 0;
-  height: 100%;
-  top: 0;
-  z-index: 0;
-}
-@mixin main-padding {
-  left: 16px;
-  top: 16px;
-
-  @media (min-width: 900px) {
-    left: 32px;
-    top: 32px;
-  }
-
-  @media (min-width: 1440px) {
-    top: 32px;
-    left: 75px;
-  }
-
-  @media (min-width: 1920px) {
-    top: 32px;
-    left: 90px;
-  }
-}
-
-@mixin page-padding {
-  padding: 16px;
-
-  @media (min-width: 900px) {
-    padding: 32px 40px;
-  }
-
-  @media (min-width: 1440px) {
-    padding: 32px 64px;
-  }
-
-  @media (min-width: 1920px) {
-    padding: 32px 80px;
-  }
-}
-
-.page {
+.page-home {
   position: relative;
-}
-
-.nav {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-  padding: 0;
-  display: flex;
-  list-style: none;
-  height: 64px;
-  margin: 0 0 0 auto;
-  align-items: center;
-  width: fit-content;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
-  letter-spacing: -0.02em;
-  text-align: center;
-  color: #f0ece3;
-
-  li {
-    margin-left: 24px;
-  }
 }
 
 .logo-black {
@@ -139,101 +31,15 @@ export default {
   @include main-padding;
 }
 
-.logo-white {
-  width: 100vw;
-  height: 100%;
-  position: absolute;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  background-image: url("@/assets/logo-white.svg");
-  background-size: 64px;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 16px 16px;
-
-  @media (min-width: 900px) {
-    background-position: 32px 32px;
-  }
-
-  @media (min-width: 1440px) {
-    background-position: 75px 32px;
-  }
-
-  @media (min-width: 1920px) {
-    background-position: 90px 32px;
-  }
-}
-
 .section {
   min-height: 320px;
-  background: #f0ece3;
+  background: $brown;
   z-index: 1;
   position: relative;
   @include page-padding;
 }
 
-.poster {
-  background-color: #0f2e2f;
-  min-height: 820px;
-  z-index: 4;
-  overflow: hidden;
-
-  @media (min-width: 900px) {
-    min-height: 1094px;
-  }
-
-  @media (min-width: 1440px) {
-    min-height: 980px;
-  }
-
-  @media (min-width: 1920px) {
-    min-height: 1091px;
-  }
-}
-
-.george-pic {
-  height: 100%;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  z-index: 1;
-  position: absolute;
-}
-
 .intro {
   z-index: 3;
-}
-
-.glitch {
-  position: relative;
-  animation: glitch 5s 5s infinite;
-}
-
-.glitch::before {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  overflow: hidden;
-  top: 0;
-  animation: glitch 5s 5.05s infinite;
-}
-
-@keyframes glitch {
-  1% {
-    transform: rotateX(10deg) skewX(90deg);
-  }
-  2% {
-    transform: rotateX(0deg) skewX(0deg);
-  }
-}
-
-@keyframes glitch-2 {
-  1% {
-    transform: rotateX(10deg) skewX(70deg);
-  }
-  2% {
-    transform: rotateX(0deg) skewX(0deg);
-  }
 }
 </style>

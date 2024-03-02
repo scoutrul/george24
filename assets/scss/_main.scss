@@ -1,0 +1,56 @@
+$white: #fff;
+$brown: #f0ece3;
+$brown-dark: #e3ded1;
+$grey-light: #ced0c8;
+$grey: #829192;
+$black: #111111;
+$green-black: #0f2e2f;
+
+$padding-min: 16px;
+$padding-mid: 32px;
+$padding-mobile: 40px;
+$padding-tablet: 64px;
+$padding-desktop: 80px;
+$padding-large: 75px;
+$padding-extra: 90px;
+
+$bp-mobile: 360px;
+$bp-tablet: 900px;
+$bp-desktop: 1440px;
+$bp-full: 1920px;
+
+@mixin main-padding {
+    left: $padding-min;
+    top: $padding-min;
+
+    @media (min-width: $bp-tablet) {
+        left: $padding-mid;
+        top: $padding-mid;
+    }
+
+    @media (min-width: $bp-desktop) {
+        top: $padding-mid;
+        left: $padding-large;
+    }
+
+    @media (min-width: $bp-full) {
+        top: $padding-mid;
+        left: $padding-extra;
+    }
+}
+
+@mixin page-padding {
+    padding: $padding-min;
+
+    @media (min-width: $bp-tablet) {
+        padding: $padding-mid $padding-mobile;
+    }
+
+    @media (min-width: $bp-desktop) {
+        padding: $padding-mid $padding-tablet;
+    }
+
+    @media (min-width: $bp-full) {
+        padding: $padding-mid $padding-desktop;
+    }
+}

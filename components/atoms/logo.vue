@@ -21,14 +21,14 @@ defineProps({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .logo {
   path {
-    fill: #f0ece3;
+    fill: $brown;
   }
   &--black {
     path {
-      fill: #0f2e2f;
+      fill: $green-black;
     }
   }
 }
