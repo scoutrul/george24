@@ -41,20 +41,22 @@
 <style lang="scss" scoped>
 .poster {
   background-color: $green-black;
-  min-height: 820px;
+  height: 820px;
   z-index: 4;
   overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
 
   @media (min-width: $bp-tablet) {
-    min-height: 1094px;
+    height: 1094px;
   }
 
   @media (min-width: $bp-desktop) {
-    min-height: 980px;
+    height: 980px;
   }
 
   @media (min-width: $bp-full) {
-    min-height: 1091px;
+    height: 1091px;
   }
 }
 
@@ -70,8 +72,12 @@
   min-width: 100vw;
   left: 0;
   height: 100%;
-  top: 0;
+  top: -172px;
   z-index: 0;
+
+  @media (min-width: $bp-tablet) {
+    top: 0;
+  }
 }
 
 .nav {
@@ -122,12 +128,22 @@
 }
 
 .george-pic {
-  height: 100%;
+  width: 400px;
   left: 50%;
-  top: 0;
+  top: -80px;
   transform: translateX(-50%);
   z-index: 1;
   position: absolute;
+
+  @media (min-width: $bp-mobile) {
+    width: initial;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 1;
+    position: absolute;
+  }
 }
 
 .glitch {
@@ -149,15 +165,6 @@
     transform: rotateX(10deg) skewX(90deg);
   }
   2% {
-    transform: rotateX(0deg) skewX(0deg);
-  }
-  70% {
-    transform: rotateX(0deg) skewX(0deg);
-  }
-  71% {
-    transform: rotateX(10deg) skewX(70deg);
-  }
-  72% {
     transform: rotateX(0deg) skewX(0deg);
   }
 }

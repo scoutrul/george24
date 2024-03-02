@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Logo from "@/components/atoms/logo.vue";
-import Poster from "@/components/sections/poster.vue";
+import Logo from "../components/atoms/logo.vue";
+import Poster from "../components/sections/poster.vue";
 export default {
   components: { Poster, Logo },
 };
