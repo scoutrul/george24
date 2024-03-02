@@ -3,10 +3,16 @@
   src: url("@/assets/font.woff2") format("woff2");
 }
 
+:root { background-attachment: fixed; }
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: "ABC Diatype", sans-serif;
+}
+
+html {
   overscroll-behavior: none;
 }
+

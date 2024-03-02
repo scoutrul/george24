@@ -1,33 +1,22 @@
 <template>
   <section class="poster">
     <div class="logo-white"></div>
-    <ul class="nav">
-      <li>works</li>
-      <li>get cv</li>
-    </ul>
+    <NavMenu />
 
     <picture>
       <source
-        media="(max-width: 360px)"
+        media="(max-width: 360px) and (orientation: portrait)"
         srcset="@/assets/bg_art_mobile.png, @/assets/bg_art_mobile@2x.png"
       />
       <source
-        media="(min-width: 361px) and (max-width: 900px)"
+        media="(min-width: 361px) and (max-width: 903px) and (orientation: portrait)"
         srcset="@/assets/bg_art_tablet.png, @/assets/bg_art_tablet@2x.png"
       />
       <source
-        media="(min-width: 900px) and (max-width: 1299px)"
+        media="(max-width: 904px) and (orientation: landscape)"
         srcset="@/assets/bg_art_desktop.png, @/assets/bg_art_desktop@2x.png"
       />
-      <source
-        media="(min-width: 1300px)"
-        srcset="@/assets/bg_art_desktop2x.png"
-      />
-      <img
-        src="@/assets/bg_art_desktop2x.png"
-        alt="Georgy"
-        class="george-pic"
-      />
+      <img src="@/assets/bg_art_mobile.png" alt="Georgy" class="george-pic" />
     </picture>
 
     <NuxtMarquee auto-fill class="marquee">
@@ -38,25 +27,24 @@
   </section>
 </template>
 
+<script>
+import NavMenu from "../components/atoms/nav.vue";
+
+export default {
+  components: { NavMenu },
+};
+</script>
+
 <style lang="scss" scoped>
 .poster {
   background-color: $green-black;
-  height: 820px;
+  height: 740px;
   z-index: 4;
   overflow: hidden;
-  box-sizing: border-box;
   position: relative;
 
   @media (min-width: $bp-tablet) {
     height: 1094px;
-  }
-
-  @media (min-width: $bp-desktop) {
-    height: 980px;
-  }
-
-  @media (min-width: $bp-full) {
-    height: 1091px;
   }
 }
 
@@ -77,27 +65,6 @@
 
   @media (min-width: $bp-tablet) {
     top: 0;
-  }
-}
-
-.nav {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-  padding: 0;
-  display: flex;
-  list-style: none;
-  height: 64px;
-  margin: 0 0 0 auto;
-  align-items: center;
-  width: fit-content;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
-  letter-spacing: -0.02em;
-  text-align: center;
-  color: $brown;
-
-  li {
-    margin-left: 24px;
   }
 }
 
@@ -128,22 +95,23 @@
 }
 
 .george-pic {
-  width: 400px;
   left: 50%;
-  top: -80px;
+  bottom: 0;
   transform: translateX(-50%);
   z-index: 1;
   position: absolute;
-
-  @media (min-width: $bp-mobile) {
-    width: initial;
-    height: 100%;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    z-index: 1;
-    position: absolute;
-  }
+  //width: 360px;
+  //height: 820px;
+  //
+  //@media (min-width: 360px) and (max-width: 904px) and (orientation: portrait) {
+  //  width: 904px;
+  //  height: 1091px;
+  //}
+  //
+  //@media (orientation: landscape) {
+  //  width: 1920px;
+  //  height: 1091px;
+  //}
 }
 
 .glitch {
@@ -157,14 +125,25 @@
   left: 0;
   overflow: hidden;
   top: 0;
-  animation: glitch 5s 5.05s infinite;
+  animation:
+    glitch 5s 5.05s infinite,
+    glitch2 7s 7.05s infinite;
 }
 
 @keyframes glitch {
   1% {
-    transform: rotateX(10deg) skewX(90deg);
+    transform: rotateX(10deg) skewX(70deg);
   }
   2% {
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+
+@keyframes glitch2 {
+  1% {
+    transform: rotateX(10deg) skewX(90deg);
+  }
+  3% {
     transform: rotateX(0deg) skewX(0deg);
   }
 }
