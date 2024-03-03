@@ -1,6 +1,11 @@
 @font-face {
-  font-family: "ABC Diatype";
-  src: url("@/assets/font.woff2") format("woff2");
+  font-family: "ABC Diatype Light";
+  src: url("@/assets/ABC_Diatype_Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ABC Diatype Regular";
+  src: url("@/assets/ABC_Diatype_Regular.woff2") format("woff2");
 }
 
 :root { background-attachment: fixed; }
@@ -9,7 +14,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "ABC Diatype", sans-serif;
+  font-family: "ABC Diatype Regular", sans-serif;
 }
 
 html {
