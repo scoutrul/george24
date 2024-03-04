@@ -20,9 +20,9 @@
     </picture>
 
     <NuxtMarquee auto-fill class="marquee">
-      <div class="glitch" data-text="plan, ">plan,&nbsp;</div>
-      <div class="glitch" data-text="design, ">design,&nbsp;</div>
-      <div class="glitch" data-text="grow, ">grow,&nbsp;</div>
+      <span data-text="plan, design, grow" class="glitch">
+        plan,&nbsp;design,&nbsp;grow,&nbsp;
+      </span>
     </NuxtMarquee>
 
     <ul class="contacts">
@@ -165,7 +165,9 @@ export default {
 
 .glitch {
   position: relative;
-  animation: glitch 5s 5s infinite;
+  animation:
+    glitch 5s 5s infinite,
+    glitch 7s 7s infinite;
 }
 
 .glitch::before {
@@ -176,21 +178,17 @@ export default {
   top: 0;
   animation:
     glitch 5s 5.05s infinite,
-    glitch2 7s 7.05s infinite;
+    glitch 7s 7.05s infinite;
 }
 
 @keyframes glitch {
   1% {
-    transform: rotateX(10deg) skewX(70deg);
+    transform: rotateX(50deg) skewX(70deg);
   }
   2% {
-    transform: rotateX(0deg) skewX(0deg);
-  }
-}
-
-@keyframes glitch2 {
-  1% {
-    transform: rotateX(10deg) skewX(90deg);
+    @media (min-width: $bp-tablet) {
+      transform: rotateX(0deg) skewX(0deg);
+    }
   }
   3% {
     transform: rotateX(0deg) skewX(0deg);
