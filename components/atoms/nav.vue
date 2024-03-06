@@ -1,9 +1,16 @@
 <template>
-  <ul class="nav">
+  <ul class="nav" :class="{ '--black': isBlack, '--float': isFloat }">
     <li>works</li>
     <li>get cv</li>
   </ul>
 </template>
+
+<script setup>
+defineProps({
+  isBlack: Boolean,
+  isFloat: Boolean,
+});
+</script>
 
 <style lang="scss" scoped>
 .nav {
@@ -21,9 +28,43 @@
   letter-spacing: -0.02em;
   text-align: center;
   color: $brown;
+  font-family: "ABC Diatype Light", sans-serif;
+
+  @media (min-width: $bp-tablet) {
+    font-size: 28px;
+    line-height: 34px;
+  }
 
   li {
     margin-left: 24px;
+  }
+
+  &.--float {
+    position: fixed;
+    top: $padding-min;
+    right: $padding-min;
+    left: $padding-min;
+
+    @media (min-width: $bp-tablet) {
+      right: $padding-mobile;
+      left: $padding-mobile;
+      top: $padding-mobile;
+    }
+
+    @media (min-width: $bp-desktop) {
+      right: $padding-tablet;
+      left: $padding-tablet;
+      top: $padding-desktop;
+    }
+
+    @media (min-width: $bp-full) {
+      right: $padding-desktop;
+      left: $padding-desktop;
+    }
+  }
+
+  &.--black {
+    color: $green-black;
   }
 }
 </style>

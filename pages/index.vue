@@ -1,9 +1,12 @@
 <template>
   <div class="page-home">
-    <poster class="section" />
+    <PosterSection class="section" />
     <section class="intro section">
+      <Contacts is-black is-float />
+      <NavMenu is-black is-float />
       <logo is-black class="logo-black" />
     </section>
+
     <section class="works section">works</section>
     <section class="achieves section">achieves</section>
     <section class="reviews section">reviews</section>
@@ -15,10 +18,12 @@
 
 <script>
 import Logo from "../components/atoms/logo.vue";
-import Poster from "../components/sections/poster.vue";
+import Contacts from "../components/atoms/contacts.vue";
+import NavMenu from "../components/atoms/nav.vue";
+import PosterSection from "../components/sections/poster.vue";
 
 export default {
-  components: { Poster, Logo },
+  components: { PosterSection, Logo, Contacts, NavMenu },
 };
 </script>
 <style lang="scss">
@@ -35,12 +40,12 @@ export default {
 .section {
   min-height: 320px;
   background: $brown;
-  z-index: 1;
+  z-index: 11;
   position: relative;
   @include page-padding;
 }
 
 .intro {
-  z-index: 3;
+  z-index: 12;
 }
 </style>
