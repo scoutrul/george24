@@ -2,21 +2,18 @@
   <section class="poster">
     <div class="logo-white"></div>
     <NavMenu />
+    <Contacts />
 
     <picture>
       <source
-        media="(max-width: 360px) and (orientation: portrait)"
-        srcset="@/assets/bg_art_mobile.png, @/assets/bg_art_mobile@2x.png"
+        media="(orientation: portrait)"
+        srcset="@/assets/bg_art_portrait.png, @/assets/bg_art_portrait@2x.png"
       />
       <source
-        media="(min-width: 361px) and (max-width: 903px) and (orientation: portrait)"
-        srcset="@/assets/bg_art_tablet.png, @/assets/bg_art_tablet@2x.png"
+        media="(orientation: landscape)"
+        srcset="@/assets/bg_landscape.png, @/assets/bg_landscape@2x.png"
       />
-      <source
-        media="(max-width: 904px) and (orientation: landscape)"
-        srcset="@/assets/bg_art_desktop.png, @/assets/bg_art_desktop@2x.png"
-      />
-      <img src="@/assets/bg_art_mobile.png" alt="Georgy" class="george-pic" />
+      <img src="@/assets/bg_art_mobile.png" alt="" class="george-pic" />
     </picture>
 
     <NuxtMarquee auto-fill class="marquee">
@@ -24,77 +21,47 @@
         plan,&nbsp;design,&nbsp;grow,&nbsp;
       </span>
     </NuxtMarquee>
-
-    <ul class="contacts">
-      <li>hello.geovo@gmail.com</li>
-      <li>telegram</li>
-    </ul>
   </section>
 </template>
 
 <script>
 import NavMenu from "../components/atoms/nav.vue";
+import Contacts from "../components/atoms/contacts.vue";
 
 export default {
-  components: { NavMenu },
+  components: { NavMenu, Contacts },
 };
 </script>
 
 <style lang="scss" scoped>
 .poster {
   background-color: $green-black;
-  height: 740px;
-  z-index: 4;
+  min-height: 440px;
+  height: 100vh;
+  box-sizing: border-box;
+  z-index: 20;
   overflow: hidden;
   position: relative;
 
+  @media (orientation: landscape) {
+    min-height: 660px;
+  }
+
   @media (min-width: $bp-tablet) {
-    height: 1094px;
+    max-height: 1094px;
   }
 }
 
-.contacts {
-  list-style: none;
-  padding: 0;
+.george-pic {
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 1;
   position: absolute;
-  z-index: 10;
-  bottom: $padding-v-min;
-  right: $padding-min;
-  left: $padding-min;
-  display: flex;
-  gap: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
-  letter-spacing: -0.02em;
-  text-align: center;
-  margin: 0;
-  font-family: "ABC Diatype Light", sans-serif;
-
-  @media (min-width: $bp-tablet) {
-    font-family: "ABC Diatype Regular", sans-serif;
-    justify-content: end;
-    right: $padding-mobile;
-    left: $padding-mobile;
-    bottom: $padding-mobile;
-  }
-
-  @media (min-width: $bp-desktop) {
-    right: $padding-tablet;
-    left: $padding-tablet;
-    font-size: 28px;
-    line-height: 34px;
-    bottom: $padding-desktop;
-  }
-
-  @media (min-width: $bp-full) {
-    right: $padding-desktop;
-    left: $padding-desktop;
-  }
-
-  li {
-    color: $brown;
-  }
+  min-width: 360px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .marquee {
@@ -102,19 +69,16 @@ export default {
   font-size: 300px;
   font-weight: 700;
   line-height: 300px;
+  height: 400px;
   letter-spacing: -0.03em;
   color: $brown;
   user-select: none;
   position: absolute;
   min-width: 100vw;
   left: 0;
-  height: 100%;
-  top: -172px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 0;
-
-  @media (min-width: $bp-tablet) {
-    top: 0;
-  }
 }
 
 .logo-white {
@@ -141,26 +105,6 @@ export default {
   @media (min-width: $bp-full) {
     background-position: $padding-extra $padding-mid;
   }
-}
-
-.george-pic {
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  z-index: 1;
-  position: absolute;
-  //width: 360px;
-  //height: 820px;
-  //
-  //@media (min-width: 360px) and (max-width: 904px) and (orientation: portrait) {
-  //  width: 904px;
-  //  height: 1091px;
-  //}
-  //
-  //@media (orientation: landscape) {
-  //  width: 1920px;
-  //  height: 1091px;
-  //}
 }
 
 .glitch {
