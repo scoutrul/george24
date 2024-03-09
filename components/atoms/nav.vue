@@ -22,17 +22,13 @@ defineProps({
   margin: 0 0 0 auto;
   align-items: center;
   width: fit-content;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
-  letter-spacing: -0.02em;
   text-align: center;
   color: $brown;
-  font-family: "ABC Diatype Light", sans-serif;
+
+  @include font18;
 
   @media (min-width: $bp-tablet) {
-    font-size: 28px;
-    line-height: 34px;
+    @include font28;
   }
 
   li {

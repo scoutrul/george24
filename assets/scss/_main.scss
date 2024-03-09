@@ -20,6 +20,44 @@ $bp-tablet: 900px;
 $bp-desktop: 1440px;
 $bp-full: 1920px;
 
+@mixin font18 {
+    font-family: "ABC Diatype Light", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+}
+
+@mixin font28 {
+    @include font18;
+
+    font-size: 28px;
+    line-height: 34px;
+}
+
+@mixin screen-padding {
+    bottom: $padding-v-min;
+    right: $padding-min;
+    left: $padding-min;
+
+    @media (min-width: $bp-tablet) {
+        right: $padding-mobile;
+        left: $padding-mobile;
+        bottom: $padding-mobile;
+    }
+
+    @media (min-width: $bp-desktop) {
+        right: $padding-tablet;
+        left: $padding-tablet;
+        bottom: $padding-desktop;
+    }
+
+    @media (min-width: $bp-full) {
+        right: $padding-desktop;
+        left: $padding-desktop;
+    }
+}
+
 @mixin main-padding {
     left: $padding-min;
     top: $padding-min;

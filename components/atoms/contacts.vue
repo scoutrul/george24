@@ -18,38 +18,17 @@ defineProps({
   padding: 0;
   position: absolute;
   z-index: 10;
-  bottom: $padding-v-min;
-  right: $padding-min;
-  left: $padding-min;
   display: flex;
   gap: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
-  letter-spacing: -0.02em;
   text-align: center;
   margin: 0;
-  font-family: "ABC Diatype Light", sans-serif;
   color: $brown;
+  @include font18;
+  @include screen-padding;
 
   @media (min-width: $bp-tablet) {
     justify-content: end;
-    right: $padding-mobile;
-    left: $padding-mobile;
-    bottom: $padding-mobile;
-    font-size: 28px;
-    line-height: 34px;
-  }
-
-  @media (min-width: $bp-desktop) {
-    right: $padding-tablet;
-    left: $padding-tablet;
-    bottom: $padding-desktop;
-  }
-
-  @media (min-width: $bp-full) {
-    right: $padding-desktop;
-    left: $padding-desktop;
+    @include font28;
   }
 
   &.--float {

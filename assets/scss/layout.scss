@@ -14,7 +14,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "ABC Diatype Regular", sans-serif;
+  @include font18;
 }
 
 html {
