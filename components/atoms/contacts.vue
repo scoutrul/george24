@@ -1,5 +1,8 @@
 <template>
-  <ul class="contacts" :class="{ '--black': isBlack, '--float': isFloat }">
+  <ul
+    class="contacts"
+    :class="{ 'contacts--black': isBlack, 'contacts--float': isFloat }"
+  >
     <li>hello.geovo@gmail.com</li>
     <li>telegram</li>
   </ul>
@@ -14,6 +17,9 @@ defineProps({
 
 <style lang="scss" scoped>
 .contacts {
+  @include font18;
+  @include screen-padding;
+
   list-style: none;
   padding: 0;
   position: absolute;
@@ -23,19 +29,18 @@ defineProps({
   text-align: center;
   margin: 0;
   color: $brown;
-  @include font18;
-  @include screen-padding;
 
   @media (min-width: $bp-tablet) {
-    justify-content: end;
     @include font28;
+
+    justify-content: end;
   }
 
-  &.--float {
+  &--float {
     position: fixed;
   }
 
-  &.--black {
+  &--black {
     color: $green-black;
   }
 }

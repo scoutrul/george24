@@ -76,6 +76,7 @@ export default {
 
   @media (min-width: $bp-tablet) {
     background-position: $padding-mid $padding-mid;
+    transform: translateX(10px);
   }
 
   @media (min-width: $bp-desktop) {

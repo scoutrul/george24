@@ -32,8 +32,9 @@ export default {
     min-height: 320px;
     z-index: 11;
     position: relative;
-    @include page-padding;
     margin: auto;
+
+    @include page-padding;
 
     @media (min-width: $bp-tablet) {
       max-width: $bp-tablet;

@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav" :class="{ '--black': isBlack, '--float': isFloat }">
+  <ul class="nav" :class="{ 'nav--black': isBlack, 'nav--float': isFloat }">
     <li>works</li>
     <li>get cv</li>
   </ul>
@@ -35,7 +35,7 @@ defineProps({
     margin-left: 24px;
   }
 
-  &.--float {
+  &--float {
     position: fixed;
     top: $padding-min;
     right: $padding-min;
@@ -59,7 +59,7 @@ defineProps({
     }
   }
 
-  &.--black {
+  &--black {
     color: $green-black;
 
     @media (min-width: $bp-tablet) {

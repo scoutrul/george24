@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: column;
   padding: 40px;
+  color: $green-black;
 
   @media (min-width: $bp-desktop) {
     padding: 80px;
@@ -27,13 +28,15 @@
 
   @media (min-width: $bp-tablet) {
     flex-direction: row;
+    padding: 250px;
   }
 
   &__specialist {
     @include font40;
+    padding: 100px 0;
 
     @media (min-width: $bp-tablet) {
-      padding: 120px 0;
+      padding: 124px 0;
     }
 
     @media (min-width: $bp-desktop) {
