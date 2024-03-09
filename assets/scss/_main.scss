@@ -35,6 +35,40 @@ $bp-full: 1920px;
     line-height: 34px;
 }
 
+@mixin font40 {
+    @include font18;
+
+    font-size: 40px;
+    line-height: 40px;
+}
+
+@mixin font64 {
+    @include font18;
+
+    font-size: 64px;
+    line-height: 64px;
+}
+
+@mixin outline-horizontal-padding {
+    right: -$padding-min;
+    left: -$padding-min;
+
+    @media (min-width: $bp-tablet) {
+        right: -$padding-mobile;
+        left: -$padding-mobile;
+    }
+
+    @media (min-width: $bp-desktop) {
+        right: -$padding-tablet;
+        left: -$padding-tablet;
+    }
+
+    @media (min-width: $bp-full) {
+        right: -$padding-desktop;
+        left: -$padding-desktop;
+    }
+}
+
 @mixin screen-padding {
     bottom: $padding-v-min;
     right: $padding-min;

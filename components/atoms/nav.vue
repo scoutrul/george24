@@ -61,6 +61,10 @@ defineProps({
 
   &.--black {
     color: $green-black;
+
+    @media (min-width: $bp-tablet) {
+      top: $padding-mobile - 8px;
+    }
   }
 }
 </style>
