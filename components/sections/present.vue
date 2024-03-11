@@ -19,16 +19,16 @@
 .present {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 40px 0;
   color: $green-black;
-
-  @media (min-width: $bp-desktop) {
-    padding: 80px;
-  }
 
   @media (min-width: $bp-tablet) {
     flex-direction: row;
-    padding: 250px;
+    padding: 250px 0;
+  }
+
+  @media (min-width: $bp-desktop) {
+    padding: 80px 0;
   }
 
   &__specialist {

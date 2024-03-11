@@ -50,6 +50,14 @@ $bp-full: 1920px;
     line-height: 64px;
 }
 
+@mixin font18-28 {
+    @include font18;
+
+    @media (min-width: $bp-tablet) {
+        @include font28;
+    }
+}
+
 @mixin font28-40 {
     @include font28;
 

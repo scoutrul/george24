@@ -3,9 +3,7 @@
     <PosterSection class="section poster" />
     <IntroSection class="section intro" />
     <PresentSection class="section" />
-    <section class="works section">
-      <div class="works__header">Works</div>
-    </section>
+    <WorksSection class="section" :list="workList" />
     <section class="achieves section">achieves</section>
     <section class="reviews section">reviews</section>
     <section class="stack section">stack</section>
@@ -14,15 +12,44 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import PosterSection from "../components/sections/poster.vue";
 import IntroSection from "../components/sections/intro.vue";
 import PresentSection from "../components/sections/present.vue";
+import WorksSection from "../components/sections/works.vue";
 
-export default {
-  components: { PosterSection, IntroSection, PresentSection },
-};
+const workList = [
+  {
+    header: "Athletic Greens",
+    text: "Original Foundational Nutrition drink to provide daily support where the body needs it most",
+  },
+  {
+    header: "Futurebox",
+    text: "Sell real estate under construction using AR/VR technologies",
+  },
+  {
+    header: "AdGuard DNS",
+    text: "DNS service to help people protect all web traffic on their devices from malicious content",
+  },
+  {
+    header: "Exynex",
+    text: "Discover what services track your data online",
+  },
+  {
+    header: "Superseed",
+    text: "Advanced cloud storage for geeks & gamers",
+  },
+  {
+    header: "Teamkraft",
+    text: "Mobile app to find sporting activities nearby",
+  },
+  {
+    header: "VCards",
+    text: "Mobile wallet for managing your virtual cards",
+  },
+];
 </script>
+
 <style lang="scss">
 .home-page {
   position: relative;
@@ -63,12 +90,6 @@ export default {
     z-index: 12;
     min-height: auto;
     height: 64px;
-  }
-
-  .works {
-    &__header {
-      @include font40-64;
-    }
   }
 }
 </style>
