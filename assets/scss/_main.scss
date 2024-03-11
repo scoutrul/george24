@@ -6,6 +6,7 @@ $grey: #829192;
 $black: #111111;
 $green-black: #0f2e2f;
 
+$padding-step: 8px;
 $padding-min: 16px;
 $padding-v-min: 24px;
 $padding-mid: 32px;
@@ -25,7 +26,7 @@ $bp-full: 1920px;
     font-size: 18px;
     font-weight: 500;
     line-height: 22px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.028em;
 }
 
 @mixin font28 {
@@ -47,6 +48,22 @@ $bp-full: 1920px;
 
     font-size: 64px;
     line-height: 64px;
+}
+
+@mixin font28-40 {
+    @include font28;
+
+    @media (min-width: $bp-desktop) {
+        @include font40;
+    }
+}
+
+@mixin font40-64 {
+    @include font40;
+
+    @media (min-width: $bp-desktop) {
+        @include font64;
+    }
 }
 
 @mixin outline-horizontal-padding {

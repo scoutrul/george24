@@ -39,6 +39,7 @@ export default {
   z-index: 20;
   overflow: hidden;
   position: relative;
+  user-select: none;
 
   @media (orientation: landscape) {
     min-height: 660px;
@@ -66,25 +67,33 @@ export default {
   height: 100%;
   position: absolute;
   z-index: 10;
-  left: 0;
+  left: -8px;
   top: 0;
-  background-image: url("@/assets/logo-white.svg");
-  background-size: 64px;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: $padding-min $padding-min;
 
-  @media (min-width: $bp-tablet) {
-    background-position: $padding-mid $padding-mid;
-    transform: translateX(10px);
-  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("@/assets/logo-white.svg");
+    background-size: 64px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: $padding-min $padding-min;
 
-  @media (min-width: $bp-desktop) {
-    background-position: $padding-large $padding-mid;
-  }
+    @media (min-width: $bp-tablet) {
+      background-position: $padding-mid - $padding-step $padding-mid;
+    }
 
-  @media (min-width: $bp-full) {
-    background-position: $padding-extra $padding-mid;
+    @media (min-width: $bp-desktop) {
+      background-position: $padding-large - $padding-step $padding-mid;
+    }
+
+    @media (min-width: $bp-full) {
+      background-position: $padding-extra - $padding-step $padding-mid;
+    }
   }
 }
 </style>

@@ -32,7 +32,7 @@
   }
 
   &__specialist {
-    @include font40;
+    @include font28-40;
     padding: 100px 0;
 
     @media (min-width: $bp-tablet) {
@@ -40,13 +40,12 @@
     }
 
     @media (min-width: $bp-desktop) {
-      @include font64;
       padding: 80px 0;
     }
   }
 
   &__stack {
-    @include font28;
+    @include font28-40;
 
     @media (min-width: $bp-tablet) {
       padding: 120px 0;
@@ -54,7 +53,6 @@
     }
 
     @media (min-width: $bp-desktop) {
-      @include font40;
       padding-top: 208px;
     }
   }

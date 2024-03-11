@@ -18,6 +18,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .intro {
+  &__logo {
+    @media (min-width: $bp-tablet) {
+      margin-left: -$padding-step;
+    }
+  }
   &__logo,
   &__slogan {
     position: fixed;

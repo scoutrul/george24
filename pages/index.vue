@@ -3,7 +3,9 @@
     <PosterSection class="section poster" />
     <IntroSection class="section intro" />
     <PresentSection class="section" />
-    <section class="works section">works</section>
+    <section class="works section">
+      <div class="works__header">Works</div>
+    </section>
     <section class="achieves section">achieves</section>
     <section class="reviews section">reviews</section>
     <section class="stack section">stack</section>
@@ -29,6 +31,8 @@ export default {
   background: $brown;
 
   .section {
+    box-sizing: border-box;
+    width: 100%;
     min-height: 320px;
     z-index: 11;
     position: relative;
@@ -59,6 +63,12 @@ export default {
     z-index: 12;
     min-height: auto;
     height: 64px;
+  }
+
+  .works {
+    &__header {
+      @include font40-64;
+    }
   }
 }
 </style>

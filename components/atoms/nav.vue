@@ -63,7 +63,7 @@ defineProps({
     color: $green-black;
 
     @media (min-width: $bp-tablet) {
-      top: $padding-mobile - 8px;
+      top: $padding-mobile - $padding-step;
     }
   }
 }
