@@ -36,10 +36,12 @@
     padding: 100px 0;
 
     @media (min-width: $bp-tablet) {
+      flex: 1 0 calc(50% - 60px);
       padding: 124px 0;
     }
 
     @media (min-width: $bp-desktop) {
+      flex: 1 0 calc(50% - 75px);
       padding: 80px 0;
     }
   }
@@ -66,24 +68,27 @@
 
     @media (max-width: $bp-tablet) {
       @include outline-horizontal-padding;
-    }
-
-    @media (min-width: $bp-tablet) {
       margin: 0 24px 0 106px;
-      height: 680px;
       width: 1px;
     }
 
     @media (min-width: $bp-desktop) {
       margin: 0 32px 0 110px;
-      height: 820px;
     }
 
     &-inner {
       background: $grey;
-      width: 100%;
+      width: 1px;
       position: absolute;
-      height: 100%;
+      height: 820px;
+
+      @media (min-width: $bp-desktop) {
+        height: 980px;
+      }
+
+      @media (min-width: $bp-full) {
+        height: 1400px;
+      }
     }
   }
 }

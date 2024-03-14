@@ -1,10 +1,15 @@
 <template>
   <div class="home-page">
-    <PosterSection class="section poster" />
-    <IntroSection class="section intro" />
+    <PosterSection class="section section__poster" />
+    <IntroSection class="section section__intro" />
     <PresentSection class="section" />
     <WorksSection class="section" :list="workList" />
-    <section class="achieves section">achieves</section>
+    <section class="achieves section">
+      <div class="achieves__value">32.6M</div>
+      <div class="achieves__message">
+        people interact with my solutions monthly in over 30 countries.
+      </div>
+    </section>
     <section class="reviews section">reviews</section>
     <section class="stack section">stack</section>
     <section class="call section">call</section>
@@ -66,6 +71,7 @@ const workList = [
     margin: auto;
 
     @include page-padding;
+    @include page-height;
 
     @media (min-width: $bp-tablet) {
       max-width: $bp-tablet;
@@ -78,18 +84,22 @@ const workList = [
     @media (min-width: $bp-full) {
       max-width: $bp-full;
     }
-  }
 
-  .poster {
-    z-index: 20;
-    margin: 0;
-    max-width: 100%;
-  }
+    &__poster {
+      z-index: 20;
+      margin: 0;
+      max-width: 100%;
+    }
 
-  .intro {
-    z-index: 12;
-    min-height: auto;
-    height: 64px;
+    &__intro {
+      z-index: 12;
+      min-height: auto;
+      height: 96px;
+
+      @media (min-width: $bp-tablet) {
+        height: 128px;
+      }
+    }
   }
 }
 </style>

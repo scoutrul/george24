@@ -26,10 +26,13 @@ defineProps({
     padding: 16px 0;
     border-bottom: 1px solid $grey;
 
-    &:hover {
-      @media (min-width: $bp-tablet) {
+    @media (min-width: $bp-tablet) {
+      &:hover {
         .works__item-container {
           background: $brown-dark;
+        }
+        .works__item-text {
+          color: $green-black;
         }
       }
     }
@@ -74,7 +77,7 @@ defineProps({
     margin-bottom: 32px;
 
     @media (min-width: $bp-tablet) {
-      color: $green-black;
+      flex: 1 1 50%;
       @include font28;
     }
   }
