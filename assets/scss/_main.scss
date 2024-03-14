@@ -50,6 +50,20 @@ $bp-full: 1920px;
     line-height: 64px;
 }
 
+@mixin font96 {
+    @include font18;
+
+    font-size: 96px;
+    line-height: 96px;
+}
+
+@mixin font160 {
+    @include font18;
+
+    font-size: 160px;
+    line-height: 160px;
+}
+
 @mixin font18-28 {
     @include font18;
 

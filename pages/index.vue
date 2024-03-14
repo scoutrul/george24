@@ -4,16 +4,15 @@
     <IntroSection class="section section__intro" />
     <PresentSection class="section" />
     <WorksSection class="section" :list="workList" />
-    <section class="achieves section">
-      <div class="achieves__value">32.6M</div>
-      <div class="achieves__message">
-        people interact with my solutions monthly in over 30 countries.
-      </div>
+    <AchieveSection class="section" />
+    <section class="reviews section">What people say</section>
+    <section class="stack section">All is about numbers.</section>
+    <section class="call section">
+      All is about numbers. And people for sure.
     </section>
-    <section class="reviews section">reviews</section>
-    <section class="stack section">stack</section>
-    <section class="call section">call</section>
-    <section class="contacts section">contacts</section>
+    <section class="contacts section">
+      It’s time to plan, design, grow. Together.
+    </section>
   </div>
 </template>
 
@@ -22,6 +21,7 @@ import PosterSection from "../components/sections/poster.vue";
 import IntroSection from "../components/sections/intro.vue";
 import PresentSection from "../components/sections/present.vue";
 import WorksSection from "../components/sections/works.vue";
+import AchieveSection from "../components/sections/achieves.vue";
 
 const workList = [
   {

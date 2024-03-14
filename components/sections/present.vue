@@ -5,9 +5,7 @@
       and data-driven design for enterprise and startups that helped them to
       reach new heights.
     </div>
-    <div class="present__line">
-      <div class="present__line-inner"></div>
-    </div>
+    <div class="present__line"></div>
     <div class="present__stack">
       Proficient in leadership, UX/UI, design systems. Based in Tbilisi,
       Georgia. In spare time I make music, experiment with AI and travel.
@@ -46,6 +44,41 @@
     }
   }
 
+  &__line {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    height: 1px;
+    background: $grey;
+    width: 100%;
+
+    @media (min-width: $bp-tablet) {
+      width: 1px;
+      height: 820px;
+    }
+    @media (min-width: $bp-desktop) {
+      height: 980px;
+    }
+
+    @media (min-width: $bp-full) {
+      height: 1400px;
+    }
+
+    @media (max-width: $bp-tablet) {
+      width: calc(100% + 32px);
+      @include outline-horizontal-padding;
+    }
+
+    @media (min-width: $bp-tablet) {
+      margin: 0 24px 0 106px;
+    }
+
+    @media (min-width: $bp-desktop) {
+      width: 1px;
+      margin: 0 32px 0 110px;
+    }
+  }
+
   &__stack {
     @include font28-40;
 
@@ -56,39 +89,6 @@
 
     @media (min-width: $bp-desktop) {
       padding-top: 208px;
-    }
-  }
-
-  &__line {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    position: relative;
-    height: 1px;
-    width: calc(100% + 32px);
-
-    @media (max-width: $bp-tablet) {
-      @include outline-horizontal-padding;
-      margin: 0 24px 0 106px;
-      width: 1px;
-    }
-
-    @media (min-width: $bp-desktop) {
-      margin: 0 32px 0 110px;
-    }
-
-    &-inner {
-      background: $grey;
-      width: 1px;
-      position: absolute;
-      height: 820px;
-
-      @media (min-width: $bp-desktop) {
-        height: 980px;
-      }
-
-      @media (min-width: $bp-full) {
-        height: 1400px;
-      }
     }
   }
 }
