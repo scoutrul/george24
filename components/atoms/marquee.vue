@@ -27,8 +27,8 @@
 .glitch {
   position: relative;
   animation:
-    glitch 5s 5s infinite,
-    glitch 7s 7s infinite;
+    glitch 3.3s 3.3s infinite,
+    glitch 5.5s 5.5s infinite;
 }
 
 .glitch::before {
@@ -38,8 +38,8 @@
   overflow: hidden;
   top: 0;
   animation:
-    glitch 5s 5.05s infinite,
-    glitch 7s 7.05s infinite;
+    glitch 3.3s 3.35s infinite,
+    glitch 5.5s 5.55s infinite;
 }
 
 @keyframes glitch {
