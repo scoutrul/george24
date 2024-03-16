@@ -20,14 +20,10 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import MarqueeText from "../components/atoms/marquee.vue";
 import NavMenu from "../components/atoms/nav.vue";
 import Contacts from "../components/atoms/contacts.vue";
-
-export default {
-  components: { MarqueeText, NavMenu, Contacts },
-};
 </script>
 
 <style lang="scss" scoped>

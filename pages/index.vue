@@ -5,7 +5,7 @@
     <PresentSection class="section" />
     <WorksSection class="section" :list="workList" />
     <AchieveSection class="section" />
-    <section class="reviews section">What people say</section>
+    <ReviewSection class="section" :list="reviewList" />
     <section class="stack section">All is about numbers.</section>
     <section class="call section">
       All is about numbers. And people for sure.
@@ -22,7 +22,30 @@ import IntroSection from "../components/sections/intro.vue";
 import PresentSection from "../components/sections/present.vue";
 import WorksSection from "../components/sections/works.vue";
 import AchieveSection from "../components/sections/achieves.vue";
+import ReviewSection from "../components/sections/reviews.vue";
 
+const reviewList = [
+  {
+    text: "We’ve got a really amazing design system.",
+    name: "Nick Boes",
+    from: "Head of design at Athletic Greens",
+  },
+  {
+    text: "We have reached a new level in how quickly we can launch new products.",
+    name: "Igor Lukyanov",
+    from: "Managing partner at AdGuard",
+  },
+  {
+    text: "One of the best designers I’ve ever worked with.",
+    name: "Mohammed Gafarov",
+    from: "CEO at Celestial Group",
+  },
+  {
+    text: "Just a brilliant work.",
+    name: "Kirill Maimistov",
+    from: "CTO at Medaboutme",
+  },
+];
 const workList = [
   {
     header: "Athletic Greens",
@@ -72,18 +95,6 @@ const workList = [
 
     @include page-padding;
     @include page-height;
-
-    @media (min-width: $bp-tablet) {
-      max-width: $bp-tablet;
-    }
-
-    @media (min-width: $bp-desktop) {
-      max-width: $bp-desktop;
-    }
-
-    @media (min-width: $bp-full) {
-      max-width: $bp-full;
-    }
 
     &__poster {
       z-index: 20;
