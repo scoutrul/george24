@@ -30,6 +30,7 @@ defineProps({
       &:hover {
         .works__item-container {
           background: $brown-dark;
+          border-radius: 8px;
         }
         .works__item-text {
           color: $green-black;
