@@ -18,21 +18,24 @@ export default {
 </script>
 <style lang="scss" scoped>
 .intro {
+  position: relative;
+
   &__logo {
     @media (min-width: $bp-tablet) {
       margin-left: -$padding-step;
     }
   }
+
   &__logo,
   &__slogan {
     position: fixed;
     z-index: 5;
-    @include main-padding;
+    @include page-padding;
   }
 
   &__slogan {
     @include font28;
-    color: $black;
+    color: $green-black;
     transform: translate(146px, 16px);
 
     @media (max-width: 600px) {

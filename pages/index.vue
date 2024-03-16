@@ -57,18 +57,18 @@ const workList = [
 
 <style lang="scss">
 .home-page {
-  position: relative;
   display: flex;
   flex-direction: column;
   background: $brown;
+  position: relative;
 
   .section {
-    box-sizing: border-box;
-    width: 100%;
     min-height: 320px;
     z-index: 11;
     position: relative;
     margin: auto;
+    width: 100%;
+    box-sizing: border-box;
 
     @include page-padding;
     @include page-height;
@@ -93,12 +93,11 @@ const workList = [
 
     &__intro {
       z-index: 12;
-      min-height: auto;
-      height: 96px;
-
-      @media (min-width: $bp-tablet) {
-        height: 128px;
-      }
+      position: fixed;
+      margin: auto;
+      min-height: 0;
+      height: 0;
+      padding: 0;
     }
   }
 }
