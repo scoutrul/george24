@@ -2,7 +2,7 @@
   <div class="home-page">
     <PosterSection class="section section__poster" />
     <IntroSection class="section section__intro" />
-    <PresentSection class="section" />
+    <PresentSection class="section section__present" />
     <WorksSection class="section" :list="workList" />
     <AchieveSection class="section" />
     <ReviewSection class="section" :list="reviewList" />
@@ -68,10 +68,6 @@ const workList = [
     text: "Advanced cloud storage for geeks & gamers",
   },
   {
-    header: "Teamkraft",
-    text: "Mobile app to find sporting activities nearby",
-  },
-  {
     header: "VCards",
     text: "Mobile wallet for managing your virtual cards",
   },
@@ -109,6 +105,12 @@ const workList = [
       min-height: 0;
       height: 0;
       padding: 0;
+    }
+
+    &__present {
+      @media (max-width: $bp-tablet) {
+        min-height: auto;
+      }
     }
   }
 }

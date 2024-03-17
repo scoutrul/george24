@@ -2,8 +2,8 @@
   <section class="present">
     <div class="present__specialist">
       My name is George, and for 10 years now I have been making a user-centered
-      and data-driven design for enterprise and startups that helped them to
-      reach new heights.
+      and data-driven design that helped tens of industry leaders and startups
+      to reach new heights.
     </div>
     <div class="present__line"></div>
     <div class="present__stack">

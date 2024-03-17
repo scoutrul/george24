@@ -37,9 +37,10 @@ export default {
     @include font28;
     color: $green-black;
     transform: translate(146px, 16px);
+    display: none;
 
-    @media (max-width: 600px) {
-      display: none;
+    @media (min-width: $bp-tablet) {
+      display: flex;
     }
   }
 }

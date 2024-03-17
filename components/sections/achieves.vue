@@ -26,9 +26,9 @@
     </div>
     <div class="achieves__value">32.6M</div>
     <div class="achieves__message">
-      people interact with my solutions<br
-        class="achieves_message-break"
-      />monthly in over 30&nbsp;countries.
+      people&nbsp;interact&nbsp;with&nbsp;my solutions<br
+        class="achieves__message-break"
+      />monthly&nbsp;in&nbsp;over 30&nbsp;countries.
     </div>
   </section>
 </template>
@@ -64,6 +64,7 @@
   }
 
   &__value {
+    color: $green-black;
     @include font96;
 
     @media (min-width: $bp-tablet) {
@@ -73,7 +74,7 @@
 
   &__message {
     text-align: center;
-    @include font28;
+    @include font18;
 
     @media (min-width: $bp-tablet) {
       @include font40;

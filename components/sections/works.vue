@@ -52,9 +52,14 @@ defineProps({
   }
 
   &__header {
+    @include font40-64;
     margin-bottom: 80px;
     color: $green-black;
-    @include font40-64;
+    margin-top: 120px;
+
+    @media (min-width: $bp-tablet) {
+      margin-top: 80px;
+    }
   }
 
   &__list {
@@ -69,13 +74,13 @@ defineProps({
 
     @media (min-width: $bp-tablet) {
       flex: 1 0 50%;
+      margin-bottom: 0;
     }
   }
 
   &__item-text {
     @include font18;
     color: $grey;
-    margin-bottom: 32px;
 
     @media (min-width: $bp-tablet) {
       flex: 1 1 50%;
