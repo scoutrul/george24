@@ -7,7 +7,7 @@
     <AchieveSection class="section" />
     <ReviewSection class="section" :list="reviewList" />
     <StackSection class="section" />
-    <section class="contacts section">
+    <section class="section section__footer">
       It’s time to plan, design, grow. Together.
     </section>
   </div>
@@ -108,6 +108,25 @@ const workList = [
     &__present {
       @media (max-width: $bp-tablet) {
         min-height: auto;
+      }
+    }
+
+    &__footer {
+      @include font28-40;
+
+      padding-top: 40px;
+
+      @media (min-width: $bp-tablet) {
+        padding-top: 80px;
+      }
+
+      @media (min-width: $bp-desktop) {
+        @include font64;
+        padding-top: 160px;
+      }
+
+      @media (min-width: $bp-full) {
+        padding-top: 208px;
       }
     }
   }
