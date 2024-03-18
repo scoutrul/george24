@@ -6,10 +6,7 @@
     <WorksSection class="section" :list="workList" />
     <AchieveSection class="section" />
     <ReviewSection class="section" :list="reviewList" />
-    <section class="stack section">All is about numbers.</section>
-    <section class="call section">
-      All is about numbers. And people for sure.
-    </section>
+    <StackSection class="section" />
     <section class="contacts section">
       It’s time to plan, design, grow. Together.
     </section>
@@ -23,6 +20,7 @@ import PresentSection from "../components/sections/present.vue";
 import WorksSection from "../components/sections/works.vue";
 import AchieveSection from "../components/sections/achieves.vue";
 import ReviewSection from "../components/sections/reviews.vue";
+import StackSection from "../components/sections/stack.vue";
 
 const reviewList = [
   {
