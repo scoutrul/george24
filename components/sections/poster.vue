@@ -63,7 +63,7 @@ import Contacts from "../components/atoms/contacts.vue";
   height: 100%;
   position: absolute;
   z-index: 10;
-  left: -8px;
+  left: 0;
   top: 0;
 
   &:before {
@@ -80,15 +80,11 @@ import Contacts from "../components/atoms/contacts.vue";
     background-position: $padding-min $padding-min;
 
     @media (min-width: $bp-tablet) {
-      background-position: $padding-mid - $padding-step $padding-mid;
+      background-position: $padding-mid + $padding-step $padding-mid;
     }
 
     @media (min-width: $bp-desktop) {
       background-position: $padding-large - $padding-step $padding-mid;
-    }
-
-    @media (min-width: $bp-full) {
-      background-position: $padding-extra - $padding-step $padding-mid;
     }
   }
 }

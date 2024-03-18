@@ -20,12 +20,6 @@ export default {
 .intro {
   position: relative;
 
-  &__logo {
-    @media (min-width: $bp-tablet) {
-      margin-left: -$padding-step;
-    }
-  }
-
   &__logo,
   &__slogan {
     position: fixed;
