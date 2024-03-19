@@ -17,16 +17,10 @@
 .present {
   display: flex;
   flex-direction: column;
-  padding: 40px 0;
   color: $green-black;
 
   @media (min-width: $bp-tablet) {
     flex-direction: row;
-    padding: 250px 0;
-  }
-
-  @media (min-width: $bp-desktop) {
-    padding: 80px 0;
   }
 
   &__specialist,
@@ -42,14 +36,13 @@
 
   &__specialist {
     @include font40-64;
-    padding: 100px 0;
+    padding: 100px 0 0;
 
     @media (min-width: $bp-tablet) {
-      padding: 124px 0;
+      padding: 10% 0 0;
     }
 
     @media (min-width: $bp-desktop) {
-      padding: 80px 0;
       flex: 1 0 calc(67% - 75px);
     }
   }
@@ -85,12 +78,8 @@
     @include font28-40;
 
     @media (min-width: $bp-tablet) {
-      padding: 120px 0;
+      padding: 0 0 10%;
       align-self: end;
-    }
-
-    @media (min-width: $bp-desktop) {
-      padding-top: 208px;
     }
   }
 }

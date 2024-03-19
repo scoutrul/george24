@@ -6,21 +6,19 @@
 
 <style lang="scss" scoped>
 .footer {
+  color: $green-black;
+  position: absolute;
+  top: 120px;
+
   @include font28-40;
 
-  padding-top: 40px;
-
   @media (min-width: $bp-tablet) {
-    padding-top: 80px;
+    top: 140px;
   }
 
   @media (min-width: $bp-desktop) {
     @include font64;
-    padding-top: 160px;
-  }
-
-  @media (min-width: $bp-full) {
-    padding-top: 208px;
+    top: 200px;
   }
 }
 </style>

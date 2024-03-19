@@ -36,6 +36,7 @@ defineProps({
   }
 
   &__list {
+    overflow: scroll hidden;
     list-style: none;
     padding: 0;
     gap: 24px;

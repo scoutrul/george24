@@ -2,16 +2,17 @@
   <div class="home-page">
     <PosterSection class="section section__poster" />
     <IntroSection class="section section__intro" />
-    <PresentSection class="section section__present" />
-    <WorksSection class="section" :list="workList" />
-    <AchieveSection class="section" />
-    <ReviewSection class="section" :list="reviewList" />
-    <StackSection class="section" />
-    <FooterSection class="section" />
+    <Section class="section section__present"> <PresentSection /></Section>
+    <Section class="section"> <WorksSection :list="workList" /></Section>
+    <Section class="section"> <AchieveSection /></Section>
+    <Section class="section"> <ReviewSection :list="reviewList" /></Section>
+    <Section class="section"> <StackSection /></Section>
+    <Section class="section section__footer"> <FooterSection /></Section>
   </div>
 </template>
 
 <script setup>
+import Section from "../components/atoms/section.vue";
 import PosterSection from "../components/sections/poster.vue";
 import IntroSection from "../components/sections/intro.vue";
 import PresentSection from "../components/sections/present.vue";
@@ -79,21 +80,14 @@ const workList = [
   position: relative;
 
   .section {
-    min-height: 320px;
     z-index: 11;
     position: relative;
-    margin: auto;
-    width: 100%;
-    box-sizing: border-box;
-
-    @include page-padding;
-    @include page-height;
-    padding-top: 11%;
 
     &__poster {
       z-index: 20;
       margin: 0;
       max-width: 100%;
+      padding: 0;
     }
 
     &__intro {
@@ -109,6 +103,11 @@ const workList = [
       @media (max-width: $bp-tablet) {
         min-height: auto;
       }
+    }
+
+    &__footer {
+      padding-bottom: 0;
+      padding-top: 0;
     }
   }
 }

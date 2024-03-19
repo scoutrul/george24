@@ -53,7 +53,7 @@ defineProps({
 
   &__header {
     @include font40-64;
-    margin-bottom: 80px;
+    margin-bottom: 36px;
     color: $green-black;
     margin-top: 120px;
 

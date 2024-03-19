@@ -163,16 +163,3 @@ $bp-full: 1920px;
     }
 }
 
-@mixin page-height {
-    min-height: 600px;
-    height: 100%;
-    max-height: fit-content;
-
-    @media (min-width: $bp-desktop) {
-        min-height: 980px;
-    }
-
-    @media (min-width: $bp-full) {
-        min-height: 1400px;
-    }
-}
