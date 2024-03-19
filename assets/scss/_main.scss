@@ -131,7 +131,7 @@ $bp-full: 1920px;
     }
 }
 
-@mixin page-padding {
+@mixin page-padding-fix {
     padding: $padding-min;
 
     @media (min-width: $bp-tablet) {
@@ -147,8 +147,26 @@ $bp-full: 1920px;
     }
 }
 
+@mixin page-padding {
+    padding: $padding-min;
+
+    @media (min-width: $bp-tablet) {
+        padding: 11% $padding-mobile;
+    }
+
+    @media (min-width: $bp-desktop) {
+        padding: 11% $padding-tablet;
+    }
+
+    @media (min-width: $bp-full) {
+        padding: 11% $padding-desktop;
+    }
+}
+
 @mixin page-height {
-   min-height: 820px;
+    min-height: 600px;
+    height: 100%;
+    max-height: fit-content;
 
     @media (min-width: $bp-desktop) {
         min-height: 980px;

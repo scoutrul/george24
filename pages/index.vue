@@ -7,9 +7,7 @@
     <AchieveSection class="section" />
     <ReviewSection class="section" :list="reviewList" />
     <StackSection class="section" />
-    <section class="section section__footer">
-      It’s time to plan, design, grow. Together.
-    </section>
+    <FooterSection class="section" />
   </div>
 </template>
 
@@ -21,6 +19,7 @@ import WorksSection from "../components/sections/works.vue";
 import AchieveSection from "../components/sections/achieves.vue";
 import ReviewSection from "../components/sections/reviews.vue";
 import StackSection from "../components/sections/stack.vue";
+import FooterSection from "../components/sections/footer.vue";
 
 const reviewList = [
   {
@@ -89,6 +88,7 @@ const workList = [
 
     @include page-padding;
     @include page-height;
+    padding-top: 11%;
 
     &__poster {
       z-index: 20;
@@ -108,25 +108,6 @@ const workList = [
     &__present {
       @media (max-width: $bp-tablet) {
         min-height: auto;
-      }
-    }
-
-    &__footer {
-      @include font28-40;
-
-      padding-top: 40px;
-
-      @media (min-width: $bp-tablet) {
-        padding-top: 80px;
-      }
-
-      @media (min-width: $bp-desktop) {
-        @include font64;
-        padding-top: 160px;
-      }
-
-      @media (min-width: $bp-full) {
-        padding-top: 208px;
       }
     }
   }

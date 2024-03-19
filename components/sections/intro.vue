@@ -24,7 +24,7 @@ export default {
   &__slogan {
     position: fixed;
     z-index: 5;
-    @include page-padding;
+    @include page-padding-fix;
   }
 
   &__slogan {

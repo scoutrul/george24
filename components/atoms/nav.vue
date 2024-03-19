@@ -24,6 +24,27 @@ defineProps({
   width: fit-content;
   text-align: center;
   color: $brown;
+  position: absolute;
+  top: $padding-min;
+  right: $padding-min;
+  left: $padding-min;
+
+  @media (min-width: $bp-tablet) {
+    right: $padding-mobile;
+    left: $padding-mobile;
+    top: $padding-mid;
+  }
+
+  @media (min-width: $bp-desktop) {
+    right: $padding-tablet;
+    left: $padding-tablet;
+    top: $padding-mobile;
+  }
+
+  @media (min-width: $bp-full) {
+    right: $padding-desktop;
+    left: $padding-desktop;
+  }
 
   @include font18;
 
@@ -37,26 +58,6 @@ defineProps({
 
   &--float {
     position: fixed;
-    top: $padding-min;
-    right: $padding-min;
-    left: $padding-min;
-
-    @media (min-width: $bp-tablet) {
-      right: $padding-mobile;
-      left: $padding-mobile;
-      top: $padding-mobile;
-    }
-
-    @media (min-width: $bp-desktop) {
-      right: $padding-tablet;
-      left: $padding-tablet;
-      top: $padding-desktop;
-    }
-
-    @media (min-width: $bp-full) {
-      right: $padding-desktop;
-      left: $padding-desktop;
-    }
   }
 
   &--black {
