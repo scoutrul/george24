@@ -1,11 +1,13 @@
 <template>
   <ul class="nav" :class="{ 'nav--black': isBlack, 'nav--float': isFloat }">
-    <li>works</li>
-    <li>get cv</li>
+    <li><Link text="works" /></li>
+    <li><Link text="get&nbsp;cv" /></li>
   </ul>
 </template>
 
 <script setup>
+import Link from "./link.vue";
+
 defineProps({
   isBlack: Boolean,
   isFloat: Boolean,
@@ -14,6 +16,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .nav {
+  z-index: 10;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   padding: 0 0 0 64px;
   display: flex;
@@ -53,7 +56,7 @@ defineProps({
   }
 
   li {
-    margin-left: 24px;
+    margin-left: 14px;
   }
 
   &--float {

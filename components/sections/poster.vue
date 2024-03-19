@@ -21,9 +21,9 @@
 </template>
 
 <script setup>
-import MarqueeText from "../components/atoms/marquee.vue";
-import NavMenu from "../components/atoms/nav.vue";
-import Contacts from "../components/atoms/contacts.vue";
+import MarqueeText from "../atoms/marquee.vue";
+import NavMenu from "../atoms/nav.vue";
+import Contacts from "../atoms/contacts.vue";
 </script>
 
 <style lang="scss" scoped>

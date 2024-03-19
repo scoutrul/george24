@@ -28,6 +28,8 @@ defineProps({
 
     @media (min-width: $bp-tablet) {
       &:hover {
+        cursor: pointer;
+
         .works__item-container {
           background: $brown-dark;
           border-radius: 8px;

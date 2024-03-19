@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import Logo from "../components/atoms/logo.vue";
-import Contacts from "../components/atoms/contacts.vue";
-import NavMenu from "../components/atoms/nav.vue";
+import Logo from "../atoms/logo.vue";
+import Contacts from "../atoms/contacts.vue";
+import NavMenu from "../atoms/nav.vue";
 
 export default {
   components: { Logo, Contacts, NavMenu },

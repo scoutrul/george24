@@ -1,5 +1,5 @@
 <template>
-  <section class="present">
+  <div class="present">
     <div class="present__specialist">
       My name is George, and for 10 years now I have been making a user-centered
       and data-driven design that helped tens of industry leaders and startups
@@ -10,7 +10,7 @@
       Proficient in leadership, UX/UI, design systems. Based in Tbilisi,
       Georgia. In spare time I make music, experiment with AI and travel.
     </div>
-  </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -57,20 +57,17 @@
     left: -16px;
 
     @media (min-width: $bp-tablet) {
-      min-width: 1px;
-      height: 820px;
       @include outline-horizontal-padding;
+      min-width: 1px;
+      height: 80vh;
+      min-height: 600px;
       margin: 0 24px 0 106px;
       left: 0;
     }
     @media (min-width: $bp-desktop) {
-      height: 980px;
       min-width: 1px;
       margin: 0 32px 0 110px;
-    }
-
-    @media (min-width: $bp-full) {
-      height: 1400px;
+      min-height: 820px;
     }
   }
 

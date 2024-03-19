@@ -3,12 +3,14 @@
     class="contacts"
     :class="{ 'contacts--black': isBlack, 'contacts--float': isFloat }"
   >
-    <li>hello.geovo@gmail.com</li>
-    <li>telegram</li>
+    <li><Link text="hello.geovo@gmail.com" /></li>
+    <li><Link text="telegram" /></li>
   </ul>
 </template>
 
 <script setup>
+import Link from "./link.vue";
+
 defineProps({
   isBlack: Boolean,
   isFloat: Boolean,
