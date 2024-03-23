@@ -2,9 +2,20 @@
   <section class="works">
     <div class="works__header">Works</div>
     <ul class="works__list">
-      <li v-for="(item, index) in list" :key="index" class="works__item">
+      <li
+        v-for="(item, index) in list"
+        :key="index"
+        class="works__item"
+        @mouseover="links[index] = true"
+        @mouseout="links[index] = false"
+      >
         <div class="works__item-container">
-          <div class="works__item-header">{{ item.header }}</div>
+          <div class="works__item-header">
+            <template v-if="!links[index]">
+              {{ item.header }}
+            </template>
+            <Link v-else :text="item.header" :pre-start="true" />
+          </div>
           <div class="works__item-text">
             {{ item.text }}
           </div>
@@ -15,8 +26,15 @@
 </template>
 
 <script setup>
-defineProps({
+import Link from "../atoms/link.vue";
+
+const props = defineProps({
   list: { type: Array, default: () => [] },
+});
+
+const links = ref({});
+links.value = props.list.map(() => {
+  return false;
 });
 </script>
 

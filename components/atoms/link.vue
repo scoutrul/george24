@@ -9,8 +9,9 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   text: { type: String, default: "" },
+  preStart: { type: Boolean, default: false },
 });
 
 const content = ref();
@@ -21,7 +22,7 @@ const isPlaying = ref(false);
 
 const REPEAT_TIME = 8;
 
-const changeText = (event) => {
+const changeText = () => {
   if (isPlaying.value) return;
   const letters = "abcdefghijklmnopqrstuvwxyz";
 
@@ -31,10 +32,10 @@ const changeText = (event) => {
 
   clearInterval(interval);
 
-  const changedText = event.target.innerText;
+  const changedText = content.value.innerText;
   interval = setInterval(() => {
     isPlaying.value = true;
-    event.target.innerText = event.target.innerText
+    content.value.innerText = content.value.innerText
       .split("")
       .map((letter, index) => {
         if (index < iteration) {
@@ -51,7 +52,7 @@ const changeText = (event) => {
       isPlaying.value = false;
 
       if (iteration >= REPEAT_TIME) {
-        event.target.innerText = changedText;
+        content.value.innerText = changedText;
       }
     }
 
@@ -61,6 +62,8 @@ const changeText = (event) => {
 
 onMounted(() => {
   initialWidth.value = content.value.offsetWidth + "px";
+
+  if (props.preStart) changeText();
 });
 </script>
 
