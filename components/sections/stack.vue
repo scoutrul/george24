@@ -117,7 +117,13 @@ const skillList = [
 
   &__sticky {
     position: sticky;
-    top: 64px;
+    top: 0;
+
+    padding-top: 160px;
+
+    @media (min-width: $bp-desktop) {
+      padding-top: 208px;
+    }
   }
 
   &__skills {
