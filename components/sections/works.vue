@@ -3,36 +3,17 @@
     <div class="works__header">Works</div>
     <ul class="works__list">
       <li v-for="(item, index) in list" :key="index" class="works__item">
-        <div
-          class="works__item-container"
-          @mouseover="links[index] = true"
-          @mouseleave="links[index] = false"
-        >
-          <div class="works__item-header">
-            <template v-if="!links[index]">
-              {{ item.header }}
-            </template>
-            <Link v-else :text="item.header" :pre-start="true" />
-          </div>
-          <div class="works__item-text">
-            {{ item.text }}
-          </div>
-        </div>
+        <Work :header="item.header" :text="item.text" />
       </li>
     </ul>
   </section>
 </template>
 
 <script setup>
-import Link from "../atoms/link.vue";
+import Work from "../atoms/work.vue";
 
 const props = defineProps({
   list: { type: Array, default: () => [] },
-});
-
-const links = ref([]);
-links.value = props.list.map(() => {
-  return false;
 });
 </script>
 
@@ -41,31 +22,6 @@ links.value = props.list.map(() => {
   &__item {
     padding: 16px 0;
     border-bottom: 1px solid $grey;
-  }
-
-  &__item-container {
-    padding: 28px 0 24px;
-    display: flex;
-    flex-direction: column;
-
-    @media (min-width: $bp-tablet) {
-      &:hover {
-        cursor: pointer;
-
-        background: $brown-dark;
-        border-radius: 8px;
-
-        .works__item-text {
-          color: $green-black;
-        }
-      }
-    }
-
-    @media (min-width: $bp-tablet) {
-      flex-direction: row;
-      gap: 24px;
-      padding: 32px 40px;
-    }
   }
 
   &__header {
@@ -82,28 +38,6 @@ links.value = props.list.map(() => {
   &__list {
     list-style: none;
     padding: 0;
-  }
-
-  &__item-header {
-    @include font28-40;
-    color: $green-black;
-    margin-bottom: 24px;
-    display: flex;
-
-    @media (min-width: $bp-tablet) {
-      flex: 1 0 50%;
-      margin-bottom: 0;
-    }
-  }
-
-  &__item-text {
-    @include font18;
-    color: $grey;
-
-    @media (min-width: $bp-tablet) {
-      flex: 1 1 50%;
-      @include font28;
-    }
   }
 }
 </style>
