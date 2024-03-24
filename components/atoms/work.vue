@@ -1,20 +1,22 @@
 <template>
-  <div ref="itemElement" class="work__container">
+  <div
+    ref="itemElement"
+    class="work__container"
+    :class="{ 'work__container--hover': isActive }"
+  >
     <div class="work__header">
-      <template v-if="!isActive">
-        {{ header }}
-      </template>
+      {{ isOutside }} {{ sourceType }}
+      <template v-if="!isActive"> {{ header }} </template>
       <Link v-else :text="header" pre-start />
     </div>
-    <div class="work__text">
-      {{ text }}
-    </div>
+    <div class="work__text">{{ text }}</div>
     <div
       v-if="isActive"
       class="work__pop"
+      :class="{ 'work__pop--touch': sourceType === 'touch' }"
       :style="{
-        left: elementX + 'px',
-        top: elementY + 'px',
+        left: sourceType === 'touch' ? elementWidth + 'px' : elementX + 'px',
+        top: sourceType === 'touch' ? 0 : elementY + 'px',
       }"
     ></div>
   </div>
@@ -34,10 +36,17 @@ const isActive = ref(false);
 
 const itemElement = ref();
 
-const { elementX, elementY, isOutside } = useMouseInElement(itemElement);
+const { elementX, elementY, isOutside, sourceType, elementWidth } =
+  useMouseInElement(itemElement);
 
 watch(isOutside, (value) => {
   isActive.value = !value;
+});
+
+watch(sourceType, (value, old) => {
+  if (old === "touch" && value === "mouse") {
+    isActive.value = false;
+  }
 });
 </script>
 
@@ -47,29 +56,38 @@ watch(isOutside, (value) => {
     position: absolute;
     width: 200px;
     height: 434px;
-    transform: translateX(-50%);
     background: #000;
     border-radius: 20px;
-    z-index: 100;
-    transition: 0.2s;
+    z-index: 10000;
+    transform: translateX(-100%) translateY(-20px);
+
+    @media (min-width: $bp-tablet) {
+      transform: translateX(-50%) translateY(-20px);
+    }
+
+    &--touch {
+      transition: 0.3s;
+      background: #c00e0e;
+    }
   }
 
   &__container {
-    padding: 28px 0 24px;
+    padding: 28px 8px 24px;
     display: flex;
     flex-direction: column;
     position: relative;
+    left: -8px;
+    min-width: calc(100%);
 
-    @media (min-width: $bp-tablet) {
-      &:hover {
-        cursor: pointer;
+    &--hover,
+    &:hover {
+      cursor: pointer;
 
-        background: $brown-dark;
-        border-radius: 8px;
+      background: $brown-dark;
+      border-radius: 8px;
 
-        .work__text {
-          color: $green-black;
-        }
+      .work__text {
+        color: $green-black;
       }
     }
 
@@ -77,6 +95,8 @@ watch(isOutside, (value) => {
       flex-direction: row;
       gap: 24px;
       padding: 32px 40px;
+      left: 0;
+      min-width: auto;
     }
   }
 
