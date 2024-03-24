@@ -1,20 +1,22 @@
 <template>
   <span
-    ref="content"
+    ref="element"
     class="link"
     :style="{ 'min-width': initialWidth, 'max-width': initialWidth }"
     @mouseover="changeText"
-    >{{ text }}
+    >{{ changingText }}
   </span>
 </template>
 
 <script setup>
 const props = defineProps({
-  text: { type: String, default: "" },
+  text: { type: String, default: "", required: true },
   preStart: { type: Boolean, default: false },
 });
 
-const content = ref();
+const element = ref();
+
+const changingText = ref(props.text);
 
 const initialWidth = ref("initial");
 
@@ -24,6 +26,7 @@ const REPEAT_TIME = 8;
 
 const changeText = () => {
   if (isPlaying.value) return;
+
   const letters = "abcdefghijklmnopqrstuvwxyz";
 
   let interval = null;
@@ -32,10 +35,10 @@ const changeText = () => {
 
   clearInterval(interval);
 
-  const changedText = content.value.innerText;
+  const changedText = props.text;
   interval = setInterval(() => {
     isPlaying.value = true;
-    content.value.innerText = content.value.innerText
+    changingText.value = changedText
       .split("")
       .map((letter, index) => {
         if (index < iteration) {
@@ -52,7 +55,7 @@ const changeText = () => {
       isPlaying.value = false;
 
       if (iteration >= REPEAT_TIME) {
-        content.value.innerText = changedText;
+        changingText.value = changedText;
       }
     }
 
@@ -61,7 +64,7 @@ const changeText = () => {
 };
 
 onMounted(() => {
-  initialWidth.value = content.value.offsetWidth + "px";
+  initialWidth.value = element.value.offsetWidth + "px";
 
   if (props.preStart) changeText();
 });

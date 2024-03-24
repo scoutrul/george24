@@ -32,7 +32,7 @@ const props = defineProps({
   list: { type: Array, default: () => [] },
 });
 
-const links = ref({});
+const links = ref([]);
 links.value = props.list.map(() => {
   return false;
 });
@@ -91,6 +91,7 @@ links.value = props.list.map(() => {
     @include font28-40;
     color: $green-black;
     margin-bottom: 24px;
+    display: flex;
 
     @media (min-width: $bp-tablet) {
       flex: 1 0 50%;
