@@ -3,8 +3,16 @@
     class="contacts"
     :class="{ 'contacts--black': isBlack, 'contacts--float': isFloat }"
   >
-    <li><Link text="hello.geovo@gmail.com" /></li>
-    <li><Link text="telegram" /></li>
+    <li>
+      <a href="mailto:hello.geovo@gmail.com">
+        <Link text="hello.geovo@gmail.com" />
+      </a>
+    </li>
+    <li>
+      <a href="https://t.me/meisdigital" target="_blank">
+        <Link text="telegram" />
+      </a>
+    </li>
   </ul>
 </template>
 

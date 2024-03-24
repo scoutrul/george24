@@ -1,7 +1,11 @@
 <template>
   <ul class="nav" :class="{ 'nav--black': isBlack, 'nav--float': isFloat }">
     <li><Link text="works" /></li>
-    <li><Link text="get&nbsp;cv" /></li>
+    <li>
+      <a href="./CV-George-Vorobyov.pdf" target="_blank">
+        <Link text="get&nbsp;cv" />
+      </a>
+    </li>
   </ul>
 </template>
 
