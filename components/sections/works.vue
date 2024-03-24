@@ -2,14 +2,12 @@
   <section class="works">
     <div class="works__header">Works</div>
     <ul class="works__list">
-      <li
-        v-for="(item, index) in list"
-        :key="index"
-        class="works__item"
-        @mouseover="links[index] = true"
-        @mouseout="links[index] = false"
-      >
-        <div class="works__item-container">
+      <li v-for="(item, index) in list" :key="index" class="works__item">
+        <div
+          class="works__item-container"
+          @mouseover="links[index] = true"
+          @mouseleave="links[index] = false"
+        >
           <div class="works__item-header">
             <template v-if="!links[index]">
               {{ item.header }}
@@ -43,26 +41,25 @@ links.value = props.list.map(() => {
   &__item {
     padding: 16px 0;
     border-bottom: 1px solid $grey;
-
-    @media (min-width: $bp-tablet) {
-      &:hover {
-        cursor: pointer;
-
-        .works__item-container {
-          background: $brown-dark;
-          border-radius: 8px;
-        }
-        .works__item-text {
-          color: $green-black;
-        }
-      }
-    }
   }
 
   &__item-container {
     padding: 28px 0 24px;
     display: flex;
     flex-direction: column;
+
+    @media (min-width: $bp-tablet) {
+      &:hover {
+        cursor: pointer;
+
+        background: $brown-dark;
+        border-radius: 8px;
+
+        .works__item-text {
+          color: $green-black;
+        }
+      }
+    }
 
     @media (min-width: $bp-tablet) {
       flex-direction: row;

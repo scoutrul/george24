@@ -21,10 +21,13 @@ const changingText = ref(props.text);
 const initialWidth = ref("initial");
 
 const isPlaying = ref(false);
+const isPlayed = ref(false);
 
 const REPEAT_TIME = 8;
 
 const changeText = () => {
+  if (props.preStart && isPlayed.value) return;
+
   if (isPlaying.value) return;
 
   const letters = "abcdefghijklmnopqrstuvwxyz";
@@ -52,11 +55,11 @@ const changeText = () => {
 
     if (iteration >= changedText.length || iteration >= REPEAT_TIME) {
       clearInterval(interval);
-      isPlaying.value = false;
-
       if (iteration >= REPEAT_TIME) {
         changingText.value = changedText;
       }
+      isPlaying.value = false;
+      isPlayed.value = true;
     }
 
     iteration += 1 / 3;
