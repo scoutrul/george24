@@ -131,19 +131,19 @@ $bp-full: 1920px;
     }
 }
 
-@mixin page-padding-fix {
-    padding: $padding-min;
+@mixin page-margin-fix {
+    margin: $padding-min;
 
     @media (min-width: $bp-tablet) {
-        padding: $padding-mid $padding-mobile;
+        margin: $padding-mid $padding-mobile;
     }
 
     @media (min-width: $bp-desktop) {
-        padding: $padding-mid $padding-tablet;
+        margin: $padding-mid $padding-tablet;
     }
 
     @media (min-width: $bp-full) {
-        padding: $padding-mid $padding-desktop;
+        margin: $padding-mid $padding-desktop;
     }
 }
 

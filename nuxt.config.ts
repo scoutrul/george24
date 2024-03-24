@@ -1,6 +1,11 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/critters", "nuxt-marquee", "nuxt-delay-hydration"],
+  modules: [
+    "@nuxtjs/critters",
+    "nuxt-marquee",
+    "nuxt-delay-hydration",
+    "@vueuse/nuxt",
+  ],
   app: {
     baseURL: "/george24/",
     buildAssetsDir: "assets",

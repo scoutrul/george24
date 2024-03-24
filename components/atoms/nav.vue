@@ -1,6 +1,6 @@
 <template>
   <ul class="nav" :class="{ 'nav--black': isBlack, 'nav--float': isFloat }">
-    <li><Link text="works" /></li>
+    <li><Link text="works" @click="toWorks" /></li>
     <li>
       <a href="./CV-George-Vorobyov.pdf" target="_blank">
         <Link text="get&nbsp;cv" />
@@ -16,6 +16,17 @@ defineProps({
   isBlack: Boolean,
   isFloat: Boolean,
 });
+
+const { y } = useWindowScroll({ behavior: "smooth" });
+
+const toWorks = () => {
+  if (!window?.document) return;
+
+  const worksSection =
+    window.document.getElementsByClassName("section__works")[0];
+
+  y.value = worksSection.offsetTop;
+};
 </script>
 
 <style lang="scss" scoped>

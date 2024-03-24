@@ -3,7 +3,9 @@
     <PosterSection class="section section__poster" />
     <IntroSection class="section section__intro" />
     <Section class="section section__present"> <PresentSection /></Section>
-    <Section class="section"> <WorksSection :list="workList" /></Section>
+    <Section class="section section__works">
+      <WorksSection :list="workList"
+    /></Section>
     <Section class="section"> <AchieveSection /></Section>
     <Section class="section"> <ReviewSection :list="reviewList" /></Section>
     <Section class="section"> <StackSection /></Section>

@@ -2,29 +2,35 @@
   <section class="intro">
     <Contacts is-black is-float />
     <NavMenu is-black is-float />
-    <logo is-black class="intro__logo" />
+    <logo is-black class="intro__logo" @click="scrollTop" />
     <div class="intro__slogan">plan, design, grow</div>
   </section>
 </template>
 
-<script>
+<script setup>
 import Logo from "../atoms/logo.vue";
 import Contacts from "../atoms/contacts.vue";
 import NavMenu from "../atoms/nav.vue";
 
-export default {
-  components: { Logo, Contacts, NavMenu },
+const { y } = useWindowScroll({ behavior: "smooth" });
+
+const scrollTop = () => {
+  y.value = 0;
 };
 </script>
 <style lang="scss" scoped>
 .intro {
   position: relative;
 
+  &__logo {
+    cursor: pointer;
+  }
+
   &__logo,
   &__slogan {
     position: fixed;
     z-index: 5;
-    @include page-padding-fix;
+    @include page-margin-fix;
   }
 
   &__slogan {

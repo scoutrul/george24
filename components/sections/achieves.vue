@@ -77,6 +77,7 @@
 
   &__message {
     text-align: center;
+    color: $green-black;
     @include font18;
 
     @media (min-width: $bp-tablet) {
