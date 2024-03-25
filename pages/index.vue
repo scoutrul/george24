@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div class="page">
     <PosterSection class="section section--poster" />
     <IntroSection class="section section--intro" />
     <Section class="section section--present"> <PresentSection /></Section>
@@ -7,7 +7,9 @@
       <WorksSection :list="workList"
     /></Section>
     <Section class="section section--achieve"> <AchieveSection /></Section>
-    <Section class="section"> <ReviewSection :list="reviewList" /></Section>
+    <Section class="section section--reviews">
+      <ReviewSection :list="reviewList"
+    /></Section>
     <Section class="section"> <StackSection /></Section>
     <Section class="section section--footer"> <FooterSection /></Section>
   </div>
@@ -75,7 +77,7 @@ const workList = [
 </script>
 
 <style lang="scss">
-.home-page {
+.page {
   display: flex;
   flex-direction: column;
   background: $brown;
@@ -114,6 +116,10 @@ const workList = [
     &--footer {
       padding-bottom: 0;
       padding-top: 0;
+    }
+
+    &--reviews {
+      overflow: hidden;
     }
   }
 }

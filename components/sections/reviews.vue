@@ -1,7 +1,12 @@
 <template>
   <section class="reviews">
     <div class="reviews__header">What people say</div>
-    <ul class="reviews__list">
+
+    <ul
+      ref="listRef"
+      class="reviews__list"
+      :style="{ transform: `translateX(${-800 + -width + top * 4}px)` }"
+    >
       <li v-for="(item, index) in list" :key="index" class="reviews__item">
         <div class="reviews__item-container">
           <div class="reviews__item-text">{{ item.text }}</div>
@@ -23,12 +28,14 @@
 defineProps({
   list: { type: Array, default: () => [] },
 });
+
+const listRef = ref(null);
+
+const { top, width } = useElementBounding(listRef);
 </script>
 
 <style lang="scss" scoped>
 .reviews {
-  overflow: hidden;
-
   &__header {
     margin-bottom: 80px;
     color: $green-black;
@@ -36,12 +43,11 @@ defineProps({
   }
 
   &__list {
-    overflow: scroll hidden;
+    position: relative;
     list-style: none;
     padding: 0;
     gap: 24px;
     display: flex;
-    @include outline-horizontal-padding;
 
     @media (min-width: $bp-tablet) {
       gap: 32px;
