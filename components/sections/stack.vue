@@ -88,7 +88,7 @@ const skillList = [
     margin-bottom: 80px;
 
     @media (min-width: $bp-tablet) {
-      min-height: 980px;
+      min-height: 880px;
       width: 294px;
       margin-bottom: 0;
     }
@@ -111,14 +111,13 @@ const skillList = [
 
     @media (min-width: $bp-desktop) {
       padding-top: 208px;
-      margin-bottom: auto;
+      margin-bottom: 58vh;
     }
   }
 
   &__sticky {
     position: sticky;
     top: 0;
-
     padding-top: 160px;
 
     @media (min-width: $bp-desktop) {
@@ -139,7 +138,6 @@ const skillList = [
     @media (min-width: $bp-desktop) {
       margin-left: 40px;
       flex: 1 1 33%;
-      padding-top: 208px;
     }
   }
 

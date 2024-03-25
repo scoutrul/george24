@@ -1,12 +1,12 @@
 <template>
-  <section class="works">
+  <div class="works">
     <div class="works__header">Works</div>
     <ul class="works__list">
       <li v-for="(item, index) in list" :key="index" class="works__item">
         <Work :header="item.header" :text="item.text" />
       </li>
     </ul>
-  </section>
+  </div>
 </template>
 
 <script setup>

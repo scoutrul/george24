@@ -5,7 +5,6 @@
     :class="{ 'work__container--hover': isActive }"
   >
     <div class="work__header">
-      {{ isOutside }} {{ sourceType }}
       <template v-if="!isActive"> {{ header }} </template>
       <Link v-else :text="header" pre-start />
     </div>
@@ -13,10 +12,12 @@
     <div
       v-if="isActive"
       class="work__pop"
-      :class="{ 'work__pop--touch': sourceType === 'touch' }"
       :style="{
-        left: sourceType === 'touch' ? elementWidth + 'px' : elementX + 'px',
-        top: sourceType === 'touch' ? 0 : elementY + 'px',
+        left:
+          elementX > elementWidth - 200
+            ? elementX - 200 + 'px'
+            : elementX + 'px',
+        top: elementY + 'px',
       }"
     ></div>
   </div>
@@ -59,15 +60,11 @@ watch(sourceType, (value, old) => {
     background: #000;
     border-radius: 20px;
     z-index: 10000;
-    transform: translateX(-100%) translateY(-20px);
+    display: none;
+    transform: translateY(8px);
 
     @media (min-width: $bp-tablet) {
-      transform: translateX(-50%) translateY(-20px);
-    }
-
-    &--touch {
-      transition: 0.3s;
-      background: #c00e0e;
+      display: flex;
     }
   }
 

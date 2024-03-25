@@ -26,12 +26,8 @@
     </div>
     <div class="achieves__value">32.6M</div>
     <div class="achieves__message">
-      people&nbsp;interact&nbsp;with&nbsp;my
-      <br class="achieves__message-break" />solutions<br
-        class="achieves__message-break--desktop"
-      />monthly in over
-      <br class="achieves__message-break" />
-      30&nbsp;countries.
+      people interact with&nbsp;my solutions<br />
+      monthly in over 30&nbsp;countries.
     </div>
   </section>
 </template>

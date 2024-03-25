@@ -1,15 +1,15 @@
 <template>
   <div class="home-page">
-    <PosterSection class="section section__poster" />
-    <IntroSection class="section section__intro" />
-    <Section class="section section__present"> <PresentSection /></Section>
-    <Section class="section section__works">
+    <PosterSection class="section section--poster" />
+    <IntroSection class="section section--intro" />
+    <Section class="section section--present"> <PresentSection /></Section>
+    <Section class="section section--works">
       <WorksSection :list="workList"
     /></Section>
-    <Section class="section"> <AchieveSection /></Section>
+    <Section class="section section--achieve"> <AchieveSection /></Section>
     <Section class="section"> <ReviewSection :list="reviewList" /></Section>
     <Section class="section"> <StackSection /></Section>
-    <Section class="section section__footer"> <FooterSection /></Section>
+    <Section class="section section--footer"> <FooterSection /></Section>
   </div>
 </template>
 
@@ -85,14 +85,14 @@ const workList = [
     z-index: 11;
     position: relative;
 
-    &__poster {
+    &--poster {
       z-index: 20;
       margin: 0;
       max-width: 100%;
       padding: 0;
     }
 
-    &__intro {
+    &--intro {
       z-index: 12;
       position: fixed;
       margin: auto;
@@ -101,13 +101,17 @@ const workList = [
       padding: 0;
     }
 
-    &__present {
+    &--present {
       @media (max-width: $bp-tablet) {
         min-height: auto;
       }
     }
 
-    &__footer {
+    &--achieve {
+      z-index: 10;
+    }
+
+    &--footer {
       padding-bottom: 0;
       padding-top: 0;
     }
