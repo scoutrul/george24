@@ -30,7 +30,7 @@ const changeText = () => {
 
   if (isPlaying.value) return;
 
-  const letters = "abcdefghijklmnopqrstuvwxyz";
+  const letters = "abcdeghkmnopqrstuvxyz";
 
   let interval = null;
 
@@ -62,8 +62,8 @@ const changeText = () => {
       isPlayed.value = true;
     }
 
-    iteration += 1 / 3;
-  }, 32);
+    iteration += 1 / 5;
+  }, 16);
 };
 
 onMounted(() => {
