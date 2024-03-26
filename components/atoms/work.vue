@@ -1,6 +1,7 @@
 <template>
-  <div
+  <NuxtLink
     ref="itemElement"
+    :to="name"
     class="work__container"
     :class="{ 'work__container--hover': isActive }"
   >
@@ -20,7 +21,7 @@
         top: elementY + 'px',
       }"
     ></div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup>
@@ -28,9 +29,10 @@ import Link from "../atoms/link.vue";
 
 import { useMouseInElement } from "@vueuse/core";
 
-const props = defineProps({
+defineProps({
   text: { type: String, default: "" },
   header: { type: String, default: "" },
+  name: { type: String, default: "" },
 });
 
 const isActive = ref(false);
@@ -75,6 +77,7 @@ watch(sourceType, (value, old) => {
     position: relative;
     left: -8px;
     min-width: calc(100%);
+    text-decoration: none;
 
     &--hover,
     &:hover {

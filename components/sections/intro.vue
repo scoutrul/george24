@@ -3,7 +3,7 @@
     <Contacts is-black is-float />
     <NavMenu is-black is-float />
     <logo is-black class="intro__logo" @click="scrollTop" />
-    <div class="intro__slogan">plan, design, grow</div>
+    <div v-if="withSlogan" class="intro__slogan">plan, design, grow</div>
   </section>
 </template>
 
@@ -11,6 +11,10 @@
 import Logo from "../atoms/logo.vue";
 import Contacts from "../atoms/contacts.vue";
 import NavMenu from "../atoms/nav.vue";
+
+defineProps({
+  withSlogan: { type: Boolean, default: false },
+});
 
 const { y } = useWindowScroll({ behavior: "smooth" });
 

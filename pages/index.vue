@@ -1,11 +1,9 @@
 <template>
   <div class="page">
     <PosterSection class="section section--poster" />
-    <IntroSection class="section section--intro" />
+    <IntroSection class="section section--intro" with-slogan />
     <Section class="section section--present"> <PresentSection /></Section>
-    <Section class="section section--works">
-      <WorksSection :list="workList"
-    /></Section>
+    <Section class="section section--works"> <WorksSection /></Section>
     <Section class="section section--achieve"> <AchieveSection /></Section>
     <Section class="section section--reviews">
       <ReviewSection :list="reviewList"
@@ -48,39 +46,12 @@ const reviewList = [
     from: "CTO at Medaboutme",
   },
 ];
-const workList = [
-  {
-    header: "Athletic Greens",
-    text: "Original Foundational Nutrition drink to provide daily support where the body needs it most",
-  },
-  {
-    header: "Futurebox",
-    text: "Sell real estate under construction using AR/VR technologies",
-  },
-  {
-    header: "AdGuard DNS",
-    text: "DNS service to help people protect all web traffic on their devices from malicious content",
-  },
-  {
-    header: "Exynex",
-    text: "Discover what services track your data online",
-  },
-  {
-    header: "Superseed",
-    text: "Advanced cloud storage for geeks & gamers",
-  },
-  {
-    header: "VCards",
-    text: "Mobile wallet for managing your virtual cards",
-  },
-];
 </script>
 
 <style lang="scss">
 .page {
   display: flex;
   flex-direction: column;
-  background: $brown;
   position: relative;
 
   .section {
