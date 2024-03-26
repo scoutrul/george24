@@ -1,13 +1,7 @@
 <template>
   <section ref="reviewsContainer" class="reviews">
     <div class="reviews__header">What people say</div>
-    width {{ width }}, top {{ top }}
-    <ul
-      v-if="isListShow"
-      ref="listRef"
-      class="reviews__list"
-      :style="{ transform: `translateX(${-width + -width + top * 4}px)` }"
-    >
+    <ul v-if="isListShow" ref="listRef" class="reviews__list">
       <li v-for="(item, index) in list" :key="index" class="reviews__item">
         <div class="reviews__item-container">
           <div class="reviews__item-text">{{ item.text }}</div>
@@ -33,7 +27,6 @@ defineProps({
 const listRef = ref(null);
 const reviewsContainer = ref(null);
 
-const { top, width, bottom } = useElementBounding(listRef);
 const isListShow = useElementVisibility(reviewsContainer);
 </script>
 
@@ -51,6 +44,7 @@ const isListShow = useElementVisibility(reviewsContainer);
     padding: 0;
     gap: 24px;
     display: flex;
+    transition: 0.1s;
 
     @media (min-width: $bp-tablet) {
       gap: 32px;
@@ -62,18 +56,18 @@ const isListShow = useElementVisibility(reviewsContainer);
     align-self: end;
     border: 1px solid $grey;
     border-radius: 56px 56px 56px 0;
-    flex: 1 0 330px;
+    flex: 0 0 330px;
 
     @media (min-width: $bp-tablet) {
-      flex: 1 0 402px;
+      flex: 0 0 402px;
     }
 
     @media (min-width: $bp-desktop) {
-      flex: 1 0 418px;
+      flex: 0 0 418px;
     }
 
     @media (min-width: $bp-full) {
-      flex: 1 0 560px;
+      flex: 0 0 560px;
     }
   }
 
