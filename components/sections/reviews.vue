@@ -1,11 +1,12 @@
 <template>
-  <section class="reviews">
+  <section ref="reviewsContainer" class="reviews">
     <div class="reviews__header">What people say</div>
-
+    width {{ width }}, top {{ top }}
     <ul
+      v-if="isListShow"
       ref="listRef"
       class="reviews__list"
-      :style="{ transform: `translateX(${-800 + -width + top * 4}px)` }"
+      :style="{ transform: `translateX(${-width + -width + top * 4}px)` }"
     >
       <li v-for="(item, index) in list" :key="index" class="reviews__item">
         <div class="reviews__item-container">
@@ -30,8 +31,10 @@ defineProps({
 });
 
 const listRef = ref(null);
+const reviewsContainer = ref(null);
 
-const { top, width } = useElementBounding(listRef);
+const { top, width, bottom } = useElementBounding(listRef);
+const isListShow = useElementVisibility(reviewsContainer);
 </script>
 
 <style lang="scss" scoped>

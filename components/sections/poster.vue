@@ -1,5 +1,5 @@
 <template>
-  <section class="poster">
+  <section ref="poster" class="poster">
     <div class="logo-white"></div>
     <NavMenu />
     <Contacts />
@@ -16,7 +16,7 @@
       <img src="@/assets/bg_art_mobile.png" alt="" class="george-pic" />
     </picture>
 
-    <MarqueeText />
+    <MarqueeText v-if="targetIsVisible" />
   </section>
 </template>
 
@@ -24,6 +24,9 @@
 import MarqueeText from "../atoms/marquee.vue";
 import NavMenu from "../atoms/nav.vue";
 import Contacts from "../atoms/contacts.vue";
+
+const poster = ref(null);
+const targetIsVisible = useElementVisibility(poster);
 </script>
 
 <style lang="scss" scoped>
