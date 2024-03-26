@@ -43,7 +43,7 @@ defineProps({
   @media (min-width: $bp-tablet) {
     @include font28;
 
-    justify-content: end;
+    justify-content: flex-end;
   }
 
   &--float {

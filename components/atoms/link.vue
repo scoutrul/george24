@@ -67,7 +67,7 @@ const changeText = () => {
 };
 
 onMounted(() => {
-  initialWidth.value = element.value.offsetWidth + "px";
+  initialWidth.value = element.value.offsetWidth + 2 + "px";
 
   if (props.preStart) changeText();
 });
