@@ -12,34 +12,32 @@ const initialTitle = "plan, design, grow";
 title.value = initialTitle;
 
 const changeText = () => {
-  title.value = initialTitle;
-  const letters = "<";
-
   let interval = null;
-
   let iteration = 0;
 
   clearInterval(interval);
 
-  const changedText = title.value;
+  const changedText = initialTitle;
   interval = setInterval(() => {
     title.value = changedText
       .split("")
       .map((letter, index) => {
-        if (index < iteration) {
+        if (index <= iteration) {
           return changedText[index];
         }
 
-        return letters[Math.floor(Math.random() * letters.length)];
+        return " ";
       })
-      .join("");
+      .join("")
+      .concat(" |");
 
-    if (iteration >= changedText.length) {
+    if (iteration > changedText.length) {
+      title.value = initialTitle;
       clearInterval(interval);
     }
 
-    iteration += 1 / 9;
-  }, 8);
+    iteration += 1;
+  }, 120);
 };
 
 onMounted(() => {
