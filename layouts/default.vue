@@ -7,6 +7,8 @@
 <script setup>
 import { useTitle } from "@vueuse/core";
 
+const focused = useWindowFocus();
+
 const title = useTitle();
 const initialTitle = "plan, design, grow";
 title.value = initialTitle;
@@ -51,7 +53,11 @@ useSeoMeta({
 
 onMounted(() => {
   setInterval(() => {
-    changeText();
+    if (!focused.value) {
+      title.value = initialTitle;
+    } else {
+      changeText();
+    }
   }, 5000);
 });
 </script>
