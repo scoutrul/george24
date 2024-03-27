@@ -2,15 +2,18 @@
   <div class="works">
     <div class="works__header">Works</div>
     <ul class="works__list">
-      <li v-for="(item, index) in list" :key="index" class="works__item">
-        <Work :header="item.header" :text="item.text" :name="item.name" />
-      </li>
+      <template v-for="(item, index) in list">
+        <li v-if="isActiveWork(item)" :key="index" class="works__item">
+          <Work :header="item.header" :text="item.text" :name="item.name" />
+        </li>
+      </template>
     </ul>
   </div>
 </template>
 
 <script setup>
 import Work from "../atoms/work.vue";
+const route = useRoute();
 
 const list = [
   {
@@ -44,6 +47,8 @@ const list = [
     text: "Mobile wallet for managing your virtual cards",
   },
 ];
+
+const isActiveWork = computed(() => (item) => item.name !== route.params.name);
 </script>
 
 <style lang="scss" scoped>
