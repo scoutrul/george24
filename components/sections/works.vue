@@ -1,5 +1,5 @@
 <template>
-  <div class="works">
+  <div id="works" class="works">
     <div class="works__header">Works</div>
     <ul class="works__list">
       <template v-for="(item, index) in list">

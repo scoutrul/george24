@@ -22,10 +22,9 @@ const { y } = useWindowScroll({ behavior: "smooth" });
 const toWorks = () => {
   if (!window?.document) return;
 
-  const worksSection =
-    window.document.getElementsByClassName("section__works")[0];
+  const worksSection = window.document.getElementById("works");
 
-  y.value = worksSection.offsetTop;
+  y.value = worksSection.getBoundingClientRect().top + window.scrollY;
 };
 </script>
 
