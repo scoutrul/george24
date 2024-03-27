@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <PosterSection class="section section--poster" />
-    <IntroSection class="section section--intro" with-slogan />
+    <IntroSection class="section section--intro" />
     <Section class="section section--present"> <PresentSection /></Section>
     <Section class="section section--works"> <WorksSection /></Section>
     <Section class="section section--achieve"> <AchieveSection /></Section>
