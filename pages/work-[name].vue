@@ -1,14 +1,14 @@
 <template>
   <div class="work">
     <IntroSection />
-    <Section> <PresentSection /></Section>
+    <Section> <WorkSection /></Section>
     <Section> <WorksSection /></Section>
   </div>
 </template>
 
 <script setup>
 import IntroSection from "../components/sections/intro.vue";
-import PresentSection from "../components/sections/present.vue";
+import WorkSection from "../components/sections/work.vue";
 import Section from "../components/atoms/section.vue";
 import WorksSection from "../components/sections/works.vue";
 </script>
