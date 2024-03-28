@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     ref="itemElement"
-    :to="name"
+    :to="'/work-' + name"
     class="work__container"
     :class="{ 'work__container--hover': isActive }"
   >

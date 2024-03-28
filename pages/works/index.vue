@@ -6,9 +6,9 @@
 </template>
 
 <script setup>
-import IntroSection from "../components/sections/intro.vue";
-import Section from "../components/atoms/section.vue";
-import WorksSection from "../components/sections/works.vue";
+import IntroSection from "../../components/sections/intro.vue";
+import Section from "../../components/atoms/section.vue";
+import WorksSection from "../../components/sections/works.vue";
 </script>
 
 <style lang="scss">

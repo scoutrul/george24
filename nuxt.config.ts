@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   ],
   app: {
     baseURL: "/george24/",
-    buildAssetsDir: "assets",
+    buildAssetsDir: "/assets/",
   },
   vite: {
     css: {
