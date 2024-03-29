@@ -1,0 +1,1 @@
+import{S as o,I as e,W as s}from"./works.Dh-Chhp8.js";import{c as r,b as t,w as a,o as c}from"./entry.B4CjBcfS.js";import"./interval.CzD7xQk-.js";import"./nuxt-link.CTrlCuq8.js";const n={class:"works"},f={__name:"index",setup(i){return(_,m)=>(c(),r("div",n,[t(e),t(o,null,{default:a(()=>[t(s)]),_:1})]))}};export{f as default};
