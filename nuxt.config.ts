@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     "nuxt-marquee",
     "nuxt-delay-hydration",
     "@vueuse/nuxt",
+    "nuxt-contextual-transition",
   ],
   app: {
     baseURL: "/george24/",

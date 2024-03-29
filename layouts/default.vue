@@ -1,12 +1,14 @@
 <template>
-  <div class="layout">
-    <slot />
+  <div class="contextual-transition-container">
+    <NuxtPage class="layout" :transition="contextualTransition">
+      <slot />
+    </NuxtPage>
   </div>
 </template>
 
 <script setup>
 import { useTitle } from "@vueuse/core";
-
+const contextualTransition = useContextualTransition();
 const focused = useWindowFocus();
 
 const title = useTitle();
