@@ -1,6 +1,6 @@
 <template>
   <div class="work">
-    <IntroSection />
+    <IntroSection class="work__intro" />
     <Section> <WorkSection /></Section>
     <Section> <WorksSection /></Section>
   </div>
@@ -18,5 +18,13 @@ import WorksSection from "../components/sections/works.vue";
   display: flex;
   flex-direction: column;
   position: relative;
+
+  &__intro {
+    margin-bottom: 32px;
+
+    @media (min-width: $bp-tablet) {
+      margin-bottom: 0;
+    }
+  }
 }
 </style>
