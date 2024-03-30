@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "nuxt-contextual-transition",
     "@nuxt/content",
   ],
+
   app: {
     baseURL: "/george24/",
     buildAssetsDir: "/assets/",

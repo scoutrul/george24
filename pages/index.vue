@@ -3,9 +3,13 @@
     <PosterSection class="section section--poster" />
     <IntroSection class="section section--intro" />
     <Section class="section section--present"> <PresentSection /></Section>
-    <Section class="section section--works"> <WorksSection /></Section>
+    <Section class="section section--works">
+      <WorksSection :list="worksData"
+    /></Section>
     <Section class="section section--achieve"> <AchieveSection /></Section>
-    <Section class="section section--reviews"> <ReviewSection /></Section>
+    <Section class="section section--reviews">
+      <ReviewSection :list="reviewsData"
+    /></Section>
     <Section class="section"> <StackSection /></Section>
     <Section class="section section--footer"> <FooterSection /></Section>
   </div>
@@ -21,6 +25,18 @@ import AchieveSection from "../components/sections/achieves.vue";
 import ReviewSection from "../components/sections/reviews.vue";
 import StackSection from "../components/sections/stack.vue";
 import FooterSection from "../components/sections/footer.vue";
+
+const {
+  data: {
+    value: { body: worksData },
+  },
+} = await useAsyncData("works", () => queryContent("/works").findOne());
+
+const {
+  data: {
+    value: { body: reviewsData },
+  },
+} = await useAsyncData("reviews", () => queryContent("/reviews").findOne());
 </script>
 
 <style lang="scss">

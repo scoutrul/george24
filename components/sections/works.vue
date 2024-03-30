@@ -2,7 +2,7 @@
   <div id="works" class="works">
     <div class="works__header">Works</div>
     <ul class="works__list">
-      <template v-for="(item, index) in data.body">
+      <template v-for="(item, index) in list">
         <li v-if="isActiveWork(item)" :key="index" class="works__item">
           <Work :header="item.header" :text="item.text" :name="item.name" />
         </li>
@@ -13,11 +13,12 @@
 
 <script setup>
 import Work from "../atoms/work.vue";
-const route = useRoute();
 
-const { data } = await useAsyncData("works", () =>
-  queryContent("/works").findOne(),
-);
+defineProps({
+  list: Array,
+});
+
+const route = useRoute();
 
 const isActiveWork = computed(() => (item) => item.name !== route.params.name);
 </script>

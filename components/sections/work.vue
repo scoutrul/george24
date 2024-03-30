@@ -68,11 +68,19 @@
           <div class="work__info-block-title">Platform</div>
           <div class="work__info-block-description">Web, iOS</div>
         </div>
-        <div class="work__next">next work</div>
+        <NuxtLink class="work__next" :to="'work-' + next"
+          >next work {{ next }}</NuxtLink
+        >
       </div>
     </div>
   </div>
 </template>
+
+<script setup>
+defineProps({
+  next: String,
+});
+</script>
 
 <style lang="scss" scoped>
 .work {
