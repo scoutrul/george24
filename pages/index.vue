@@ -5,9 +5,7 @@
     <Section class="section section--present"> <PresentSection /></Section>
     <Section class="section section--works"> <WorksSection /></Section>
     <Section class="section section--achieve"> <AchieveSection /></Section>
-    <Section class="section section--reviews">
-      <ReviewSection :list="reviewList"
-    /></Section>
+    <Section class="section section--reviews"> <ReviewSection /></Section>
     <Section class="section"> <StackSection /></Section>
     <Section class="section section--footer"> <FooterSection /></Section>
   </div>
@@ -23,29 +21,6 @@ import AchieveSection from "../components/sections/achieves.vue";
 import ReviewSection from "../components/sections/reviews.vue";
 import StackSection from "../components/sections/stack.vue";
 import FooterSection from "../components/sections/footer.vue";
-
-const reviewList = [
-  {
-    text: "We’ve got a really amazing design system.",
-    name: "Nick Boes",
-    from: "Head of design at Athletic Greens",
-  },
-  {
-    text: "We have reached a new level in how quickly we can launch new products.",
-    name: "Igor Lukyanov",
-    from: "Managing partner at AdGuard",
-  },
-  {
-    text: "One of the best designers I’ve ever worked with.",
-    name: "Mohammed Gafarov",
-    from: "CEO at Celestial Group",
-  },
-  {
-    text: "Just a brilliant work.",
-    name: "Kirill Maimistov",
-    from: "CTO at Medaboutme",
-  },
-];
 </script>
 
 <style lang="scss">

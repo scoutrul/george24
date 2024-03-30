@@ -2,7 +2,7 @@
   <section ref="reviewsContainer" class="reviews">
     <div class="reviews__header">What people say</div>
     <ul v-if="isListShow" ref="listRef" class="reviews__list">
-      <li v-for="(item, index) in list" :key="index" class="reviews__item">
+      <li v-for="(item, index) in data.body" :key="index" class="reviews__item">
         <div class="reviews__item-container">
           <div class="reviews__item-text">{{ item.text }}</div>
           <div class="reviews__item-author">
@@ -20,14 +20,14 @@
 </template>
 
 <script setup>
-defineProps({
-  list: { type: Array, default: () => [] },
-});
-
 const listRef = ref(null);
 const reviewsContainer = ref(null);
 
 const isListShow = useElementVisibility(reviewsContainer);
+
+const { data } = await useAsyncData("reviews", () =>
+  queryContent("/reviews").findOne(),
+);
 </script>
 
 <style lang="scss" scoped>

@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "nuxt-delay-hydration",
     "@vueuse/nuxt",
     "nuxt-contextual-transition",
+    "@nuxt/content",
   ],
   app: {
     baseURL: "/george24/",

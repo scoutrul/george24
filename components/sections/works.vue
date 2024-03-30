@@ -2,7 +2,7 @@
   <div id="works" class="works">
     <div class="works__header">Works</div>
     <ul class="works__list">
-      <template v-for="(item, index) in list">
+      <template v-for="(item, index) in data.body">
         <li v-if="isActiveWork(item)" :key="index" class="works__item">
           <Work :header="item.header" :text="item.text" :name="item.name" />
         </li>
@@ -15,38 +15,9 @@
 import Work from "../atoms/work.vue";
 const route = useRoute();
 
-const list = [
-  {
-    header: "Athletic Greens",
-    name: "athletic",
-    text: "Original Foundational Nutrition drink to provide daily support where the body needs it most",
-  },
-  {
-    header: "Futurebox",
-    name: "futurebox",
-    text: "Sell real estate under construction using AR/VR technologies",
-  },
-  {
-    header: "AdGuard DNS",
-    name: "adgourd",
-    text: "DNS service to help people protect all web traffic on their devices from malicious content",
-  },
-  {
-    header: "Exynex",
-    name: "exynex",
-    text: "Discover what services track your data online",
-  },
-  {
-    header: "Superseed",
-    name: "superseed",
-    text: "Advanced cloud storage for geeks & gamers",
-  },
-  {
-    header: "VCards",
-    name: "vcards",
-    text: "Mobile wallet for managing your virtual cards",
-  },
-];
+const { data } = await useAsyncData("works", () =>
+  queryContent("/works").findOne(),
+);
 
 const isActiveWork = computed(() => (item) => item.name !== route.params.name);
 </script>
