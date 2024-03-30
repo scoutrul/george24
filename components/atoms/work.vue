@@ -20,7 +20,9 @@
             : elementX + 'px',
         top: elementY + 'px',
       }"
-    ></div>
+    >
+      <img :src="getPreviewImage" class="work__pop-img" />
+    </div>
   </NuxtLink>
 </template>
 
@@ -29,10 +31,11 @@ import Link from "../atoms/link.vue";
 
 import { useMouseInElement } from "@vueuse/core";
 
-defineProps({
+const props = defineProps({
   text: { type: String, default: "" },
   header: { type: String, default: "" },
   name: { type: String, default: "" },
+  preview: { type: String, default: "" },
 });
 
 const isActive = ref(false);
@@ -41,6 +44,10 @@ const itemElement = ref();
 
 const { elementX, elementY, isOutside, sourceType, elementWidth } =
   useMouseInElement(itemElement);
+
+const getPreviewImage = computed(() => {
+  return "/previews/" + props.preview;
+});
 
 watch(isOutside, (value) => {
   isActive.value = !value;
@@ -59,7 +66,6 @@ watch(sourceType, (value, old) => {
     position: absolute;
     width: 200px;
     height: 434px;
-    background: #000;
     border-radius: 20px;
     z-index: 10000;
     display: none;
@@ -68,6 +74,10 @@ watch(sourceType, (value, old) => {
     @media (min-width: $bp-tablet) {
       display: flex;
     }
+  }
+
+  &__pop-img {
+    border-radius: 20px;
   }
 
   &__container {

@@ -38,7 +38,7 @@ const nextWork = computed(() => {
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-bottom: 128px;
+  padding-bottom: 296px;
 
   &__intro {
     margin-bottom: 32px;

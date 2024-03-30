@@ -3,32 +3,38 @@
     {
       "header": "Athletic Greens",
       "name": "athletic",
-      "text": "Original Foundational Nutrition drink to provide daily support where the body needs it most"
+      "text": "Original Foundational Nutrition drink to provide daily support where the body needs it most",
+      "preview": "athletic.png"
     },
     {
       "header": "Futurebox",
       "name": "futurebox",
-      "text": "Sell real estate under construction using AR/VR technologies"
+      "text": "Sell real estate under construction using AR/VR technologies",
+      "preview": "futurebox.png"
     },
     {
       "header": "AdGuard DNS",
       "name": "adgourd",
-      "text": "DNS service to help people protect all web traffic on their devices from malicious content"
+      "text": "DNS service to help people protect all web traffic on their devices from malicious content",
+      "preview": "adgourd.png"
     },
     {
       "header": "Exynex",
       "name": "exynex",
-      "text": "Discover what services track your data online"
+      "text": "Discover what services track your data online",
+      "preview": "exynex.png"
     },
     {
       "header": "Superseed",
       "name": "superseed",
-      "text": "Advanced cloud storage for geeks & gamers"
+      "text": "Advanced cloud storage for geeks & gamers",
+      "preview": "superseed.png"
     },
     {
       "header": "VCards",
       "name": "vcards",
-      "text": "Mobile wallet for managing your virtual cards"
+      "text": "Mobile wallet for managing your virtual cards",
+      "preview": "vcards.png"
     }
   ]
 }

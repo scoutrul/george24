@@ -4,7 +4,12 @@
     <ul class="works__list">
       <template v-for="(item, index) in list">
         <li v-if="isActiveWork(item)" :key="index" class="works__item">
-          <Work :header="item.header" :text="item.text" :name="item.name" />
+          <Work
+            :header="item.header"
+            :text="item.text"
+            :name="item.name"
+            :preview="item.preview"
+          />
         </li>
       </template>
     </ul>
