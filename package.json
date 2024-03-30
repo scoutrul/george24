@@ -11,7 +11,7 @@
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -t true"
   },
   "dependencies": {
     "@nuxt/eslint-config": "^0.2.0",

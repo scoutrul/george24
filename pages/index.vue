@@ -57,6 +57,7 @@ const reviewList = [
   .section {
     z-index: 11;
     position: relative;
+    @include page-home-padding;
 
     &--poster {
       z-index: 20;

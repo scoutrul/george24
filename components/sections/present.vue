@@ -57,7 +57,7 @@
     left: -16px;
 
     @media (min-width: $bp-tablet) {
-      @include outline-horizontal-padding;
+      @include outline-horizontal-offset;
       min-width: 1px;
       height: 80vh;
       min-height: 600px;

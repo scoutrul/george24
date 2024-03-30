@@ -18,6 +18,7 @@ import WorksSection from "../components/sections/works.vue";
   display: flex;
   flex-direction: column;
   position: relative;
+  padding-bottom: 128px;
 
   &__intro {
     margin-bottom: 32px;

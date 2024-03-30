@@ -29,7 +29,7 @@
           several options in search of the most obvious way to interact with the
           blocks.
         </div>
-        <div class="work__picture"></div>
+        <div class="work__section-picture"></div>
       </div>
       <div class="work__section">
         <div class="work__section-title">User interface</div>
@@ -39,7 +39,7 @@
           original game. As a solution, we added the rules of the game as a
           separate step of onboarding.
         </div>
-        <div class="work__picture"></div>
+        <div class="work__section-picture"></div>
       </div>
       <div class="work__section">
         <div class="work__section-title">Impact</div>
@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="work__info">
-      <div class="work__sticky">
+      <div class="work__info-sticky">
         <div class="work__info-title">
           Athletic Greens is nutrition drink to provide daily support for body
         </div>
@@ -77,46 +77,45 @@
 <style lang="scss" scoped>
 .work {
   --sticky-width: 512px;
+  --sticky-padding: 40px;
 
   @media (min-width: $bp-full) {
     --sticky-width: 530px;
   }
+
   display: flex;
   flex-direction: column;
   color: $green-black;
 
-  &__sticky {
-    position: sticky;
-    top: 40px;
-  }
-
   &__content {
     color: $green-black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
 
-    @media (min-width: $bp-tablet) {
-      border-right: 1px solid $grey;
-      width: calc(100% - var(--sticky-width));
+    @media (min-width: $bp-desktop) {
+      width: calc(100% - var(--sticky-width) - var(--sticky-padding) - 130px);
     }
   }
 
   &__content-title {
     @include font40-64;
-    margin-top: 80px;
+    margin-top: 64px;
     margin-bottom: 64px;
   }
 
   &__content-info {
     @include font28-40;
+    margin-top: auto;
   }
 
   &__sections {
-    border-top: 1px solid $grey;
     order: 3;
 
-    @media (min-width: $bp-tablet) {
+    @media (min-width: $bp-desktop) {
+      width: calc(100% - var(--sticky-width) - var(--sticky-padding) - 130px);
       border-top: 0 solid $grey;
-      width: calc(100% - var(--sticky-width));
-      border-right: 1px solid #829192;
     }
   }
 
@@ -125,6 +124,7 @@
   }
 
   &__section-title {
+    margin-bottom: 64px;
     @include font28-40;
   }
 
@@ -132,27 +132,72 @@
     @include font18-28;
   }
 
+  &__section-picture {
+    @media (max-width: $bp-desktop) {
+      @include outline-horizontal-offset;
+      width: calc(100vw - 15px);
+    }
+
+    height: 100vh;
+    min-height: 600px;
+    background: $green-black;
+    margin: 128px auto;
+    position: relative;
+
+    @media (min-width: $bp-desktop) {
+      width: calc(100% + 64px + 112px);
+      left: -64px;
+    }
+  }
+
   &__info {
     width: 100%;
     position: relative;
     order: 2;
+    border-top: 1px solid $grey;
+    padding-top: 64px;
+    display: flex;
+    flex-direction: column;
 
-    @media (min-width: $bp-tablet) {
+    @media (min-width: $bp-desktop) {
+      min-height: calc(100vh - 128px);
+      border: none;
       width: 530px;
       position: absolute;
       right: 0;
       height: 100%;
+      border-left: 1px solid $grey;
+      padding-left: var(--sticky-padding);
+    }
+  }
+
+  &__info-sticky {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $bp-desktop) {
+      height: calc(100vh - 128px);
     }
   }
 
   &__info-title {
     @include font28;
     color: $green-black;
+    margin-bottom: 64px;
+    display: none;
+
+    @media (min-width: $bp-desktop) {
+      display: flex;
+    }
   }
 
   &__info-block {
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    margin-bottom: 32px;
     @include font18;
   }
 
@@ -167,6 +212,13 @@
   &__next {
     color: $green-black;
     @include font28;
+    display: none;
+
+    @media (min-width: $bp-desktop) {
+      margin-top: auto;
+      margin-bottom: 120px;
+      display: flex;
+    }
   }
 }
 </style>

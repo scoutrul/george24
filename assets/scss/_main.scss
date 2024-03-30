@@ -88,7 +88,7 @@ $bp-full: 1920px;
     }
 }
 
-@mixin outline-horizontal-padding {
+@mixin outline-horizontal-offset {
     right: -$padding-min;
     left: -$padding-min;
 
@@ -147,7 +147,7 @@ $bp-full: 1920px;
     }
 }
 
-@mixin page-padding {
+@mixin page-home-padding {
     padding: $padding-min;
 
     @media (min-width: $bp-tablet) {
@@ -160,6 +160,22 @@ $bp-full: 1920px;
 
     @media (min-width: $bp-full) {
         padding: 11% $padding-desktop;
+    }
+}
+
+@mixin page-padding {
+    padding: $padding-min;
+
+    @media (min-width: $bp-tablet) {
+        padding: $padding-mobile;
+    }
+
+    @media (min-width: $bp-desktop) {
+        padding: $padding-tablet;
+    }
+
+    @media (min-width: $bp-full) {
+        padding: $padding-desktop;
     }
 }
 
