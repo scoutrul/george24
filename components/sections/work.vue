@@ -69,14 +69,16 @@
           <div class="work__info-block-description">Web, iOS</div>
         </div>
         <NuxtLink class="work__next" :to="'work-' + next"
-          >next work {{ next }}</NuxtLink
-        >
+          ><Link text="next&nbsp;work"
+        /></NuxtLink>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import Link from "../atoms/link.vue";
+
 defineProps({
   next: String,
 });
@@ -218,9 +220,10 @@ defineProps({
   }
 
   &__next {
-    color: $green-black;
     @include font28;
+    color: $green-black;
     display: none;
+    text-decoration: none;
 
     @media (min-width: $bp-desktop) {
       margin-top: auto;

@@ -1,32 +1,34 @@
-[
 {
-  "header": "Athletic Greens",
-  "name": "athletic",
-  "text": "Original Foundational Nutrition drink to provide daily support where the body needs it most"
-},
-{
-  "header": "Futurebox",
-  "name": "futurebox",
-  "text": "Sell real estate under construction using AR/VR technologies"
-},
-{
-  "header": "AdGuard DNS",
-  "name": "adgourd",
-  "text": "DNS service to help people protect all web traffic on their devices from malicious content"
-},
-{
-  "header": "Exynex",
-  "name": "exynex",
-  "text": "Discover what services track your data online"
-},
-{
-  "header": "Superseed",
-  "name": "superseed",
-  "text": "Advanced cloud storage for geeks & gamers"
-},
-{
-  "header": "VCards",
-  "name": "vcards",
-  "text": "Mobile wallet for managing your virtual cards"
+  "body": [
+    {
+      "header": "Athletic Greens",
+      "name": "athletic",
+      "text": "Original Foundational Nutrition drink to provide daily support where the body needs it most"
+    },
+    {
+      "header": "Futurebox",
+      "name": "futurebox",
+      "text": "Sell real estate under construction using AR/VR technologies"
+    },
+    {
+      "header": "AdGuard DNS",
+      "name": "adgourd",
+      "text": "DNS service to help people protect all web traffic on their devices from malicious content"
+    },
+    {
+      "header": "Exynex",
+      "name": "exynex",
+      "text": "Discover what services track your data online"
+    },
+    {
+      "header": "Superseed",
+      "name": "superseed",
+      "text": "Advanced cloud storage for geeks & gamers"
+    },
+    {
+      "header": "VCards",
+      "name": "vcards",
+      "text": "Mobile wallet for managing your virtual cards"
+    }
+  ]
 }
-]

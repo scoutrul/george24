@@ -1,7 +1,7 @@
 <template>
   <div class="work">
     <IntroSection class="work__intro" />
-    <Section> <WorkSection :next="nextWork()" /></Section>
+    <Section> <WorkSection :next="nextWork" /></Section>
     <Section> <WorksSection :list="worksData" /></Section>
   </div>
 </template>
@@ -20,16 +20,17 @@ const {
 
 const route = useRoute();
 
-const nextWork = () => {
-  let currentIndex = worksData.findIndex(
-    (item) => item.name === route.params.name,
-  );
+const nextWork = computed(() => {
+  let currentIndex = worksData.findIndex((item) => {
+    return item.name === route.params.name;
+  });
+
   currentIndex += 1;
 
-  if (currentIndex > worksData.length) currentIndex = 0;
+  if (currentIndex >= worksData.length) currentIndex = 0;
 
   return worksData[currentIndex].name;
-};
+});
 </script>
 
 <style lang="scss">
