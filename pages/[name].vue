@@ -31,9 +31,9 @@ const {
 } = await useAsyncData("projects", () => queryContent("/projects").findOne());
 
 const nextWork = computed(() => {
-  let currentIndex = worksData.findIndex((item) => {
-    return item.name === route.params.name;
-  });
+  let currentIndex = worksData.findIndex(
+    (item) => item.name === route.params.name,
+  );
 
   currentIndex += 1;
 
@@ -42,10 +42,9 @@ const nextWork = computed(() => {
   return worksData[currentIndex].name;
 });
 
-const findCurrentProject = computed(() => {
-  return projectsData.find((item) => item.name === route.params.name);
-});
-console.log(findCurrentProject);
+const findCurrentProject = computed(() =>
+  projectsData.find((item) => item.name === route.params.name),
+);
 </script>
 
 <style lang="scss">

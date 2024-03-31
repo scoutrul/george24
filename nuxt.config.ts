@@ -9,6 +9,9 @@ export default defineNuxtConfig({
     "@nuxt/content",
   ],
   app: {
+    head: {
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.ico" }],
+    },
     baseURL: "/george24/",
     buildAssetsDir: "/assets/",
   },

@@ -12,13 +12,11 @@
     <div class="work__text">{{ text }}</div>
     <div
       v-if="isActive"
+      ref="popupElement"
       class="work__pop"
       :style="{
-        left:
-          elementX > elementWidth - 200
-            ? elementX - 200 + 'px'
-            : elementX + 'px',
-        top: elementY + 'px',
+        left: popLeft,
+        top: popTop,
       }"
     >
       <img :src="getPreviewImage" class="work__pop-img" />
@@ -41,12 +39,40 @@ const props = defineProps({
 const isActive = ref(false);
 
 const itemElement = ref();
+const popupElement = ref();
 
-const { elementX, elementY, isOutside, sourceType, elementWidth } =
-  useMouseInElement(itemElement);
+const {
+  elementX,
+  elementY,
+  isOutside,
+  sourceType,
+  elementWidth,
+  elementPositionY,
+} = useMouseInElement(itemElement);
 
-const getPreviewImage = computed(() => {
-  return "/george24/previews/" + props.preview;
+const { elementHeight: popupHeight, elementWidth: popupWidth } =
+  useMouseInElement(popupElement);
+
+const { y } = useWindowScroll();
+
+const getPreviewImage = computed(() => "/george24/previews/" + props.preview);
+
+const popLeft = computed(() => {
+  return elementX.value > elementWidth.value - popupWidth.value
+    ? elementX.value - popupWidth.value + "px"
+    : elementX.value + "px";
+});
+
+const popTop = computed(() => {
+  console.log(popupHeight.value, "popupHeight");
+  console.log(popupWidth.value, "popupWidth");
+
+  return elementPositionY.value -
+    window.screen.availHeight / 2 +
+    popupHeight.value / 2 >
+    y.value
+    ? elementY.value - popupHeight.value + "px"
+    : elementY.value + "px";
 });
 
 watch(isOutside, (value) => {

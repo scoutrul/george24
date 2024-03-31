@@ -54,9 +54,7 @@ defineProps({
   data: Object,
 });
 
-const getPreviewImage = computed(() => (src) => {
-  return "/george24/projects/" + src;
-});
+const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
 </script>
 
 <style lang="scss" scoped>
