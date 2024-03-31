@@ -50,7 +50,7 @@ useSeoMeta({
     "My name is George, and for 10 years now I have been making a user-centered and data-driven design that helped tens of industry leaders and startups to reach new heights.",
   ogDescription:
     "My name is George, and for 10 years now I have been making a user-centered and data-driven design that helped tens of industry leaders and startups to reach new heights.",
-  ogImage: "/assets/bg_art_portrait.png",
+  ogImage: "/cover.png",
 });
 
 onMounted(() => {

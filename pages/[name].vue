@@ -2,9 +2,11 @@
   <div class="work">
     <IntroSection class="work__intro" />
     <Section>
-      <WorkSection :next="nextWork" :content="findCurrentProject"
-    /></Section>
-    <Section> <WorksSection :list="worksData" /></Section>
+      <WorkSection :next="nextWork" :data="findCurrentProject" />
+    </Section>
+    <Section>
+      <WorksSection :list="worksData" />
+    </Section>
   </div>
 </template>
 
