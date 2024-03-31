@@ -1,7 +1,9 @@
 <template>
   <div class="work">
     <IntroSection class="work__intro" />
-    <Section> <WorkSection :next="nextWork" /></Section>
+    <Section>
+      <WorkSection :next="nextWork" :content="findCurrentProject"
+    /></Section>
     <Section> <WorksSection :list="worksData" /></Section>
   </div>
 </template>
@@ -12,13 +14,19 @@ import WorkSection from "../components/sections/work.vue";
 import Section from "../components/atoms/section.vue";
 import WorksSection from "../components/sections/works.vue";
 
+const route = useRoute();
+
 const {
   data: {
     value: { body: worksData },
   },
 } = await useAsyncData("works", () => queryContent("/works").findOne());
 
-const route = useRoute();
+const {
+  data: {
+    value: { body: projectsData },
+  },
+} = await useAsyncData("projects", () => queryContent("/projects").findOne());
 
 const nextWork = computed(() => {
   let currentIndex = worksData.findIndex((item) => {
@@ -31,6 +39,11 @@ const nextWork = computed(() => {
 
   return worksData[currentIndex].name;
 });
+
+const findCurrentProject = computed(() => {
+  return projectsData.find((item) => item.name === route.params.name);
+});
+console.log(findCurrentProject);
 </script>
 
 <style lang="scss">

@@ -1,6 +1,7 @@
 <template>
   <div class="work">
     <div class="work__content">
+      {{ content }}
       <div class="work__content-title">
         Athletic Greens is Original Foundational Nutrition drink to provide
         daily support where the body needs it most.
@@ -81,6 +82,7 @@ import Link from "../atoms/link.vue";
 
 defineProps({
   next: String,
+  content: Object,
 });
 </script>
 
