@@ -3,7 +3,7 @@
     <div class="works__header">Works</div>
     <ul class="works__list">
       <template v-for="(item, index) in list">
-        <li v-if="isActiveWork(item)" :key="index" class="works__item">
+        <li v-if="!isActiveWork(item)" :key="index" class="works__item">
           <Work
             :header="item.header"
             :text="item.text"
@@ -25,7 +25,7 @@ defineProps({
 
 const route = useRoute();
 
-const isActiveWork = computed(() => (item) => item.name !== route.params.name);
+const isActiveWork = computed(() => (item) => item.name === route.params.name);
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     ref="itemElement"
-    :to="'/work-' + name"
+    :to="name"
     class="work__container"
     :class="{ 'work__container--hover': isActive }"
   >
@@ -46,7 +46,7 @@ const { elementX, elementY, isOutside, sourceType, elementWidth } =
   useMouseInElement(itemElement);
 
 const getPreviewImage = computed(() => {
-  return "/previews/" + props.preview;
+  return "/george24/previews/" + props.preview;
 });
 
 watch(isOutside, (value) => {
@@ -70,6 +70,8 @@ watch(sourceType, (value, old) => {
     z-index: 10000;
     display: none;
     transform: translateY(8px);
+    background: $grey;
+    box-shadow: 0 20px 40px 0 #00000033;
 
     @media (min-width: $bp-tablet) {
       display: flex;
