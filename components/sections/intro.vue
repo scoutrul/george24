@@ -28,7 +28,6 @@ const logoClick = () => {
 
 <style lang="scss" scoped>
 .intro {
-  position: relative;
   min-height: 96px;
 
   @media (min-width: $bp-tablet) {

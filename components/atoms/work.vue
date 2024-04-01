@@ -64,9 +64,6 @@ const popLeft = computed(() => {
 });
 
 const popTop = computed(() => {
-  console.log(popupHeight.value, "popupHeight");
-  console.log(popupWidth.value, "popupWidth");
-
   return elementPositionY.value -
     window.screen.availHeight / 2 +
     popupHeight.value / 2 >
@@ -116,11 +113,11 @@ watch(sourceType, (value, old) => {
     left: -8px;
     min-width: calc(100%);
     text-decoration: none;
+    transition: 0.3s;
 
     &--hover,
     &:hover {
       cursor: pointer;
-
       background: $brown-dark;
       border-radius: 8px;
 

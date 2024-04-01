@@ -1,7 +1,7 @@
 <template>
   <div class="work">
     <IntroSection class="work__intro" />
-    <Section>
+    <Section class="work__work">
       <WorkSection :next="nextWork" :data="findCurrentProject" />
     </Section>
     <Section>
@@ -52,12 +52,16 @@ const findCurrentProject = computed(() =>
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-bottom: 296px;
+
+  &__work {
+    padding-top: 0;
+  }
 
   &__intro {
     margin-bottom: 32px;
 
     @media (min-width: $bp-tablet) {
+      position: absolute;
       margin-bottom: 0;
     }
   }

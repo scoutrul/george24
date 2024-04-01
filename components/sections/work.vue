@@ -72,20 +72,24 @@ const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
 
   &__content {
     color: $green-black;
-    min-height: calc(100vh - 34px);
+    min-height: calc(100vh - 215px);
     display: flex;
     flex-direction: column;
     margin-bottom: 80px;
 
     @media (min-width: $bp-desktop) {
+      min-height: calc(100vh - 230px);
       width: calc(100% - var(--sticky-width) - var(--sticky-padding) - 130px);
     }
   }
 
   &__content-title {
     @include font40-64;
-    margin-top: 64px;
     margin-bottom: 64px;
+
+    @media (min-width: $bp-tablet) {
+      padding-top: 128px;
+    }
   }
 
   &__content-info {
@@ -147,13 +151,14 @@ const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
     @media (min-width: $bp-desktop) {
       min-height: calc(100vh - 128px);
       border: none;
-      width: 530px;
+      width: 420px;
       box-sizing: border-box;
       position: absolute;
       right: 0;
       height: 100%;
       border-left: 1px solid $grey;
       padding-left: var(--sticky-padding);
+      padding-top: 128px;
     }
   }
 
