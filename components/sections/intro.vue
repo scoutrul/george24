@@ -1,6 +1,6 @@
 <template>
   <section class="intro">
-    <Contacts is-black is-float />
+    <Contacts v-if="isContactShow" is-black is-float />
     <NavMenu is-black is-float />
     <logo is-black class="intro__logo" @click="logoClick" />
     <div class="intro__slogan">plan, design, grow</div>
@@ -24,6 +24,8 @@ const logoClick = () => {
     router.push({ name: "index" });
   }
 };
+
+const isContactShow = computed(() => route.name === "index");
 </script>
 
 <style lang="scss" scoped>
