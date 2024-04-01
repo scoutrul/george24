@@ -38,7 +38,7 @@
           <div class="work__info-block-description">{{ item.description }}</div>
         </div>
 
-        <NuxtLink class="work__next" :to="next">
+        <NuxtLink class="work__next" :to="next" noPrefetch>
           <Link text="next&nbsp;work" />
         </NuxtLink>
       </div>
@@ -59,8 +59,7 @@ const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
 
 <style lang="scss" scoped>
 .work {
-  --sticky-width: 512px;
-  --sticky-padding: 40px;
+  --sticky-width: 420px;
 
   @media (min-width: $bp-full) {
     --sticky-width: 530px;
@@ -79,7 +78,7 @@ const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
 
     @media (min-width: $bp-desktop) {
       min-height: calc(100vh - 230px);
-      width: calc(100% - var(--sticky-width) - var(--sticky-padding) - 130px);
+      width: calc(100% - var(--sticky-width) - 130px);
     }
   }
 
@@ -101,7 +100,7 @@ const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
     order: 3;
 
     @media (min-width: $bp-desktop) {
-      width: calc(100% - var(--sticky-width) - var(--sticky-padding) - 130px);
+      width: calc(100% - var(--sticky-width) - 130px);
       border-top: 0 solid $grey;
     }
   }
@@ -151,13 +150,13 @@ const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
     @media (min-width: $bp-desktop) {
       min-height: calc(100vh - 128px);
       border: none;
-      width: 420px;
+      width: var(--sticky-width);
       box-sizing: border-box;
       position: absolute;
       right: 0;
       height: 100%;
       border-left: 1px solid $grey;
-      padding-left: var(--sticky-padding);
+      padding-left: 40px;
       padding-top: 128px;
     }
   }

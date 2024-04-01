@@ -1,6 +1,7 @@
 <template>
   <NuxtLink
     ref="itemElement"
+    no-prefetch
     :to="name"
     class="work__container"
     :class="{ 'work__container--hover': isActive }"
