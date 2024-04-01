@@ -72,7 +72,7 @@ const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
 
   &__content {
     color: $green-black;
-    min-height: 100vh;
+    min-height: calc(100vh - 34px);
     display: flex;
     flex-direction: column;
     margin-bottom: 80px;
@@ -148,6 +148,7 @@ const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
       min-height: calc(100vh - 128px);
       border: none;
       width: 530px;
+      box-sizing: border-box;
       position: absolute;
       right: 0;
       height: 100%;
@@ -202,7 +203,7 @@ const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
 
     @media (min-width: $bp-desktop) {
       margin-top: auto;
-      margin-bottom: 120px;
+      margin-bottom: 60px;
       display: flex;
     }
   }
