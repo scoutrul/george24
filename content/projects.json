@@ -32,23 +32,23 @@
             {
               "title": "Solution",
               "description": "<p>The first stream of work was devoted to building a systematic work with the brand and design systems. So, a flexible design system was built that incorporated dozens of approaches and patterns and more than 170 updated components.<br><br>Secondly, it was necessary to automate the launch of marketing landing pages and testing. We turned to opinion leaders and created personalized landing pages with our heroes.</p>",
-              "picture": "work1-img-1.png"
+              "picture": "work1-img-1.webp"
             },
             {
               "description": "<p>These landers are made using components with tens of variants to customize their look & feel.</p>",
-              "picture": "work1-img-2.png"
+              "picture": "work1-img-2.webp"
             },
             {
               "description": "<p>Next, a design system of landing page components was built with the possibility of flexible configuration. All components have been carefully implemented in Sanity, which made it possible to quickly assemble and launch new campaigns and send them for testing.</p>",
-              "picture": "work1-img-3.png"
+              "picture": "work1-img-3.webp"
             },
             {
               "description": "<p>After a series of tests and optimizations, we’ve got a fabulous 13.7% subscription purchase conversion rate for these hero landers in average.</p>",
-              "picture": "work1-img-4.png"
+              "picture": "work1-img-4.webp"
             },
             {
               "description": "<p>Building a long-term relationship with a client is not only the right promotion of the service. This is the formation of healthy habits. That is why we have brought daily AG1 taking to the mobile devices.</p>",
-              "picture": "work1-img-5.png"
+              "picture": "work1-img-5.webp"
             },
             {
               "title": "Impact",
@@ -90,11 +90,11 @@
             {
               "title": "Solution",
               "description": "<p>It was decided to hold a soft launch in Dubai. I started making the app by creating an interactive 3D map of the city, where all the real estate objects are located. The user can find a suitable object, see its location on the map, on the building diagram, and also go to the 3D tour.</p>",
-              "picture": "work2-img-1.png"
+              "picture": "work2-img-1.webp"
             },
             {
               "description": "<p>In addition to the application itself, a landing page builder was also developed, thanks to which it became possible to quickly launch advertising campaigns to increase sales.</p>",
-              "picture": "work2-img-2.png"
+              "picture": "work2-img-2.webp"
             },
             {
               "title": "Impact",
@@ -136,11 +136,11 @@
             {
               "title": "Solution",
               "description": "<p>First, a new look was developed for the brand and its advertising pages.</p>",
-              "picture": "work3-img-1.png"
+              "picture": "work3-img-1.webp"
             },
             {
               "description": "<p>As for the application itself, to create an interface that will be convenient and effective to use in three-dimensional space, it took studying the principles and rules of the WebGL and Unity engine.<br><br>The analytics system has received an interface that works in a regular browser. But when virtual reality devices are connected, the application automatically switches to advanced interaction mode with gesture control devices.<br><br>The system interface itself has received a library of three-dimensional data visualizations with an API that allows you to customize the appearance and embed data on web pages.</p>",
-              "picture": "work3-img-2.png"
+              "picture": "work3-img-2.webp"
             },
             {
               "title": "Impact",
@@ -182,11 +182,11 @@
             {
               "title": "Solution",
               "description": "<p>The service contains a huge database of Internet services for which you can find detailed information: which trackers are used, which permissions are required for correct operation, how reliable the developers are and how high the risks of using these products are.<br><br>All the necessary information can be found using a search based on smart algorithms.</p>",
-              "picture": "work4-img-1.png"
+              "picture": "work4-img-1.webp"
             },
             {
               "description": "<p>Each application has a structured page with detailed data on trackers, permissions, as well as an algorithm-based assessment that shows how safe it is to use the service.</p>",
-              "picture": "work4-img-2.png"
+              "picture": "work4-img-2.webp"
             },
             {
               "title": "Impact",
@@ -228,7 +228,7 @@
             {
               "title": "Solution",
               "description": "<p>The product has received a convenient online course feed, where you can find and purchase courses of interest in one place. There is also a convenient search by categories and keywords.<br><br>The main principle is that the platform unites both creators and buyers of online courses in a single information space of the social network.</p>",
-              "picture": "work5-img-1.png"
+              "picture": "work5-img-1.webp"
             },
             {
               "title": "Impact",
@@ -270,7 +270,7 @@
             {
               "title": "Solution",
               "description": "<p>The wallet has received a minimalistic design in the human interface guidelines for iOS. The application allows you to create any number of virtual cards for linking to online services. It is also possible to configure the generation of cards for making one-time payments.</p>",
-              "picture": "work6-img-1.png"
+              "picture": "work6-img-1.webp"
             },
             {
               "title": "Impact",

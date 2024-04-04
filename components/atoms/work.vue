@@ -20,7 +20,7 @@
         top: popTop,
       }"
     >
-      <img :src="getPreviewImage" class="work__pop-img" />
+      <img :src="getPreviewImage" class="work__pop-img" :alt="name" />
     </div>
   </NuxtLink>
 </template>
@@ -38,7 +38,6 @@ const props = defineProps({
 });
 
 const isActive = ref(false);
-
 const itemElement = ref();
 const popupElement = ref();
 
@@ -56,7 +55,11 @@ const { elementHeight: popupHeight, elementWidth: popupWidth } =
 
 const { y } = useWindowScroll();
 
-const getPreviewImage = computed(() => "/george24/previews/" + props.preview);
+const {
+  app: { baseURL },
+} = useRuntimeConfig();
+
+const getPreviewImage = computed(() => `${baseURL}previews/${props.preview}`);
 
 const popLeft = computed(() => {
   return elementX.value > elementWidth.value - popupWidth.value

@@ -7,13 +7,13 @@
     <picture>
       <source
         media="(orientation: portrait)"
-        srcset="@/assets/bg_art_portrait.png, @/assets/bg_art_portrait@2x.png"
+        srcset="@/assets/bg_art_portrait.webp, @/assets/bg_art_portrait@2x.webp"
       />
       <source
         media="(orientation: landscape)"
-        srcset="@/assets/bg_landscape.png, @/assets/bg_landscape@2x.png"
+        srcset="@/assets/bg_landscape.webp, @/assets/bg_landscape@2x.webp"
       />
-      <img src="@/assets/bg_art_mobile.png" alt="" class="george-pic" />
+      <img src="@/assets/bg_art_mobile.webp" alt="" class="george-pic" />
     </picture>
 
     <MarqueeText v-if="targetIsVisible" />

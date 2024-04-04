@@ -38,7 +38,7 @@
           <div class="work__info-block-description">{{ item.description }}</div>
         </div>
 
-        <NuxtLink class="work__next" :to="next" noPrefetch>
+        <NuxtLink class="work__next" :to="next" no-prefetch>
           <Link text="next&nbsp;work" />
         </NuxtLink>
       </div>
@@ -54,7 +54,11 @@ defineProps({
   data: Object,
 });
 
-const getPreviewImage = computed(() => (src) => "/george24/projects/" + src);
+const {
+  app: { baseURL },
+} = useRuntimeConfig();
+
+const getPreviewImage = computed(() => (src) => `${baseURL}projects/${src}`);
 </script>
 
 <style lang="scss" scoped>
