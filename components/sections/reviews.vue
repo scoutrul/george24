@@ -1,7 +1,7 @@
 <template>
-  <section ref="reviewsContainer" class="reviews">
+  <section class="reviews">
     <div class="reviews__header">What people say</div>
-    <ul v-if="isListShow" ref="listRef" class="reviews__list">
+    <ul ref="listRef" class="reviews__list">
       <li v-for="(item, index) in list" :key="index" class="reviews__item">
         <div class="reviews__item-container">
           <div class="reviews__item-text">{{ item.text }}</div>
@@ -16,18 +16,66 @@
         </div>
       </li>
     </ul>
+    isBlockInnerOffset {{ isBlockInnerOffset }}, listScrollX {{ listScrollX }}
   </section>
 </template>
 
 <script setup>
+import {
+  useMouseInElement,
+  useWindowScroll,
+  useWindowSize,
+} from "@vueuse/core";
+
 defineProps({
   list: Array,
 });
 
 const listRef = ref(null);
-const reviewsContainer = ref(null);
 
-const isListShow = useElementVisibility(reviewsContainer);
+const { elementPositionY, elementHeight } = useMouseInElement(listRef);
+
+const { y: windowScrollY } = useWindowScroll();
+
+const { height: windowHeight } = useWindowSize();
+
+const { x: listScrollX } = useScroll(listRef);
+
+const isBlockReachedScreenTop = computed(() => {
+  return windowScrollY.value > elementPositionY.value;
+});
+
+const isBlockReachedScreenBottom = computed(() => {
+  return (
+    windowScrollY.value >
+    elementPositionY.value - windowHeight.value + elementHeight.value
+  );
+});
+
+const isBlockInnerOffset = computed(() => {
+  const bottom =
+    elementPositionY.value - windowHeight.value + elementHeight.value;
+  const top = elementPositionY.value;
+  return top - bottom > elementHeight.value
+    ? top - bottom
+    : elementHeight.value;
+});
+
+watch(isBlockReachedScreenTop, (val) => {
+  console.log("isBlockReachedScreenTop", val, windowScrollY.value);
+});
+
+watch(isBlockReachedScreenBottom, (val) => {
+  console.log("isBlockReachedScreenBottom", val, windowScrollY.value);
+});
+
+watch(windowScrollY, (val) => {
+  console.log("windowScrollY", val);
+});
+
+// windowScrollY watch if > isBlockReachedScreenBottom
+// && windowScrollY < isBlockReachedScreenTop
+// isBlockInnerOffset = 100% = listWidth => scroll
 </script>
 
 <style lang="scss" scoped>
@@ -39,12 +87,19 @@ const isListShow = useElementVisibility(reviewsContainer);
   }
 
   &__list {
-    position: relative;
+    @include page-padding;
+    position: absolute;
+    left: 0;
     list-style: none;
-    padding: 0;
     gap: 24px;
     display: flex;
-    transition: 0.1s;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     @media (min-width: $bp-tablet) {
       gap: 32px;

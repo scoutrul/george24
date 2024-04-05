@@ -80,10 +80,6 @@ const {
       padding-bottom: 0;
       padding-top: 0;
     }
-
-    &--reviews {
-      overflow: hidden;
-    }
   }
 }
 </style>
