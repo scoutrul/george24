@@ -76,6 +76,10 @@ const {
       z-index: 10;
     }
 
+    &--reviews {
+      position: static; // temp
+    }
+
     &--footer {
       padding-bottom: 0;
       padding-top: 0;

@@ -1,22 +1,39 @@
 <template>
   <section class="reviews">
+    <div
+      class="frame"
+      :style="{
+        right: 0,
+        top: 100 + 'px',
+        position: 'fixed',
+        border: '1px solid blue',
+      }"
+    >
+      <div>windowScrollY {{ windowScrollY }}</div>
+      <div>elementPositionY {{ elementPositionY }}</div>
+      <div>windowHeight {{ windowHeight }}</div>
+      <div>elementHeight {{ elementHeight }}</div>
+      <div>listScrollX {{ listScrollX }} (max {{ listScrollXMax }})</div>
+    </div>
+
     <div class="reviews__header">What people say</div>
-    <ul ref="listRef" class="reviews__list">
-      <li v-for="(item, index) in list" :key="index" class="reviews__item">
-        <div class="reviews__item-container">
-          <div class="reviews__item-text">{{ item.text }}</div>
-          <div class="reviews__item-author">
-            <div class="reviews__item-name">
-              {{ item.name }}
-            </div>
-            <div class="reviews__item-from">
-              {{ item.from }}
+    <div class="reviews__list-wrapper">
+      <ul ref="listRef" class="reviews__list">
+        <li v-for="(item, index) in list" :key="index" class="reviews__item">
+          <div class="reviews__item-container">
+            <div class="reviews__item-text">{{ item.text }}</div>
+            <div class="reviews__item-author">
+              <div class="reviews__item-name">
+                {{ item.name }}
+              </div>
+              <div class="reviews__item-from">
+                {{ item.from }}
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-    </ul>
-    isBlockInnerOffset {{ isBlockInnerOffset }}, listScrollX {{ listScrollX }}
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 
@@ -25,6 +42,7 @@ import {
   useMouseInElement,
   useWindowScroll,
   useWindowSize,
+  useScroll,
 } from "@vueuse/core";
 
 defineProps({
@@ -33,49 +51,41 @@ defineProps({
 
 const listRef = ref(null);
 
+const listScrollXMax = ref(null);
+
 const { elementPositionY, elementHeight } = useMouseInElement(listRef);
 
 const { y: windowScrollY } = useWindowScroll();
 
-const { height: windowHeight } = useWindowSize();
+const { height: windowHeight, width: windowWidth } = useWindowSize();
 
 const { x: listScrollX } = useScroll(listRef);
 
-const isBlockReachedScreenTop = computed(() => {
-  return windowScrollY.value > elementPositionY.value;
+const elementBefore = computed(() => {
+  return elementPositionY.value - windowHeight.value + elementHeight.value;
 });
 
-const isBlockReachedScreenBottom = computed(() => {
-  return (
-    windowScrollY.value >
-    elementPositionY.value - windowHeight.value + elementHeight.value
-  );
+const elementAfter = computed(() => {
+  const calc =
+    elementPositionY.value + windowHeight.value - elementHeight.value;
+  return calc < elementHeight.value ? elementHeight.value : calc;
 });
 
-const isBlockInnerOffset = computed(() => {
-  const bottom =
-    elementPositionY.value - windowHeight.value + elementHeight.value;
-  const top = elementPositionY.value;
-  return top - bottom > elementHeight.value
-    ? top - bottom
-    : elementHeight.value;
+const scrollView = computed(() => {
+  return elementPositionY.value - elementBefore.value;
 });
 
-watch(isBlockReachedScreenTop, (val) => {
-  console.log("isBlockReachedScreenTop", val, windowScrollY.value);
+watch(windowScrollY, (ScrollY) => {
+  listScrollX.value = ScrollY - elementPositionY.value + scrollView.value;
 });
 
-watch(isBlockReachedScreenBottom, (val) => {
-  console.log("isBlockReachedScreenBottom", val, windowScrollY.value);
+watch(windowWidth, () => {
+  listScrollXMax.value = listRef.value.scrollWidth - listRef.value.clientWidth;
 });
 
-watch(windowScrollY, (val) => {
-  console.log("windowScrollY", val);
+onMounted(() => {
+  listScrollXMax.value = listRef.value.scrollWidth - listRef.value.clientWidth;
 });
-
-// windowScrollY watch if > isBlockReachedScreenBottom
-// && windowScrollY < isBlockReachedScreenTop
-// isBlockInnerOffset = 100% = listWidth => scroll
 </script>
 
 <style lang="scss" scoped>
@@ -86,9 +96,24 @@ watch(windowScrollY, (val) => {
     @include font40-64;
   }
 
+  &__list-wrapper {
+    height: 374px;
+
+    @media (min-width: $bp-tablet) {
+      height: 446px;
+    }
+
+    @media (min-width: $bp-desktop) {
+      height: 594px;
+    }
+  }
+
   &__list {
     @include page-padding;
-    position: absolute;
+
+    @media (min-width: $bp-tablet) {
+      position: absolute;
+    }
     left: 0;
     list-style: none;
     gap: 24px;
