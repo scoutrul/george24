@@ -44,6 +44,22 @@ const changeText = () => {
   }, 120);
 };
 
+const {
+  app: { baseURL, buildAssetsDir },
+} = useRuntimeConfig();
+
+useServerHead({
+  link: [
+    {
+      href: `/assets/ABC_Diatype_Regular.woff2`,
+      rel: "preload",
+      type: "font/woff2",
+      as: "font",
+      crossorigin: true,
+    },
+  ],
+});
+
 useSeoMeta({
   ogTitle: initialTitle,
   description:
