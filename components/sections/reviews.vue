@@ -1,20 +1,22 @@
 <template>
   <section class="reviews">
-    <div
-      class="frame"
-      :style="{
-        right: 0,
-        top: 100 + 'px',
-        position: 'fixed',
-        border: '1px solid blue',
-      }"
-    >
-      <div>windowScrollY {{ windowScrollY }}</div>
-      <div>elementPositionY {{ elementPositionY }}</div>
-      <div>windowHeight {{ windowHeight }}</div>
-      <div>elementHeight {{ elementHeight }}</div>
-      <div>listScrollX {{ listScrollX }} (max {{ listScrollXMax }})</div>
-    </div>
+    <client-only>
+      <div
+        class="frame"
+        :style="{
+          right: 0,
+          top: 100 + 'px',
+          position: 'fixed',
+          border: '1px solid blue',
+        }"
+      >
+        <div>windowScrollY {{ windowScrollY }}</div>
+        <div>elementPositionY {{ elementPositionY }}</div>
+        <div>windowHeight {{ windowHeight }}</div>
+        <div>elementHeight {{ elementHeight }}</div>
+        <div>listScrollX {{ listScrollX }} (max {{ listScrollXMax }})</div>
+      </div>
+    </client-only>
 
     <div class="reviews__header">What people say</div>
     <div class="reviews__list-wrapper">
