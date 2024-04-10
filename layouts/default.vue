@@ -51,7 +51,7 @@ const {
 useServerHead({
   link: [
     {
-      href: `/assets/ABC_Diatype_Regular.woff2`,
+      href: `${baseURL}assets${buildAssetsDir}ABC_Diatype_Regular.woff2`,
       rel: "preload",
       type: "font/woff2",
       as: "font",
