@@ -12,7 +12,7 @@
     </div>
     <div class="work__text">{{ text }}</div>
     <div
-      v-if="isActive"
+      v-show="isActive"
       ref="popupElement"
       class="work__pop"
       :style="{
@@ -22,7 +22,6 @@
     >
       <img :src="getPreviewImage" class="work__pop-img" :alt="name" />
     </div>
-    <img v-show="false" :src="getPreviewImage" />
   </NuxtLink>
 </template>
 
@@ -41,6 +40,10 @@ const props = defineProps({
 const isActive = ref(false);
 const itemElement = ref();
 const popupElement = ref();
+
+const keyframes = [{ filter: "blur(10px)" }, { filter: "blur(0)" }];
+
+const { play, finish } = useAnimate(popupElement, keyframes, 200);
 
 const {
   elementX,
@@ -69,6 +72,8 @@ const popLeft = computed(() => {
 });
 
 const popTop = computed(() => {
+  if (!window) return;
+
   return elementPositionY.value -
     window.screen.availHeight / 2 +
     popupHeight.value / 2 >
@@ -79,6 +84,11 @@ const popTop = computed(() => {
 
 watch(isOutside, (value) => {
   isActive.value = !value;
+  if (isActive.value) {
+    play();
+  } else {
+    finish();
+  }
 });
 
 watch(sourceType, (value, old) => {
