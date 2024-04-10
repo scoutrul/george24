@@ -22,6 +22,7 @@
     >
       <img :src="getPreviewImage" class="work__pop-img" :alt="name" />
     </div>
+    <img v-show="false" :src="getPreviewImage" />
   </NuxtLink>
 </template>
 
