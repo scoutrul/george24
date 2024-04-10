@@ -45,13 +45,13 @@ const changeText = () => {
 };
 
 const {
-  app: { baseURL, buildAssetsDir },
+  app: { baseURL },
 } = useRuntimeConfig();
 
 useServerHead({
   link: [
     {
-      href: `${baseURL}assets${buildAssetsDir}ABC_Diatype_Regular.woff2`,
+      href: `${baseURL}assets/ABC_Diatype_Regular.woff2`,
       rel: "preload",
       type: "font/woff2",
       as: "font",
