@@ -12,6 +12,7 @@
     </div>
     <div class="work__text">{{ text }}</div>
     <div
+      v-if="targetIsVisible"
       v-show="isActive"
       ref="popupElement"
       class="work__pop"
@@ -37,9 +38,12 @@ const props = defineProps({
   preview: { type: String, default: "" },
 });
 
-const isActive = ref(false);
 const itemElement = ref();
 const popupElement = ref();
+
+const isActive = ref(false);
+
+const targetIsVisible = useElementVisibility(itemElement);
 
 const keyframes = [{ filter: "blur(10px)" }, { filter: "blur(0)" }];
 
