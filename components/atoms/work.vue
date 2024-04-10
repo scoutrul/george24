@@ -9,11 +9,11 @@
     <div class="work__header">
       <template v-if="!isActive"> {{ header }} </template>
       <Link v-else :text="header" pre-start />
-      Pixel Ratio: {{ pixelRatio }}
+      <ClientOnly> Pixel Ratio: {{ pixelRatio }} </ClientOnly>
     </div>
     <div class="work__text">{{ text }}</div>
     <div
-      v-if="targetIsVisible"
+      v-if="!isMobileWindowSize && targetIsVisible"
       v-show="isActive"
       ref="popupElement"
       class="work__pop"
@@ -42,6 +42,7 @@ const itemElement = ref();
 const popupElement = ref();
 
 const isActive = ref(false);
+const isMobileWindowSize = ref(false);
 
 const { pixelRatio } = useDevicePixelRatio();
 
@@ -63,7 +64,9 @@ const {
 const { elementHeight: popupHeight, elementWidth: popupWidth } =
   useMouseInElement(popupElement);
 
-const { y } = useWindowScroll();
+const { y: windowScrollY } = useWindowScroll();
+const { width: windowSizeWidth } = useWindowSize();
+isMobileWindowSize.value = windowSizeWidth.value < 900;
 
 const {
   app: { baseURL },
@@ -83,7 +86,7 @@ const popTop = computed(() => {
   return elementPositionY.value -
     window.screen.availHeight / 2 +
     popupHeight.value / 2 >
-    y.value
+    windowScrollY.value
     ? elementY.value - popupHeight.value + "px"
     : elementY.value + "px";
 });
@@ -101,6 +104,10 @@ watch(sourceType, (value, old) => {
   if (old === "touch" && value === "mouse") {
     isActive.value = false;
   }
+});
+
+watch(windowSizeWidth, (val) => {
+  isMobileWindowSize.value = val < 900;
 });
 </script>
 

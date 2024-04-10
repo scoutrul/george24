@@ -1,6 +1,6 @@
 <template>
   <section class="reviews">
-    <client-only>
+    <ClientOnly>
       <div
         class="frame"
         :style="{
@@ -16,7 +16,7 @@
         <div>elementHeight {{ elementHeight }}</div>
         <div>listScrollX {{ listScrollX }} (max {{ listScrollXMax }})</div>
       </div>
-    </client-only>
+    </ClientOnly>
 
     <div class="reviews__header">What people say</div>
     <div class="reviews__list-wrapper">
