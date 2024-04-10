@@ -4,11 +4,11 @@
     <IntroSection class="section section--intro" />
     <Section class="section section--present"> <PresentSection /></Section>
     <Section class="section section--works">
-      <LazyWorksSection :list="worksData"
+      <WorksSection :list="worksData"
     /></Section>
     <Section class="section section--achieve"> <AchieveSection /></Section>
     <Section class="section section--reviews">
-      <LazyReviewSection :list="reviewsData"
+      <ReviewSection :list="reviewsData"
     /></Section>
     <Section class="section"> <StackSection /></Section>
     <Section class="section section--footer"> <FooterSection /></Section>
@@ -20,9 +20,9 @@ import Section from "../components/atoms/section.vue";
 import PosterSection from "../components/sections/poster.vue";
 import IntroSection from "../components/sections/intro.vue";
 import PresentSection from "../components/sections/present.vue";
-import LazyWorksSection from "../components/sections/works.vue";
+import WorksSection from "../components/sections/works.vue";
 import AchieveSection from "../components/sections/achieves.vue";
-import LazyReviewSection from "../components/sections/reviews.vue";
+import ReviewSection from "../components/sections/reviews.vue";
 import StackSection from "../components/sections/stack.vue";
 import FooterSection from "../components/sections/footer.vue";
 

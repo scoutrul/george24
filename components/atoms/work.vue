@@ -9,6 +9,7 @@
     <div class="work__header">
       <template v-if="!isActive"> {{ header }} </template>
       <Link v-else :text="header" pre-start />
+      Pixel Ratio: {{ pixelRatio }}
     </div>
     <div class="work__text">{{ text }}</div>
     <div
@@ -28,7 +29,6 @@
 
 <script setup>
 import Link from "../atoms/link.vue";
-
 import { useMouseInElement } from "@vueuse/core";
 
 const props = defineProps({
@@ -42,6 +42,8 @@ const itemElement = ref();
 const popupElement = ref();
 
 const isActive = ref(false);
+
+const { pixelRatio } = useDevicePixelRatio();
 
 const targetIsVisible = useElementVisibility(itemElement);
 
