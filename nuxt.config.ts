@@ -1,4 +1,7 @@
 export default defineNuxtConfig({
+  anime: {
+    composables: true,
+  },
   devtools: { enabled: true },
   modules: [
     "@nuxtjs/critters",
@@ -7,6 +10,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-contextual-transition",
     "@nuxt/content",
+    "@hypernym/nuxt-anime",
   ],
   app: {
     head: {

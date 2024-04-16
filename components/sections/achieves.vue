@@ -24,7 +24,7 @@
         />
       </svg>
     </div>
-    <div class="achieves__value">32.6M</div>
+    <div ref="numbers" class="achieves__value"></div>
     <div class="achieves__message">
       people interact with&nbsp;my solutions<br />
       monthly in over 30&nbsp;countries.
@@ -32,7 +32,23 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+const numbers = ref(0);
+const targetIsVisible = useElementVisibility(numbers);
+
+watch(targetIsVisible, (value) => {
+  if (value) {
+    useAnime({
+      targets: numbers.value,
+      innerHTML: ["0", "32", "32,6", "32,6M"],
+      easing: "easeInOutSine",
+      round: 1,
+      duration: 9000,
+      direction: "normal",
+    });
+  }
+});
+</script>
 
 <style lang="scss" scoped>
 .achieves {
@@ -64,6 +80,7 @@
 
   &__value {
     color: $green-black;
+    display: inline-flex;
     @include font96;
 
     @media (min-width: $bp-tablet) {

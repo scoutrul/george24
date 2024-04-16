@@ -77,8 +77,8 @@ const scrollView = computed(() => {
   return elementPositionY.value - elementBefore.value;
 });
 
-watch(windowScrollY, (ScrollY) => {
-  listScrollX.value = ScrollY - elementPositionY.value + scrollView.value;
+watch(windowScrollY, (scrollY) => {
+  listScrollX.value = scrollY - elementPositionY.value + scrollView.value;
 });
 
 watch(windowWidth, () => {
