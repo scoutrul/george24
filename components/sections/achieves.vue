@@ -24,7 +24,10 @@
         />
       </svg>
     </div>
-    <div ref="numbers" class="achieves__value"></div>
+    <div class="achieves__value">
+      <span ref="numbers" class="achieves__value-number"> 0 </span>
+      M
+    </div>
     <div class="achieves__message">
       people interact with&nbsp;my solutions<br />
       monthly in over 30&nbsp;countries.
@@ -33,17 +36,17 @@
 </template>
 
 <script setup>
-const numbers = ref(0);
+const numbers = ref(null);
 const targetIsVisible = useElementVisibility(numbers);
 
 watch(targetIsVisible, (value) => {
   if (value) {
     useAnime({
       targets: numbers.value,
-      innerHTML: ["0", "32", "32,6", "32,6M"],
-      easing: "easeInOutSine",
-      round: 1,
-      duration: 9000,
+      innerHTML: [0, 32.6],
+      easing: "easeInOutQuint",
+      round: 10,
+      duration: 1000,
       direction: "normal",
     });
   }
@@ -81,10 +84,16 @@ watch(targetIsVisible, (value) => {
   &__value {
     color: $green-black;
     display: inline-flex;
+    font-variant-numeric: tabular-nums;
+
     @include font96;
 
     @media (min-width: $bp-tablet) {
       @include font160;
+    }
+
+    &-numbers {
+      display: inline-flex;
     }
   }
 
@@ -95,22 +104,6 @@ watch(targetIsVisible, (value) => {
 
     @media (min-width: $bp-tablet) {
       @include font40;
-    }
-  }
-
-  &__message-break {
-    display: flex;
-
-    @media (min-width: $bp-tablet) {
-      display: none;
-    }
-  }
-
-  &__message-break--desktop {
-    display: none;
-
-    @media (min-width: $bp-tablet) {
-      display: flex;
     }
   }
 }
