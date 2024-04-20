@@ -2,13 +2,16 @@
   <div class="present">
     <div class="present__specialist">
       My name is George, and for 10 years now I have been making a user-centered
-      and data-driven design that helped tens of industry leaders and startups
-      to reach new heights.
+      and data-driven design that helped tens of SaaS/IaaS products in Data
+      security, E-commerce, Digital medicine, Fintech and AI to reach new
+      heights.
     </div>
     <div class="present__line"></div>
     <div class="present__stack">
-      Proficient in leadership, UX/UI, design systems. Based in Tbilisi,
-      Georgia. In spare time I make music, experiment with AI and travel.
+      Proficient in user research, solving complex problems with a large amount
+      of data, scenarios and edge cases, building consistent design systems with
+      variables and tokens and delivering high-end design solutions with a juicy
+      visual style across web and mobile platforms.
     </div>
   </div>
 </template>
