@@ -86,6 +86,5 @@ onMounted(() => {
 .layout {
   background: $brown;
   position: relative;
-  overflow-x: hidden;
 }
 </style>
