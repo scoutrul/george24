@@ -44,9 +44,10 @@ watch(targetIsVisible, (value) => {
     useAnime({
       targets: numbers.value,
       innerHTML: [0, 32.6],
-      easing: "easeInOutQuint",
+      easing: "cubicBezier(0,1,0,1)",
       round: 10,
-      duration: 1000,
+      duration: 3000,
+      delay: 500,
       direction: "normal",
     });
   }
@@ -84,7 +85,6 @@ watch(targetIsVisible, (value) => {
   &__value {
     color: $green-black;
     display: inline-flex;
-    font-variant-numeric: tabular-nums;
 
     @include font96;
 
