@@ -1,22 +1,27 @@
 <template>
-  <section v-if="isPosterLoading" class="poster poster--loading">
-    <svg
-      class="poster__logo"
-      xmlns="http://www.w3.org/2000/svg"
-      width="214"
-      height="214"
-      viewBox="0 0 214 214"
-      fill="none"
+  <section ref="poster" class="poster">
+    <section
+      class="poster poster--loading"
+      :class="{
+        'poster--finish': !isPosterLoading && !isPending,
+      }"
     >
-      <path
-        d="M70 107L107 144L134.5 116.5H189.5L107 199L15 107L107 15"
-        stroke="#E3DED1"
-        stroke-width="20"
-        stroke-linecap="square"
-      />
-    </svg>
-  </section>
-  <section v-else ref="poster" class="poster">
+      <svg
+        class="poster__logo glitch"
+        xmlns="http://www.w3.org/2000/svg"
+        width="214"
+        height="214"
+        viewBox="0 0 214 214"
+        fill="none"
+      >
+        <path
+          d="M70 107L107 144L134.5 116.5H189.5L107 199L15 107L107 15"
+          stroke="#E3DED1"
+          stroke-width="20"
+          stroke-linecap="square"
+        />
+      </svg>
+    </section>
     <div class="poster__logo-white" />
     <NavMenu />
     <Contacts />
@@ -28,8 +33,7 @@
 </template>
 
 <script setup>
-import { useImage } from "@vueuse/core";
-import { useAnime } from "#anime";
+import { useImage, useTimeoutFn } from "@vueuse/core";
 
 import MarqueeText from "../atoms/marquee.vue";
 import NavMenu from "../atoms/nav.vue";
@@ -39,23 +43,23 @@ const src = ref(
   "http://localhost:3000/george24/assets/assets/bg_landscape@2x.webp",
 );
 const poster = ref(null);
-const targetIsVisible = useElementVisibility(poster);
+let targetIsVisible = ref(false);
 const { isLoading: isPosterLoading } = useImage({ src: src.value });
 
+const { start, isPending } = useTimeoutFn(() => {}, 5000);
+
 onMounted(() => {
-  // if (!isPosterLoading.value) {
+  targetIsVisible = useElementVisibility(poster);
+
   useAnime({
     targets: ".poster__logo path",
     strokeDashoffset: [useAnime.setDashoffset, 0],
-    easing: "easeInOutSine",
-    duration: 1500,
-    delay: function (el, i) {
-      return i * 250;
-    },
+    easing: "easeInOutExpo",
+    duration: 2500,
     direction: "alternate",
     loop: true,
   });
-  // }
+  start();
 });
 </script>
 
@@ -69,6 +73,7 @@ onMounted(() => {
   overflow: hidden;
   position: relative;
   user-select: none;
+  transition: 0.5s ease-out;
 
   @media (orientation: landscape) {
     min-height: 660px;
@@ -82,6 +87,9 @@ onMounted(() => {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  &--finish {
+    opacity: 0;
   }
 
   &__logo {
@@ -129,6 +137,27 @@ onMounted(() => {
       @media (min-width: $bp-desktop) {
         background-position: $padding-large - $padding-step $padding-mid;
       }
+    }
+  }
+
+  .glitch {
+    position: relative;
+    animation:
+      glitch 1.3s 1.3s infinite,
+      glitch 3.5s 3.5s infinite;
+  }
+
+  @keyframes glitch {
+    1% {
+      transform: rotateX(50deg) skewX(90deg);
+    }
+    2% {
+      @media (min-width: $bp-tablet) {
+        transform: rotateX(0deg) skewX(0deg);
+      }
+    }
+    3% {
+      transform: rotateX(0deg) skewX(0deg);
     }
   }
 }
