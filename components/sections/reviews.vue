@@ -1,6 +1,6 @@
 <template>
   <section class="reviews">
-    <ClientOnly>
+    <ClientOnly v-if="false">
       <div
         class="frame"
         :style="{
@@ -20,21 +20,23 @@
 
     <div class="reviews__header">What people say</div>
     <div class="reviews__list-wrapper">
-      <ul ref="listRef" class="reviews__list">
-        <li v-for="(item, index) in list" :key="index" class="reviews__item">
-          <div class="reviews__item-container">
-            <div class="reviews__item-text">{{ item.text }}</div>
-            <div class="reviews__item-author">
-              <div class="reviews__item-name">
-                {{ item.name }}
-              </div>
-              <div class="reviews__item-from">
-                {{ item.from }}
+      <div class="reviews__list-container">
+        <ul ref="listRef" class="reviews__list">
+          <li v-for="(item, index) in list" :key="index" class="reviews__item">
+            <div class="reviews__item-container">
+              <div class="reviews__item-text">{{ item.text }}</div>
+              <div class="reviews__item-author">
+                <div class="reviews__item-name">
+                  {{ item.name }}
+                </div>
+                <div class="reviews__item-from">
+                  {{ item.from }}
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -96,6 +98,12 @@ onMounted(() => {
     margin-bottom: 80px;
     color: $green-black;
     @include font40-64;
+  }
+
+  &__list-container {
+    position: absolute;
+    left: 0;
+    right: 0;
   }
 
   &__list-wrapper {
