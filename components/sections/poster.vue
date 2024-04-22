@@ -47,7 +47,9 @@ const src = ref(`${baseURL}bg_landscape@2x.webp`);
 const poster = ref(null);
 
 const { start: startPreloaderTimer, isPending: isPreloaderScreen } =
-  useTimeoutFn(() => {}, 10000);
+  useTimeoutFn(() => {
+    document.body.style.overflow = "initial";
+  }, 10000);
 const { start: startLogoTimer } = useTimeoutFn(() => {
   logoAnimation.value.reset();
   logoAnimation.value = useAnime({
@@ -67,6 +69,7 @@ const targetIsVisible = useElementVisibility(poster);
 const logoAnimation = ref(null);
 
 onMounted(() => {
+  document.body.style.overflow = "hidden";
   // make it start from end
   logoAnimation.value = useAnime({
     targets: ".poster__logo path",
