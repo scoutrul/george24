@@ -3,7 +3,7 @@
     <section
       class="poster poster--loading"
       :class="{
-        'poster--finish': !isPosterLoading && !isPending,
+        'poster--finish': !isPosterLoading && !isPreloaderScreen,
       }"
     >
       <svg
@@ -22,7 +22,7 @@
         />
       </svg>
     </section>
-    <div class="poster__logo-white" />
+    <div class="poster__logo-small" />
     <NavMenu />
     <Contacts />
 
@@ -39,27 +39,49 @@ import MarqueeText from "../atoms/marquee.vue";
 import NavMenu from "../atoms/nav.vue";
 import Contacts from "../atoms/contacts.vue";
 
-const src = ref(
-  "http://localhost:3000/george24/assets/assets/bg_landscape@2x.webp",
-);
-const poster = ref(null);
-let targetIsVisible = ref(false);
-const { isLoading: isPosterLoading } = useImage({ src: src.value });
+const {
+  app: { baseURL },
+} = useRuntimeConfig();
 
-const { start, isPending } = useTimeoutFn(() => {}, 5000);
+const src = ref(`${baseURL}bg_landscape@2x.webp`);
+const poster = ref(null);
+
+const { start: startPreloaderTimer, isPending: isPreloaderScreen } =
+  useTimeoutFn(() => {}, 10000);
+const { start: startLogoTimer } = useTimeoutFn(() => {
+  logoAnimation.value.reset();
+  logoAnimation.value = useAnime({
+    targets: ".poster__logo path",
+    strokeDashoffset: [useAnime.setDashoffset, 0],
+    easing: "easeInOutExpo",
+    duration: 2500,
+    direction: "alternate",
+    loop: false,
+  });
+  logoAnimation.value.play();
+}, 5000);
+
+const { isLoading: isPosterLoading } = useImage({ src: src.value });
+const targetIsVisible = useElementVisibility(poster);
+
+const logoAnimation = ref(null);
 
 onMounted(() => {
-  targetIsVisible = useElementVisibility(poster);
-
-  useAnime({
+  // make it start from end
+  logoAnimation.value = useAnime({
     targets: ".poster__logo path",
     strokeDashoffset: [useAnime.setDashoffset, 0],
     easing: "easeInOutExpo",
     duration: 2500,
     direction: "alternate",
     loop: true,
+    delay: function (el, i) {
+      return i * 200;
+    },
   });
-  start();
+  logoAnimation.value.play();
+  startPreloaderTimer();
+  startLogoTimer();
 });
 </script>
 
@@ -94,7 +116,6 @@ onMounted(() => {
 
   &__logo {
     margin: auto;
-    padding-left: 24px;
   }
 
   &__poster {

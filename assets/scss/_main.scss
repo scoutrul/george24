@@ -22,160 +22,159 @@ $bp-desktop: 1440px;
 $bp-full: 1920px;
 
 @mixin font18 {
-    font-family: "ABC Diatype Regular", sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 22px;
-    letter-spacing: -0.028em;
+  font-family: "ABC Diatype Regular", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.028em;
 }
 
 @mixin font28 {
-    @include font18;
+  @include font18;
 
-    font-size: 28px;
-    line-height: 34px;
+  font-size: 28px;
+  line-height: 34px;
 }
 
 @mixin font40 {
-    @include font18;
+  @include font18;
 
-    font-size: 40px;
-    line-height: 40px;
+  font-size: 40px;
+  line-height: 40px;
 }
 
 @mixin font64 {
-    @include font18;
+  @include font18;
 
-    font-size: 64px;
-    line-height: 64px;
+  font-size: 64px;
+  line-height: 64px;
 }
 
 @mixin font96 {
-    @include font18;
+  @include font18;
 
-    font-size: 96px;
-    line-height: 96px;
+  font-size: 96px;
+  line-height: 96px;
 }
 
 @mixin font160 {
-    @include font18;
+  @include font18;
 
-    font-size: 160px;
-    line-height: 160px;
+  font-size: 160px;
+  line-height: 160px;
 }
 
 @mixin font18-28 {
-    @include font18;
+  @include font18;
 
-    @media (min-width: $bp-tablet) {
-        @include font28;
-    }
+  @media (min-width: $bp-tablet) {
+    @include font28;
+  }
 }
 
 @mixin font28-40 {
-    @include font28;
+  @include font28;
 
-    @media (min-width: $bp-desktop) {
-        @include font40;
-    }
+  @media (min-width: $bp-desktop) {
+    @include font40;
+  }
 }
 
 @mixin font40-64 {
-    @include font40;
+  @include font40;
 
-    @media (min-width: $bp-desktop) {
-        @include font64;
-    }
+  @media (min-width: $bp-desktop) {
+    @include font64;
+  }
 }
 
 @mixin outline-horizontal-offset {
-    right: -$padding-min;
-    left: -$padding-min;
+  right: -$padding-min;
+  left: -$padding-min;
 
-    @media (min-width: $bp-tablet) {
-        right: -$padding-mobile;
-        left: -$padding-mobile;
-    }
+  @media (min-width: $bp-tablet) {
+    right: -$padding-mobile;
+    left: -$padding-mobile;
+  }
 
-    @media (min-width: $bp-desktop) {
-        right: -$padding-tablet;
-        left: -$padding-tablet;
-    }
+  @media (min-width: $bp-desktop) {
+    right: -$padding-tablet;
+    left: -$padding-tablet;
+  }
 
-    @media (min-width: $bp-full) {
-        right: -$padding-desktop;
-        left: -$padding-desktop;
-    }
+  @media (min-width: $bp-full) {
+    right: -$padding-desktop;
+    left: -$padding-desktop;
+  }
 }
 
 @mixin screen-padding {
-    bottom: $padding-v-min;
-    right: $padding-min;
-    left: $padding-min;
+  bottom: $padding-v-min;
+  right: $padding-min;
+  left: $padding-min;
 
-    @media (min-width: $bp-tablet) {
-        right: $padding-mobile;
-        left: $padding-mobile;
-        bottom: $padding-mobile;
-    }
+  @media (min-width: $bp-tablet) {
+    right: $padding-mobile;
+    left: $padding-mobile;
+    bottom: $padding-mobile;
+  }
 
-    @media (min-width: $bp-desktop) {
-        right: $padding-tablet;
-        left: $padding-tablet;
-        bottom: $padding-desktop;
-    }
+  @media (min-width: $bp-desktop) {
+    right: $padding-tablet;
+    left: $padding-tablet;
+    bottom: $padding-desktop;
+  }
 
-    @media (min-width: $bp-full) {
-        right: $padding-desktop;
-        left: $padding-desktop;
-    }
+  @media (min-width: $bp-full) {
+    right: $padding-desktop;
+    left: $padding-desktop;
+  }
 }
 
 @mixin page-margin-fix {
-    margin: $padding-min;
+  margin: $padding-min;
 
-    @media (min-width: $bp-tablet) {
-        margin: $padding-mid $padding-mobile;
-    }
+  @media (min-width: $bp-tablet) {
+    margin: $padding-mid $padding-mobile;
+  }
 
-    @media (min-width: $bp-desktop) {
-        margin: $padding-mid $padding-tablet;
-    }
+  @media (min-width: $bp-desktop) {
+    margin: $padding-mid $padding-tablet;
+  }
 
-    @media (min-width: $bp-full) {
-        margin: $padding-mid $padding-desktop;
-    }
+  @media (min-width: $bp-full) {
+    margin: $padding-mid $padding-desktop;
+  }
 }
 
 @mixin page-home-padding {
-    padding: $padding-min;
+  padding: $padding-min;
 
-    @media (min-width: $bp-tablet) {
-        padding: 11% $padding-mobile;
-    }
+  @media (min-width: $bp-tablet) {
+    padding: 11% $padding-mobile;
+  }
 
-    @media (min-width: $bp-desktop) {
-        padding: 11% $padding-tablet;
-    }
+  @media (min-width: $bp-desktop) {
+    padding: 11% $padding-tablet;
+  }
 
-    @media (min-width: $bp-full) {
-        padding: 11% $padding-desktop;
-    }
+  @media (min-width: $bp-full) {
+    padding: 11% $padding-desktop;
+  }
 }
 
 @mixin page-padding {
-    padding: $padding-min;
+  padding: $padding-min;
 
-    @media (min-width: $bp-tablet) {
-        padding: $padding-mobile;
-    }
+  @media (min-width: $bp-tablet) {
+    padding: $padding-mobile;
+  }
 
-    @media (min-width: $bp-desktop) {
-        padding: $padding-tablet;
-    }
+  @media (min-width: $bp-desktop) {
+    padding: $padding-tablet;
+  }
 
-    @media (min-width: $bp-full) {
-        padding: $padding-desktop;
-    }
+  @media (min-width: $bp-full) {
+    padding: $padding-desktop;
+  }
 }
-

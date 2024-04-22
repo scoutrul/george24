@@ -10,7 +10,9 @@
   font-display: optional;
 }
 
-:root { background-attachment: fixed; }
+:root {
+  background-attachment: fixed;
+}
 
 html,
 body {
@@ -26,4 +28,3 @@ html {
 a {
   color: inherit;
 }
-
