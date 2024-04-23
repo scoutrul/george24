@@ -1,9 +1,9 @@
 <template>
-  <section class="intro">
+  <section class="navigation">
     <Contacts v-if="isContactShow" is-black is-float />
     <NavMenu is-black is-float />
-    <logo is-black class="intro__logo" @click="logoClick" />
-    <div class="intro__slogan">plan, design, grow</div>
+    <logo is-black class="navigation__logo" @click="logoClick" />
+    <div class="navigation__slogan">plan, design, grow</div>
   </section>
 </template>
 
@@ -29,7 +29,7 @@ const isContactShow = computed(() => route.name === "index");
 </script>
 
 <style lang="scss" scoped>
-.intro {
+.navigation {
   min-height: 96px;
 
   @media (min-width: $bp-tablet) {

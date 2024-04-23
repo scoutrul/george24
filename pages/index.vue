@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <PosterSection class="section section--poster" />
-    <IntroSection class="section section--intro" />
+    <NavigationSection class="section section--navigation" />
     <Section class="section section--present"> <PresentSection /></Section>
     <Section class="section section--works">
       <WorksSection :list="worksData"
@@ -18,7 +18,7 @@
 <script setup>
 import Section from "../components/atoms/section.vue";
 import PosterSection from "../components/sections/poster.vue";
-import IntroSection from "../components/sections/intro.vue";
+import NavigationSection from "../components/sections/navigation.vue";
 import PresentSection from "../components/sections/present.vue";
 import WorksSection from "../components/sections/works.vue";
 import AchieveSection from "../components/sections/achieves.vue";
@@ -57,7 +57,7 @@ const {
       padding: 0;
     }
 
-    &--intro {
+    &--navigation {
       z-index: 12;
       position: fixed;
       margin: auto;
