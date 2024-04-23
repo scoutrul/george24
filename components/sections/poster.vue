@@ -1,13 +1,18 @@
 <template>
   <section ref="poster" class="poster">
     <section
+      v-if="isPreloaderScreen"
       class="poster poster--loading"
       :class="{
-        'poster--finish': !isPosterLoading && !isPreloaderScreen,
+        'poster--finish': isPreloaderLogoAnimationFinished,
       }"
     >
       <svg
-        class="poster__logo glitch"
+        class="poster__logo"
+        :class="{
+          glitchOpacity: isPreloaderLogoAnimationFinished,
+          glitch: !isPreloaderLogoAnimationFinished,
+        }"
         xmlns="http://www.w3.org/2000/svg"
         width="214"
         height="214"
@@ -50,41 +55,38 @@ const { start: startPreloaderTimer, isPending: isPreloaderScreen } =
   useTimeoutFn(() => {
     document.body.style.overflow = "initial";
   }, 10000);
-const { start: startLogoTimer } = useTimeoutFn(() => {
-  logoAnimation.value.reset();
-  logoAnimation.value = useAnime({
-    targets: ".poster__logo path",
-    strokeDashoffset: [useAnime.setDashoffset, 0],
-    easing: "easeInOutExpo",
-    duration: 2500,
-    direction: "alternate",
-    loop: false,
-  });
-  logoAnimation.value.play();
-}, 5000);
 
 const { isLoading: isPosterLoading } = useImage({ src: src.value });
 const targetIsVisible = useElementVisibility(poster);
 
 const logoAnimation = ref(null);
+const logoAnimationTimes = ref(0);
+const isPreloaderLogoAnimationFinished = ref(false);
 
-onMounted(() => {
+onBeforeMount(() => {
   document.body.style.overflow = "hidden";
-  // make it start from end
   logoAnimation.value = useAnime({
     targets: ".poster__logo path",
     strokeDashoffset: [useAnime.setDashoffset, 0],
-    easing: "easeInOutExpo",
-    duration: 2500,
+    easing: "cubicBezier(0.83, 0, 0.17, 1)",
+    duration: 2000,
     direction: "alternate",
     loop: true,
-    delay: function (el, i) {
-      return i * 200;
+    update: (instance) => {
+      if (instance.progress === 100) {
+        logoAnimationTimes.value++;
+
+        if (!isPosterLoading.value && logoAnimationTimes.value === 2) {
+          logoAnimation.value.pause();
+          isPreloaderLogoAnimationFinished.value = true;
+        }
+      }
     },
   });
   logoAnimation.value.play();
+});
+onMounted(() => {
   startPreloaderTimer();
-  startLogoTimer();
 });
 </script>
 
@@ -119,6 +121,7 @@ onMounted(() => {
 
   &__logo {
     margin: auto;
+    opacity: 0;
   }
 
   &__poster {
@@ -166,22 +169,49 @@ onMounted(() => {
 
   .glitch {
     position: relative;
+  }
+
+  .glitch {
     animation:
       glitch 1.3s 1.3s infinite,
-      glitch 3.5s 3.5s infinite;
+      glitch 3s 3s infinite;
+  }
+
+  .glitchOpacity {
+    position: relative;
+    animation: glitchOpacity 0.2s;
+    animation-iteration-count: 1;
   }
 
   @keyframes glitch {
     1% {
       transform: rotateX(50deg) skewX(90deg);
+      opacity: 0;
     }
     2% {
       @media (min-width: $bp-tablet) {
         transform: rotateX(0deg) skewX(0deg);
       }
     }
+
     3% {
       transform: rotateX(0deg) skewX(0deg);
+      opacity: 1;
+    }
+    99% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes glitchOpacity {
+    1% {
+      transform: rotateX(0deg) skewX(0deg);
+      opacity: 1;
+    }
+
+    100% {
+      transform: rotateX(90deg) skewX(180deg);
+      opacity: 0;
     }
   }
 }

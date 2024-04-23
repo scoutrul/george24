@@ -1,6 +1,6 @@
 <template>
   <div class="work">
-    <IntroSection class="work__intro" />
+    <NavigationSection class="work__intro" />
     <Section class="work__work">
       <WorkSection :next="nextWork" :data="findCurrentProject" />
     </Section>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import IntroSection from "../components/sections/intro.vue";
+import NavigationSection from "../components/sections/navigation.vue";
 import WorkSection from "../components/sections/work.vue";
 import Section from "../components/atoms/section.vue";
 import WorksSection from "../components/sections/works.vue";

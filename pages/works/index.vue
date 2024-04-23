@@ -1,12 +1,12 @@
 <template>
   <div class="works">
-    <IntroSection />
+    <NavigationSection />
     <Section> <WorksSection :list="worksData" /></Section>
   </div>
 </template>
 
 <script setup>
-import IntroSection from "../../components/sections/intro.vue";
+import NavigationSection from "../../components/sections/navigation.vue";
 import Section from "../../components/atoms/section.vue";
 import WorksSection from "../../components/sections/works.vue";
 
