@@ -1,7 +1,6 @@
 <template>
   <section ref="poster" class="poster">
     <section
-      v-if="isPreloaderScreen"
       class="poster poster--loading"
       :class="{
         'poster--finish': isPreloaderLogoAnimationFinished,
@@ -51,11 +50,6 @@ const {
 const src = ref(`${baseURL}bg_landscape@2x.webp`);
 const poster = ref(null);
 
-const { start: startPreloaderTimer, isPending: isPreloaderScreen } =
-  useTimeoutFn(() => {
-    document.body.style.overflow = "initial";
-  }, 10000);
-
 const { isLoading: isPosterLoading } = useImage({ src: src.value });
 const targetIsVisible = useElementVisibility(poster);
 
@@ -65,29 +59,29 @@ const isPreloaderLogoAnimationFinished = ref(false);
 
 onBeforeMount(() => {
   document.body.style.overflow = "hidden";
+
   logoAnimation.value = useAnime({
     targets: ".poster__logo path",
     strokeDashoffset: [useAnime.setDashoffset, 0],
     easing: "cubicBezier(0.83, 0, 0.17, 1)",
-    duration: 2000,
+    duration: 2500,
     direction: "alternate",
     loop: true,
     update: (instance) => {
       if (instance.progress === 100) {
         logoAnimationTimes.value++;
-
-        if (!isPosterLoading.value && logoAnimationTimes.value === 2) {
+        if (logoAnimationTimes.value >= 2 && !isPosterLoading.value) {
           logoAnimation.value.pause();
           isPreloaderLogoAnimationFinished.value = true;
+          document.body.style.overflow = "initial";
         }
       }
     },
   });
+
   logoAnimation.value.play();
 });
-onMounted(() => {
-  startPreloaderTimer();
-});
+
 </script>
 
 <style lang="scss" scoped>
@@ -117,6 +111,7 @@ onMounted(() => {
   }
   &--finish {
     opacity: 0;
+    z-index: -1;
   }
 
   &__logo {
@@ -209,7 +204,17 @@ onMounted(() => {
       opacity: 1;
     }
 
-    100% {
+    3% {
+      transform: rotateX(90deg) skewX(180deg);
+      opacity: 0;
+    }
+
+    55% {
+      transform: rotateX(0deg) skewX(0deg);
+      opacity: 1;
+    }
+
+    58% {
       transform: rotateX(90deg) skewX(180deg);
       opacity: 0;
     }
