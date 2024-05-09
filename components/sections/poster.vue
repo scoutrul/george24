@@ -7,10 +7,11 @@
       }"
     >
       <svg
+        v-if="!isPreloaderSloganAnimationStarted"
         class="poster__logo"
         :class="{
-          glitchOpacity: isPreloaderLogoAnimationFinished,
-          glitch: !isPreloaderLogoAnimationFinished,
+          poster__glitchOpacity: isPreloaderLogoAnimationFinished,
+          poster__glitch: !isPreloaderLogoAnimationFinished,
         }"
         xmlns="http://www.w3.org/2000/svg"
         width="214"
@@ -25,6 +26,10 @@
           stroke-linecap="square"
         />
       </svg>
+
+      <div class="poster__slogan poster__glitch">
+        {{ currentSlogan }}
+      </div>
     </section>
     <div class="poster__logo-small" />
     <NavMenu />
@@ -37,7 +42,8 @@
 </template>
 
 <script setup>
-import { useImage, useTimeoutFn } from "@vueuse/core";
+import { useImage, useElementVisibility, useIntervalFn } from "@vueuse/core";
+import { useRuntimeConfig } from "nuxt/app";
 
 import MarqueeText from "../atoms/marquee.vue";
 import NavMenu from "../atoms/nav.vue";
@@ -56,8 +62,44 @@ const targetIsVisible = useElementVisibility(poster);
 const logoAnimation = ref(null);
 const logoAnimationTimes = ref(0);
 const isPreloaderLogoAnimationFinished = ref(false);
+const isPreloaderSloganAnimationStarted = ref(true); //
+const isPreloaderSloganAnimationFinished = ref(false);
+
+const currentSlogan = ref("");
+
+const printText = (string = "plan") => {
+  const { pause, resume, isActive } = useIntervalFn(() => {
+    const changedText = string;
+    let iteration = 0;
+
+    currentSlogan.value = changedText
+      .split("")
+      .map((letter, index) => {
+        if (index <= iteration) {
+          return changedText[index];
+        }
+      })
+      .join("");
+
+    if (currentSlogan.value === changedText) {
+      currentSlogan.value = string;
+      // pause();
+    }
+    iteration += 1;
+  }, 1000);
+};
+
+const startSloganAnimation = () => {
+  isPreloaderSloganAnimationStarted.value = true;
+  printText();
+
+  document.body.style.overflow = "initial";
+  isPreloaderSloganAnimationFinished.value = true;
+};
 
 onBeforeMount(() => {
+  startSloganAnimation();
+
   document.body.style.overflow = "hidden";
 
   logoAnimation.value = useAnime({
@@ -70,10 +112,10 @@ onBeforeMount(() => {
     update: (instance) => {
       if (instance.progress === 100) {
         logoAnimationTimes.value++;
-        if (logoAnimationTimes.value >= 2 && !isPosterLoading.value) {
+        if (logoAnimationTimes.value >= 1 && !isPosterLoading.value) {
           logoAnimation.value.pause();
           isPreloaderLogoAnimationFinished.value = true;
-          document.body.style.overflow = "initial";
+          startSloganAnimation();
         }
       }
     },
@@ -81,7 +123,6 @@ onBeforeMount(() => {
 
   logoAnimation.value.play();
 });
-
 </script>
 
 <style lang="scss" scoped>
@@ -109,14 +150,26 @@ onBeforeMount(() => {
     justify-content: center;
     align-items: center;
   }
+
   &--finish {
     opacity: 0;
     z-index: -1;
   }
 
+  &__slogan {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+    color: $brown;
+    user-select: none;
+    font-size: 300px;
+    font-weight: 700;
+    line-height: 300px;
+    letter-spacing: -0.03em;
+  }
+
   &__logo {
     margin: auto;
     opacity: 0;
+    position: absolute;
   }
 
   &__poster {
@@ -162,18 +215,13 @@ onBeforeMount(() => {
     }
   }
 
-  .glitch {
-    position: relative;
-  }
-
-  .glitch {
+  &__glitch {
     animation:
       glitch 1.3s 1.3s infinite,
       glitch 3s 3s infinite;
   }
 
-  .glitchOpacity {
-    position: relative;
+  &__glitchOpacity {
     animation: glitchOpacity 0.2s;
     animation-iteration-count: 1;
   }
@@ -209,12 +257,22 @@ onBeforeMount(() => {
       opacity: 0;
     }
 
-    55% {
+    7% {
       transform: rotateX(0deg) skewX(0deg);
       opacity: 1;
     }
 
-    58% {
+    33% {
+      transform: rotateX(90deg) skewX(180deg);
+      opacity: 0;
+    }
+
+    60% {
+      transform: rotateX(0deg) skewX(0deg);
+      opacity: 1;
+    }
+
+    70% {
       transform: rotateX(90deg) skewX(180deg);
       opacity: 0;
     }
