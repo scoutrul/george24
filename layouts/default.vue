@@ -1,5 +1,6 @@
 <template>
-  <div class="contextual-transition-container">
+  <div class="contextual-transition-container" :class="{ glitch: false }">
+    <NuxtLoadingIndicator :height="4" color="#829192" class="layout__loading" />
     <NuxtPage class="layout" :transition="contextualTransition">
       <slot />
     </NuxtPage>
@@ -10,8 +11,8 @@
 import { useTitle } from "@vueuse/core";
 const contextualTransition = useContextualTransition();
 const focused = useWindowFocus();
-
 const title = useTitle();
+
 const initialTitle = "plan, design, grow";
 title.value = initialTitle;
 
@@ -86,5 +87,10 @@ onMounted(() => {
 .layout {
   background: $brown;
   position: relative;
+
+  &__loading {
+    position: absolute;
+    z-index: 1000;
+  }
 }
 </style>
