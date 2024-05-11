@@ -7,7 +7,6 @@
       }"
     >
       <svg
-        v-if="!isPreloaderSloganAnimationStarted"
         class="poster__logo"
         :class="{
           poster__glitchOpacity: isPreloaderLogoAnimationFinished,
@@ -24,25 +23,28 @@
           stroke="#E3DED1"
           stroke-width="20"
           stroke-linecap="square"
+          class="poster__logo-path"
         />
       </svg>
-
-      <div class="poster__slogan poster__glitch">
-        {{ currentSlogan }}
-      </div>
     </section>
     <div class="poster__logo-small" />
     <NavMenu />
     <Contacts />
 
-    <img :src="src" alt="" class="poster__poster" />
+    <img
+      v-show="isPreloaderLogoAnimationFinished"
+      :src="src"
+      alt=""
+      class="poster__poster"
+      :class="{ 'poster__poster--show': isPreloaderLogoAnimationFinished }"
+    />
 
-    <MarqueeText v-if="targetIsVisible" />
+    <MarqueeText v-if="isPreloaderLogoAnimationFinished && targetIsVisible" />
   </section>
 </template>
 
 <script setup>
-import { useImage, useElementVisibility, useIntervalFn } from "@vueuse/core";
+import { useImage, useElementVisibility } from "@vueuse/core";
 import { useRuntimeConfig } from "nuxt/app";
 
 import MarqueeText from "../atoms/marquee.vue";
@@ -62,48 +64,12 @@ const targetIsVisible = useElementVisibility(poster);
 const logoAnimation = ref(null);
 const logoAnimationTimes = ref(0);
 const isPreloaderLogoAnimationFinished = ref(false);
-const isPreloaderSloganAnimationStarted = ref(true); //
-const isPreloaderSloganAnimationFinished = ref(false);
-
-const currentSlogan = ref("");
-
-const printText = (string = "plan") => {
-  const { pause, resume, isActive } = useIntervalFn(() => {
-    const changedText = string;
-    let iteration = 0;
-
-    currentSlogan.value = changedText
-      .split("")
-      .map((letter, index) => {
-        if (index <= iteration) {
-          return changedText[index];
-        }
-      })
-      .join("");
-
-    if (currentSlogan.value === changedText) {
-      currentSlogan.value = string;
-      // pause();
-    }
-    iteration += 1;
-  }, 1000);
-};
-
-const startSloganAnimation = () => {
-  isPreloaderSloganAnimationStarted.value = true;
-  printText();
-
-  document.body.style.overflow = "initial";
-  isPreloaderSloganAnimationFinished.value = true;
-};
 
 onBeforeMount(() => {
-  startSloganAnimation();
-
   document.body.style.overflow = "hidden";
 
   logoAnimation.value = useAnime({
-    targets: ".poster__logo path",
+    targets: ".poster__logo-path",
     strokeDashoffset: [useAnime.setDashoffset, 0],
     easing: "cubicBezier(0.83, 0, 0.17, 1)",
     duration: 2500,
@@ -112,10 +78,12 @@ onBeforeMount(() => {
     update: (instance) => {
       if (instance.progress === 100) {
         logoAnimationTimes.value++;
+
         if (logoAnimationTimes.value >= 1 && !isPosterLoading.value) {
           logoAnimation.value.pause();
           isPreloaderLogoAnimationFinished.value = true;
-          startSloganAnimation();
+
+          document.body.style.overflow = "initial";
         }
       }
     },
@@ -182,6 +150,12 @@ onBeforeMount(() => {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    opacity: 0;
+    transition: 3s 6s;
+
+    &--show {
+      opacity: 1;
+    }
   }
 
   &__logo-small {
@@ -275,6 +249,15 @@ onBeforeMount(() => {
     70% {
       transform: rotateX(90deg) skewX(180deg);
       opacity: 0;
+    }
+  }
+  @keyframes posterOpacity {
+    1% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
     }
   }
 }

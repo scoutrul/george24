@@ -23,6 +23,7 @@ const changeText = () => {
   clearInterval(interval);
 
   const changedText = initialTitle;
+
   interval = setInterval(() => {
     title.value = changedText
       .split("")

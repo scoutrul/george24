@@ -1,10 +1,83 @@
 <template>
-  <NuxtMarquee auto-fill class="marquee">
-    <span data-text="plan, design, grow" class="glitch">
-      plan,&nbsp;design,&nbsp;grow,&nbsp;
-    </span>
+  <NuxtMarquee
+    :play="isMarqueeStarted"
+    class="marquee"
+    :class="{ marquee__slim: !isMarqueeStarted }"
+    :auto-fill="isMarqueeStarted"
+    speed="100"
+  >
+    <span
+      :data-text="currentSlogan"
+      class="glitch"
+      :class="{ marquee__text: !isMarqueeStarted }"
+      >{{ currentSlogan }}&nbsp;</span
+    >
   </NuxtMarquee>
 </template>
+
+<script setup>
+const isMarqueeStarted = ref(false);
+
+const currentSlogan = ref("");
+
+const changeText2 = (str) => {
+  let iteration = 0;
+
+  let interval = null;
+  clearInterval(interval);
+
+  interval = setInterval(() => {
+    const changedText = str;
+
+    currentSlogan.value = changedText
+      .split("")
+      .map((letter, index) => {
+        if (index === iteration) {
+          return changedText[index];
+        }
+      })
+      .join("");
+
+    iteration += 1;
+    if (iteration >= str.length + 5) {
+      clearInterval(interval);
+
+      iteration = 0;
+      //
+      isMarqueeStarted.value = true;
+      currentSlogan.value = "plan, design, grow,";
+    }
+  }, 100);
+};
+
+onMounted(() => {
+  changeText2(`plandesigngrow`);
+});
+</script>
+
+<style lang="scss">
+.marquee {
+  &__text {
+    min-width: 100%;
+    text-align: center;
+    display: flex;
+  }
+  .vfm-marquee {
+    justify-content: center;
+    align-items: start;
+  }
+
+  &__slim {
+    .vfm-marquee {
+      display: none;
+
+      &:nth-of-type(1) {
+        display: flex;
+      }
+    }
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 .marquee {
@@ -22,6 +95,7 @@
   font-weight: 700;
   line-height: 300px;
   letter-spacing: -0.03em;
+  text-align: center;
 }
 
 .glitch {
