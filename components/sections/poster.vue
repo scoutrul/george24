@@ -3,14 +3,13 @@
     <section
       class="poster poster--loading"
       :class="{
-        'poster--finish': isPreloaderLogoAnimationFinished,
+        'poster--finish': isLogoAnimationFinished,
       }"
     >
       <svg
         class="poster__logo"
         :class="{
-          poster__glitchOpacity: isPreloaderLogoAnimationFinished,
-          poster__glitch: !isPreloaderLogoAnimationFinished,
+          glitch: !isLogoAnimationFinished,
         }"
         xmlns="http://www.w3.org/2000/svg"
         width="214"
@@ -32,14 +31,32 @@
     <Contacts />
 
     <img
-      v-show="isPreloaderLogoAnimationFinished"
+      v-show="isLogoAnimationFinished && isTextAnimationFinished"
       :src="src"
       alt=""
       class="poster__poster"
-      :class="{ 'poster__poster--show': isPreloaderLogoAnimationFinished }"
+      :class="{
+        'poster__poster--show':
+          isLogoAnimationFinished && isTextAnimationFinished,
+      }"
     />
-
-    <MarqueeText v-if="isPreloaderLogoAnimationFinished && targetIsVisible" />
+    <div
+      v-if="isLogoAnimationFinished || isTextAnimationFinished"
+      class="poster__view glitch"
+    >
+      <CycleText
+        v-if="isLogoAnimationFinished && !isTextAnimationFinished"
+        text="plan design grow "
+        :count="2"
+        :speed="100"
+        @is-animation-end="endCycleTextAnimation"
+      />
+      <MarqueeText
+        v-if="isLogoAnimationFinished && isTextAnimationFinished"
+        text="plan, design, grow,"
+        :speed="100"
+      />
+    </div>
   </section>
 </template>
 
@@ -47,6 +64,7 @@
 import { useImage, useElementVisibility } from "@vueuse/core";
 import { useRuntimeConfig } from "nuxt/app";
 
+import CycleText from "../atoms/cycleText.vue";
 import MarqueeText from "../atoms/marquee.vue";
 import NavMenu from "../atoms/nav.vue";
 import Contacts from "../atoms/contacts.vue";
@@ -63,7 +81,13 @@ const targetIsVisible = useElementVisibility(poster);
 
 const logoAnimation = ref(null);
 const logoAnimationTimes = ref(0);
-const isPreloaderLogoAnimationFinished = ref(false);
+const isLogoAnimationFinished = ref(false);
+const isTextAnimationFinished = ref(false);
+
+const endCycleTextAnimation = () => {
+  isTextAnimationFinished.value = true;
+  document.body.style.overflow = "initial";
+};
 
 onBeforeMount(() => {
   document.body.style.overflow = "hidden";
@@ -81,9 +105,7 @@ onBeforeMount(() => {
 
         if (logoAnimationTimes.value >= 1 && !isPosterLoading.value) {
           logoAnimation.value.pause();
-          isPreloaderLogoAnimationFinished.value = true;
-
-          document.body.style.overflow = "initial";
+          isLogoAnimationFinished.value = true;
         }
       }
     },
@@ -122,6 +144,25 @@ onBeforeMount(() => {
   &--finish {
     opacity: 0;
     z-index: -1;
+  }
+
+  &__view {
+    position: absolute;
+    min-width: 100vw;
+    height: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+    color: $brown;
+    user-select: none;
+    font-size: 300px;
+    font-weight: 700;
+    line-height: 300px;
+    letter-spacing: -0.03em;
   }
 
   &__slogan {
@@ -186,78 +227,6 @@ onBeforeMount(() => {
       @media (min-width: $bp-desktop) {
         background-position: $padding-large - $padding-step $padding-mid;
       }
-    }
-  }
-
-  &__glitch {
-    animation:
-      glitch 1.3s 1.3s infinite,
-      glitch 3s 3s infinite;
-  }
-
-  &__glitchOpacity {
-    animation: glitchOpacity 0.2s;
-    animation-iteration-count: 1;
-  }
-
-  @keyframes glitch {
-    1% {
-      transform: rotateX(50deg) skewX(90deg);
-      opacity: 0;
-    }
-    2% {
-      @media (min-width: $bp-tablet) {
-        transform: rotateX(0deg) skewX(0deg);
-      }
-    }
-
-    3% {
-      transform: rotateX(0deg) skewX(0deg);
-      opacity: 1;
-    }
-    99% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes glitchOpacity {
-    1% {
-      transform: rotateX(0deg) skewX(0deg);
-      opacity: 1;
-    }
-
-    3% {
-      transform: rotateX(90deg) skewX(180deg);
-      opacity: 0;
-    }
-
-    7% {
-      transform: rotateX(0deg) skewX(0deg);
-      opacity: 1;
-    }
-
-    33% {
-      transform: rotateX(90deg) skewX(180deg);
-      opacity: 0;
-    }
-
-    60% {
-      transform: rotateX(0deg) skewX(0deg);
-      opacity: 1;
-    }
-
-    70% {
-      transform: rotateX(90deg) skewX(180deg);
-      opacity: 0;
-    }
-  }
-  @keyframes posterOpacity {
-    1% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
     }
   }
 }
