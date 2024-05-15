@@ -7,10 +7,7 @@
       }"
     >
       <svg
-        class="poster__logo"
-        :class="{
-          glitch: !isLogoAnimationFinished,
-        }"
+        class="poster__logo glitch-global"
         xmlns="http://www.w3.org/2000/svg"
         width="214"
         height="214"
@@ -26,6 +23,7 @@
         />
       </svg>
     </section>
+
     <div class="poster__logo-small" />
     <NavMenu />
     <Contacts />
@@ -101,7 +99,7 @@ onBeforeMount(() => {
     loop: true,
     update: (instance) => {
       if (instance.progress === 100) {
-        logoAnimationTimes.value++;
+        logoAnimationTimes.value += 1;
 
         if (logoAnimationTimes.value >= 1 && !isPosterLoading.value) {
           logoAnimation.value.pause();
