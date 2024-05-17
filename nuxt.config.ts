@@ -8,7 +8,6 @@ export default defineNuxtConfig({
     "nuxt-marquee",
     "nuxt-delay-hydration",
     "@vueuse/nuxt",
-    "nuxt-contextual-transition",
     "@nuxt/content",
     "@hypernym/nuxt-anime",
   ],
@@ -18,6 +17,7 @@ export default defineNuxtConfig({
     },
     baseURL: "/george24/",
     buildAssetsDir: "/assets/",
+    pageTransition: { name: "page", mode: "out-in" },
   },
   vite: {
     css: {

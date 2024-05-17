@@ -40,6 +40,11 @@ const {
 </script>
 
 <style lang="scss">
+html,
+body {
+  background-color: $green-black;
+}
+
 .page {
   display: flex;
   flex-direction: column;

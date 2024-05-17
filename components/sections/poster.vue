@@ -1,5 +1,5 @@
 <template>
-  <section ref="poster" class="poster">
+  <section class="poster">
     <section
       class="poster poster--loading"
       :class="{
@@ -46,7 +46,7 @@
         v-if="isLogoAnimationFinished && !isTextAnimationFinished"
         text="plan design grow "
         :count="2"
-        :speed="100"
+        :speed="60"
         @is-animation-end="endCycleTextAnimation"
       />
       <MarqueeText
@@ -72,10 +72,8 @@ const {
 } = useRuntimeConfig();
 
 const src = ref(`${baseURL}bg_landscape@2x.webp`);
-const poster = ref(null);
 
 const { isLoading: isPosterLoading } = useImage({ src: src.value });
-const targetIsVisible = useElementVisibility(poster);
 
 const logoAnimation = ref(null);
 const logoAnimationTimes = ref(0);
@@ -123,7 +121,6 @@ onBeforeMount(() => {
   overflow: hidden;
   position: relative;
   user-select: none;
-  transition: 0.5s ease-out;
 
   @media (orientation: landscape) {
     min-height: 660px;
@@ -140,8 +137,7 @@ onBeforeMount(() => {
   }
 
   &--finish {
-    opacity: 0;
-    z-index: -1;
+    display: none;
   }
 
   &__view {

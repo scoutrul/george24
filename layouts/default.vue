@@ -1,7 +1,7 @@
 <template>
-  <div class="contextual-transition-container" :class="{ glitch: false }">
+  <div>
     <NuxtLoadingIndicator :height="4" color="#829192" class="layout__loading" />
-    <NuxtPage class="layout" :transition="contextualTransition">
+    <NuxtPage class="layout">
       <slot />
     </NuxtPage>
   </div>
@@ -9,14 +9,13 @@
 
 <script setup>
 import { useTitle } from "@vueuse/core";
-const contextualTransition = useContextualTransition();
-const focused = useWindowFocus();
+const isWindowFocused = useWindowFocus();
 const title = useTitle();
 
 const initialTitle = "plan, design, grow";
 title.value = initialTitle;
 
-const changeText = () => {
+const changeTitleText = () => {
   let interval = null;
   let iteration = 0;
 
@@ -73,10 +72,10 @@ useSeoMeta({
 
 onMounted(() => {
   setInterval(() => {
-    if (!focused.value) {
+    if (!isWindowFocused.value) {
       title.value = initialTitle;
     } else {
-      changeText();
+      changeTitleText();
     }
   }, 5000);
 });
@@ -93,5 +92,14 @@ onMounted(() => {
     position: absolute;
     z-index: 1000;
   }
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  filter: grayscale(1) blur(100px);
 }
 </style>
