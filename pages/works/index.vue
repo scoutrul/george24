@@ -18,6 +18,11 @@ const {
 </script>
 
 <style lang="scss">
+html,
+body {
+  background-color: $brown;
+}
+
 .works {
   display: flex;
   flex-direction: column;

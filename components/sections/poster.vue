@@ -33,11 +33,8 @@
       :src="src"
       alt=""
       class="poster__poster"
-      :class="{
-        'poster__poster--show':
-          isLogoAnimationFinished && isTextAnimationFinished,
-      }"
     />
+
     <div
       v-if="isLogoAnimationFinished || isTextAnimationFinished"
       class="poster__view glitch"
@@ -87,6 +84,7 @@ const endCycleTextAnimation = () => {
 
 onBeforeMount(() => {
   document.body.style.overflow = "hidden";
+  document.body.style.background = "#0f2e2f";
 
   logoAnimation.value = useAnime({
     targets: ".poster__logo-path",
@@ -108,6 +106,10 @@ onBeforeMount(() => {
   });
 
   logoAnimation.value.play();
+});
+
+onBeforeUnmount(() => {
+  document.body.style.background = "";
 });
 </script>
 
@@ -185,12 +187,6 @@ onBeforeMount(() => {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    opacity: 0;
-    transition: 3s 6s;
-
-    &--show {
-      opacity: 1;
-    }
   }
 
   &__logo-small {

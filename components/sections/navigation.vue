@@ -12,7 +12,7 @@ import Logo from "../atoms/logo.vue";
 import Contacts from "../atoms/contacts.vue";
 import NavMenu from "../atoms/nav.vue";
 
-const { y } = useWindowScroll({ behavior: "smooth" });
+const { y } = useWindowScroll({ behavior: "instant" });
 
 const route = useRoute();
 const router = useRouter();

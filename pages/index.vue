@@ -26,6 +26,12 @@ import ReviewSection from "../components/sections/reviews.vue";
 import StackSection from "../components/sections/stack.vue";
 import FooterSection from "../components/sections/footer.vue";
 
+const { y } = useWindowScroll({ behavior: "instant" });
+
+onMounted(() => {
+  y.value = 0;
+});
+
 const {
   data: {
     value: { body: worksData },
@@ -40,11 +46,6 @@ const {
 </script>
 
 <style lang="scss">
-html,
-body {
-  background-color: $green-black;
-}
-
 .page {
   display: flex;
   flex-direction: column;

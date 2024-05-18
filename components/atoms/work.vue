@@ -9,7 +9,6 @@
     <div class="work__header">
       <template v-if="!isActive"> {{ header }} </template>
       <Link v-else :text="header" pre-start />
-      <ClientOnly> Pixel Ratio: {{ pixelRatio }} </ClientOnly>
     </div>
     <div class="work__text">{{ text }}</div>
     <div
@@ -43,8 +42,6 @@ const popupElement = ref();
 
 const isActive = ref(false);
 const isMobileWindowSize = ref(false);
-
-const { pixelRatio } = useDevicePixelRatio();
 
 const targetIsVisible = useElementVisibility(itemElement);
 
