@@ -30,28 +30,14 @@
     <div class="poster__logo-small" />
 
     <img
-      v-show="isLogoAnimationFinished && isTextAnimationFinished"
+      v-show="isLogoAnimationFinished"
       :src="src"
       alt=""
       class="poster__poster"
     />
 
-    <div
-      v-if="isLogoAnimationFinished || isTextAnimationFinished"
-      class="poster__view glitch"
-    >
-      <CycleText
-        v-if="isLogoAnimationFinished && !isTextAnimationFinished"
-        text="plan design grow "
-        :count="2"
-        :speed="60"
-        @is-animation-end="endCycleTextAnimation"
-      />
-      <MarqueeText
-        v-if="isLogoAnimationFinished && isTextAnimationFinished"
-        text="plan, design, grow,"
-        :speed="100"
-      />
+    <div v-if="isLogoAnimationFinished" class="poster__view glitch">
+      <MarqueeText text="plan, design, grow," :speed="100" />
     </div>
   </section>
 </template>
@@ -60,7 +46,6 @@
 import { useImage, useElementBounding } from "@vueuse/core";
 import { useRuntimeConfig } from "nuxt/app";
 
-import CycleText from "../atoms/cycleText.vue";
 import MarqueeText from "../atoms/marquee.vue";
 import NavMenu from "../atoms/nav.vue";
 import Contacts from "../atoms/contacts.vue";
@@ -88,12 +73,6 @@ const { isLoading: isPosterLoading } = useImage({ src: src.value });
 const logoAnimation = ref(null);
 const logoAnimationTimes = ref(0);
 const isLogoAnimationFinished = ref(false);
-const isTextAnimationFinished = ref(false);
-
-const endCycleTextAnimation = () => {
-  isTextAnimationFinished.value = true;
-  document.body.style.overflow = "initial";
-};
 
 onBeforeMount(() => {
   document.body.style.overflow = "hidden";
@@ -113,6 +92,7 @@ onBeforeMount(() => {
         if (logoAnimationTimes.value >= 1 && !isPosterLoading.value) {
           logoAnimation.value.pause();
           isLogoAnimationFinished.value = true;
+          document.body.style.overflow = "initial";
         }
       }
     },

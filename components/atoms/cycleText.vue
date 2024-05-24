@@ -3,6 +3,7 @@
 </template>
 
 <script setup>
+// to npm please
 const emit = defineEmits(["isAnimationEnd"]);
 const props = defineProps({
   text: { type: String, default: "" },
