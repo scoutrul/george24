@@ -1,5 +1,8 @@
 <template>
-  <section class="poster">
+  <section ref="poster" class="poster">
+    <NavMenu is-float :is-dark="isMenuDark" />
+    <Contacts is-float :is-dark="isContactsDark" />
+
     <section
       class="poster poster--loading"
       :class="{
@@ -25,8 +28,6 @@
     </section>
 
     <div class="poster__logo-small" />
-    <NavMenu />
-    <Contacts />
 
     <img
       v-show="isLogoAnimationFinished && isTextAnimationFinished"
@@ -56,13 +57,25 @@
 </template>
 
 <script setup>
-import { useImage, useElementVisibility } from "@vueuse/core";
+import { useImage, useElementBounding } from "@vueuse/core";
 import { useRuntimeConfig } from "nuxt/app";
 
 import CycleText from "../atoms/cycleText.vue";
 import MarqueeText from "../atoms/marquee.vue";
 import NavMenu from "../atoms/nav.vue";
 import Contacts from "../atoms/contacts.vue";
+
+const poster = ref(null);
+
+const { top, height } = useElementBounding(poster);
+
+const isContactsDark = computed(() => {
+  return top.value < -50;
+});
+
+const isMenuDark = computed(() => {
+  return top.value < -height.value + 50;
+});
 
 const {
   app: { baseURL },

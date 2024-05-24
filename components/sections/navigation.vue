@@ -1,8 +1,8 @@
 <template>
   <section class="navigation">
-    <Contacts v-if="isContactShow" is-black is-float />
-    <NavMenu is-black is-float />
-    <logo is-black class="navigation__logo" @click="logoClick" />
+    <Contacts v-if="!isIndexPage" is-dark is-float />
+    <NavMenu v-if="!isIndexPage" is-dark is-float />
+    <logo is-dark class="navigation__logo" @click="logoClick" />
     <div class="navigation__slogan">plan, design, grow</div>
   </section>
 </template>
@@ -18,14 +18,14 @@ const route = useRoute();
 const router = useRouter();
 
 const logoClick = () => {
-  if (route.name === "index") {
+  if (isIndexPage.value) {
     y.value = 0;
   } else {
     router.push({ name: "index" });
   }
 };
 
-const isContactShow = computed(() => route.name === "index");
+const isIndexPage = computed(() => route.name === "index");
 </script>
 
 <style lang="scss" scoped>

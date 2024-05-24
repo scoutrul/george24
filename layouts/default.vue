@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <NuxtLoadingIndicator :height="4" color="#829192" class="layout__loading" />
-    <NuxtPage class="layout">
-      <slot />
-    </NuxtPage>
-  </div>
+  <NuxtPage class="layout">
+    <slot />
+  </NuxtPage>
 </template>
 
 <script setup>

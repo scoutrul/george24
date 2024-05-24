@@ -1,7 +1,7 @@
 <template>
   <ul
     class="contacts"
-    :class="{ 'contacts--black': isBlack, 'contacts--float': isFloat }"
+    :class="{ 'contacts--dark': isDark, 'contacts--float': isFloat }"
   >
     <li>
       <a href="mailto:hello.geovo@gmail.com">
@@ -20,7 +20,7 @@
 import Link from "./link.vue";
 
 defineProps({
-  isBlack: Boolean,
+  isDark: Boolean,
   isFloat: Boolean,
 });
 </script>
@@ -39,6 +39,7 @@ defineProps({
   text-align: center;
   margin: 0;
   color: $brown;
+  transition: 0.2s;
 
   @media (min-width: $bp-tablet) {
     @include font28;
@@ -50,7 +51,7 @@ defineProps({
     position: fixed;
   }
 
-  &--black {
+  &--dark {
     color: $green-black;
   }
 }

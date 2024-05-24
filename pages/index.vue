@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-    <PosterSection class="section section--poster" />
     <NavigationSection class="section section--navigation" />
+    <PosterSection class="section section--poster" />
     <Section class="section section--present"> <PresentSection /></Section>
     <Section class="section section--works">
       <WorksSection :list="worksData"

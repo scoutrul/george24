@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav" :class="{ 'nav--black': isBlack, 'nav--float': isFloat }">
+  <ul class="nav" :class="{ 'nav--dark': isDark, 'nav--float': isFloat }">
     <li><Link text="works" @click="toWorks" /></li>
     <li>
       <a href="./CV-George-Vorobyov.pdf" target="_blank">
@@ -13,7 +13,7 @@
 import Link from "./link.vue";
 
 defineProps({
-  isBlack: Boolean,
+  isDark: Boolean,
   isFloat: Boolean,
 });
 
@@ -45,6 +45,7 @@ const toWorks = () => {
   top: $padding-min;
   right: $padding-min;
   left: $padding-min;
+  transition: 0.2s;
 
   @media (min-width: $bp-tablet) {
     right: $padding-mobile;
@@ -77,7 +78,7 @@ const toWorks = () => {
     position: fixed;
   }
 
-  &--black {
+  &--dark {
     color: $green-black;
 
     @media (min-width: $bp-tablet) {
