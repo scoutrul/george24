@@ -89,7 +89,7 @@ onBeforeMount(() => {
       if (instance.progress === 100) {
         logoAnimationTimes.value += 1;
 
-        if (logoAnimationTimes.value >= 1 && !isPosterLoading.value) {
+        if (logoAnimationTimes.value >= 2 && !isPosterLoading.value) {
           logoAnimation.value.pause();
           isLogoAnimationFinished.value = true;
           document.body.style.overflow = "initial";

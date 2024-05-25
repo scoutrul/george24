@@ -38,9 +38,10 @@
 <script setup>
 const numbers = ref(null);
 const targetIsVisible = useElementVisibility(numbers);
+const isPlayed = ref(false);
 
 watch(targetIsVisible, (value) => {
-  if (value) {
+  if (value && !isPlayed.value) {
     useAnime({
       targets: numbers.value,
       innerHTML: [0, 32.6],
@@ -50,6 +51,7 @@ watch(targetIsVisible, (value) => {
       delay: 500,
       direction: "normal",
     });
+    isPlayed.value = true;
   }
 });
 </script>
