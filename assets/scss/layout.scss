@@ -45,18 +45,24 @@ a {
 
 .glitch-global {
   animation:
-          glitchGlobal 1.3s 1.3s infinite,
-          glitchGlobal 3s 3s infinite;
+    glitchGlobal 1.3s 1.3s infinite,
+    glitchGlobal 3s 3s infinite;
 }
 
 @keyframes glitch {
   1% {
     transform: rotateX(0deg) skewX(0deg);
+    text-shadow: none;
+  }
+  2% {
+    text-shadow: 30px 30px 0 #e600ff;
   }
   3% {
     transform: rotateX(50deg) skewX(90deg);
+    text-shadow: -30px -30px 0 #c8ff00;
   }
   4% {
+    text-shadow: none;
     transform: rotateX(0deg) skewX(0deg);
   }
   5% {
@@ -65,7 +71,6 @@ a {
   6% {
     opacity: 1;
   }
-
   98% {
     opacity: 1;
   }
@@ -131,7 +136,7 @@ a {
     filter: none;
   }
   56% {
-    filter: invert(.5);
+    filter: invert(0.5);
   }
   58% {
     filter: none;

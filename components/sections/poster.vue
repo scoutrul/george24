@@ -137,6 +137,7 @@ onBeforeUnmount(() => {
 
   &__view {
     position: absolute;
+    z-index: -1;
     min-width: 100vw;
     height: 100%;
     left: 0;
