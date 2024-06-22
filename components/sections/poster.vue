@@ -187,7 +187,7 @@ onBeforeUnmount(() => {
     width: 100vw;
     height: 100%;
     position: absolute;
-    z-index: 10;
+    z-index: 9;
     left: 0;
     top: 0;
 
