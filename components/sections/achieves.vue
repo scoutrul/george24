@@ -26,12 +26,9 @@
     </div>
     <div class="achieves__value">
       <span ref="numbers" class="achieves__value-number"> 0 </span>
-      M
+      M+
     </div>
-    <div class="achieves__message">
-      people interact with&nbsp;my solutions<br />
-      monthly in over 30&nbsp;countries.
-    </div>
+    <div class="achieves__message">users use my products around the world</div>
   </section>
 </template>
 
@@ -44,7 +41,7 @@ watch(targetIsVisible, (value) => {
   if (value && !isPlayed.value) {
     useAnime({
       targets: numbers.value,
-      innerHTML: [0, 32.6],
+      innerHTML: [0, 50],
       easing: "cubicBezier(0,1,0,1)",
       round: 10,
       duration: 3000,
